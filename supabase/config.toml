@@ -1,0 +1,10 @@
+project_id = "iksdsdbtjmgxntjrwojw"
+
+[functions.send-contact-email]
+verify_jwt = false
+
+[functions.gsc-keywords]
+verify_jwt = false
+
+[functions.seo-admin-login]
+verify_jwt = false

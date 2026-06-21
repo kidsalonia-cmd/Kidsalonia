@@ -1,0 +1,22 @@
+# KidSalonia
+
+> KidSalonia is Gurugram's premium kids salon offering gentle haircuts, playful nail art, kids party makeup, and safe skin care for children of all ages.
+
+KidSalonia is a dedicated kids salon located at JMD Suburbio 2, Gurugram, Haryana. We specialize in child-friendly grooming experiences using dermatologically tested, paraben-free, and hypoallergenic products. Services include kids haircuts, mundan ceremonies, nail art and extensions, jelly manicures and pedicures, kids party makeup, and lice treatment. Open Monday and Wednesday–Friday, 11:30 AM to 8:30 PM, and Saturday–Sunday, 10:30 AM to 9:00 PM (closed Tuesdays).
+
+## Pages
+
+- [Home](/): Premium kids salon in Gurugram — services, highlights, and booking.
+- [About Us](/about-us): Our story, philosophy, and commitment to child-safe grooming.
+- [Hair Services](/hair): Kids haircuts, styling, mundan ceremonies, and pricing.
+- [Nail Services](/nails): Kids nail art, extensions, and jelly manicures/pedicures.
+- [Skin Services](/skin): Kids party makeup and gentle skin care.
+- [Contact Us](/contact-us): Booking, location, hours, and contact details.
+- [Insights](/insights): Kids care blog with grooming tips and parenting advice.
+
+## Local Landing Pages
+
+- [Best Kids Salon in Gurugram](/best-kids-salon-gurugram)
+- [Kids Salon in Sector 67 Gurugram](/kids-salon-sector-67-gurugram)
+- [Kids Salon near Sohna Road Gurugram](/kids-salon-near-sohna-road-gurugram)
+- [Kids Salon near DLF Gurugram](/kids-salon-near-dlf-gurugram)

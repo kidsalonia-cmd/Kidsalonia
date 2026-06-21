@@ -1,0 +1,1 @@
+revoke execute on function public.is_seo_admin() from public, anon, authenticated;
