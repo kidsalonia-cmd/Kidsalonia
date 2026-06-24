@@ -184,12 +184,12 @@ const Footer = () => {
         <div className="bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
           © {new Date().getFullYear()} KidSalonia. Designed and Developed by{" "}
           <a
-            href="https://kidsalonia.com"
+            href="https://Kidsalonia.com"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-white/80 transition"
           >
-            kidsalonia
+            Kidsalonia
           </a>
         </div>
       </footer>
