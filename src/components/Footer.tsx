@@ -202,9 +202,9 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
           © {new Date().getFullYear()} KidSalonia. Designed and Developed by{" "}
-         <a href="/" className="underline hover:text-white/80 transition">
-  Kidsalonia
-</a>
+          <a href="/" className="underline hover:text-white/80 transition">
+            Kidsalonia
+          </a>
         </div>
       </footer>
     </>
