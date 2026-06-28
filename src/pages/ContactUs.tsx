@@ -8,6 +8,38 @@ import SEO from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+const TIME_SLOTS = [
+  { value: "10:30 - 11:30", label: "10:30 AM - 11:30 AM", weekendOnly: true },
+  { value: "11:30 - 12:30", label: "11:30 AM - 12:30 PM" },
+  { value: "12:30 - 13:30", label: "12:30 PM - 1:30 PM" },
+  { value: "13:30 - 14:30", label: "1:30 PM - 2:30 PM" },
+  { value: "14:30 - 15:30", label: "2:30 PM - 3:30 PM" },
+  { value: "15:30 - 16:30", label: "3:30 PM - 4:30 PM" },
+  { value: "16:30 - 17:30", label: "4:30 PM - 5:30 PM" },
+  { value: "17:30 - 18:30", label: "5:30 PM - 6:30 PM" },
+  { value: "18:30 - 19:30", label: "6:30 PM - 7:30 PM" },
+  { value: "19:30 - 20:30", label: "7:30 PM - 8:30 PM" },
+  { value: "20:00 - 21:00", label: "8:00 PM - 9:00 PM", weekendOnly: true },
+];
+
+const getLocalDay = (dateString: string) => {
+  if (!dateString) return null;
+  const [year, month, day] = dateString.split("-").map(Number);
+  return new Date(year, month - 1, day).getDay();
+};
+
+const isTuesday = (dateString: string) => getLocalDay(dateString) === 2;
+
+const isWeekend = (dateString: string) => {
+  const day = getLocalDay(dateString);
+  return day === 0 || day === 6;
+};
+
+const getAvailableTimeSlots = (dateString: string) => {
+  if (!dateString || isWeekend(dateString)) return TIME_SLOTS;
+  return TIME_SLOTS.filter((slot) => !slot.weekendOnly);
+};
+
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,22 +49,36 @@ const ContactUs = () => {
     preferredTime: "",
     message: "",
   });
+  const [website, setWebsite] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const availableTimeSlots = getAvailableTimeSlots(formData.preferredDate);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isTuesday(formData.preferredDate)) {
+      toast.error("We are closed on Tuesday. Please choose another date.");
+      return;
+    }
+
+    if (formData.preferredTime && !availableTimeSlots.some((slot) => slot.value === formData.preferredTime)) {
+      toast.error("Please choose a time slot available for your selected date.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData,
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: { ...formData, website },
       });
 
       if (error) throw error;
 
       toast.success("Thank you! We will get back to you soon.");
       setFormData({ name: "", email: "", phone: "", preferredDate: "", preferredTime: "", message: "" });
-    } catch (err: any) {
+      setWebsite("");
+    } catch (err) {
       console.error('Contact form error:', err);
       toast.error("Something went wrong. Please try again or call us directly.");
     } finally {
@@ -111,64 +157,92 @@ const ContactUs = () => {
             <div className="bg-white rounded-2xl p-8 shadow-xl">
               <h3 className="text-xl font-bold text-foreground mb-6 text-center">Your Details</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="contact-website">Website</label>
+                  <input
+                    id="contact-website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={website}
+                    onChange={(e) => setWebsite(e.target.value)}
+                  />
+                </div>
+                <label htmlFor="contact-name" className="sr-only">Your Full Name</label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
                   placeholder="Your Full Name"
+                  autoComplete="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
                   required
                 />
+                <label htmlFor="contact-email" className="sr-only">Your Email Address</label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
                   placeholder="Your Email Address"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
                   required
                 />
+                <label htmlFor="contact-phone" className="sr-only">Your Phone Number</label>
                 <input
+                  id="contact-phone"
+                  name="phone"
                   type="tel"
                   placeholder="Your Phone Number"
+                  autoComplete="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
                 />
                 <div className="grid grid-cols-2 gap-3">
                   <div>
+                    <label htmlFor="preferred-date" className="sr-only">Preferred Date</label>
                     <input
+                      id="preferred-date"
+                      name="preferredDate"
                       type="date"
                       value={formData.preferredDate}
-                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value, preferredTime: "" })}
                       min={new Date().toISOString().split('T')[0]}
                       className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
                       placeholder="Preferred Date"
                     />
-                    <p className="text-xs text-muted-foreground mt-1 ml-1">Preferred Date</p>
+                    <p className="text-xs text-muted-foreground mt-1 ml-1">
+                      {isTuesday(formData.preferredDate) ? "Tuesday is closed" : "Preferred Date"}
+                    </p>
                   </div>
                   <div>
+                    <label htmlFor="preferred-time" className="sr-only">Preferred Time</label>
                     <select
+                      id="preferred-time"
+                      name="preferredTime"
                       value={formData.preferredTime}
                       onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                      className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                      className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground disabled:opacity-60"
+                      disabled={isTuesday(formData.preferredDate)}
                     >
                       <option value="">Select Time Slot</option>
-                      <option value="10:30 - 11:30">10:30 AM - 11:30 AM</option>
-                      <option value="11:30 - 12:30">11:30 AM - 12:30 PM</option>
-                      <option value="12:30 - 13:30">12:30 PM - 1:30 PM</option>
-                      <option value="13:30 - 14:30">1:30 PM - 2:30 PM</option>
-                      <option value="14:30 - 15:30">2:30 PM - 3:30 PM</option>
-                      <option value="15:30 - 16:30">3:30 PM - 4:30 PM</option>
-                      <option value="16:30 - 17:30">4:30 PM - 5:30 PM</option>
-                      <option value="17:30 - 18:30">5:30 PM - 6:30 PM</option>
-                      <option value="18:30 - 19:30">6:30 PM - 7:30 PM</option>
-                      <option value="19:30 - 20:30">7:30 PM - 8:30 PM</option>
-                      <option value="20:00 - 21:00">8:00 PM - 9:00 PM</option>
+                      {availableTimeSlots.map((slot) => (
+                        <option key={slot.value} value={slot.value}>{slot.label}</option>
+                      ))}
                     </select>
                     <p className="text-xs text-muted-foreground mt-1 ml-1">Preferred Time</p>
                   </div>
                 </div>
+                <label htmlFor="contact-message" className="sr-only">Your Message</label>
                 <textarea
+                  id="contact-message"
+                  name="message"
                   placeholder="Your Message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}

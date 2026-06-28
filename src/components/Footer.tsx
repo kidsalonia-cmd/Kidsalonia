@@ -9,6 +9,7 @@ const WHATSAPP_URL = "https://wa.me/918130307036";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -25,11 +26,13 @@ const Footer = () => {
           name: "Newsletter Subscriber",
           email: trimmed,
           message: "New newsletter subscription from KidSalonia homepage footer.",
+          website,
         },
       });
       if (error) throw error;
       toast({ title: "Subscribed!", description: "Thanks for subscribing — we'll be in touch with offers." });
       setEmail("");
+      setWebsite("");
     } catch (err) {
       console.error(err);
       toast({ title: "Subscription failed", description: "Please try again in a moment.", variant: "destructive" });
@@ -46,10 +49,26 @@ const Footer = () => {
           Let Your Hair Shine With Special Offers And Deals! Subscribe!
         </h2>
         <form onSubmit={handleSubscribe} className="flex items-center justify-center gap-3 max-w-lg mx-auto mb-6">
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="footer-website">Website</label>
+            <input
+              id="footer-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </div>
+          <label htmlFor="footer-email" className="sr-only">Email address</label>
           <input
+            id="footer-email"
+            name="email"
             type="email"
             required
             placeholder="Email*"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="flex-1 border border-black/20 rounded-md px-4 py-3 text-sm outline-none focus:border-black/40"
@@ -82,8 +101,8 @@ const Footer = () => {
             <div className="flex gap-3 pt-1">
               <a
                 href="https://www.instagram.com/kidsalonia"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#EE2852] hover:text-white hover:border-[#EE2852] transition"
                 aria-label="Follow KidSalonia on Instagram"
               >
@@ -91,8 +110,8 @@ const Footer = () => {
               </a>
               <a
                 href="https://www.facebook.com/766831683190165"
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#EE2852] hover:text-white hover:border-[#EE2852] transition"
                 aria-label="Follow KidSalonia on Facebook"
               >
@@ -100,8 +119,8 @@ const Footer = () => {
               </a>
               <a
                 href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition"
                 aria-label="Chat with KidSalonia on WhatsApp"
               >
@@ -132,8 +151,8 @@ const Footer = () => {
                 <MapPin size={15} className="mt-0.5 text-[#EE2852] shrink-0" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=Ground+floor%2C+KidSalonia%2C+A-19+JMD+Suburbio+2%2C+Gurugram%2C+Haryana+122101"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  
+                  
                   className="hover:text-[#EE2852] transition"
                 >
                   Ground floor, KidSalonia, A-19 JMD Suburbio 2,<br />Gurugram, Haryana 122101
@@ -170,8 +189,8 @@ const Footer = () => {
 
               <a
                 href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="flex items-center justify-center gap-2 bg-white border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-semibold px-5 py-3 rounded-full text-sm transition"
               >
                 <MessageCircle size={16} /> Chat on WhatsApp
@@ -183,14 +202,9 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
           © {new Date().getFullYear()} KidSalonia. Designed and Developed by{" "}
-          <a
-            href="https://hyperrevamp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-white/80 transition"
-          >
-            HyperRevamp
-          </a>
+         <a href="/" className="underline hover:text-white/80 transition">
+  Kidsalonia
+</a>
         </div>
       </footer>
     </>
@@ -198,3 +212,10 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
+
+
+
+

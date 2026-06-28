@@ -1,22 +1,49 @@
 # KidSalonia
 
-> KidSalonia is Gurugram's premium kids salon offering gentle haircuts, playful nail art, kids party makeup, and safe skin care for children of all ages.
+> KidSalonia is Gurugram's premium kids and family salon for gentle haircuts, mundan, nail art, skin care, party grooming, and child-friendly salon experiences.
 
-KidSalonia is a dedicated kids salon located at JMD Suburbio 2, Gurugram, Haryana. We specialize in child-friendly grooming experiences using dermatologically tested, paraben-free, and hypoallergenic products. Services include kids haircuts, mundan ceremonies, nail art and extensions, jelly manicures and pedicures, kids party makeup, and lice treatment. Open Monday and Wednesday–Friday, 11:30 AM to 8:30 PM, and Saturday–Sunday, 10:30 AM to 9:00 PM (closed Tuesdays).
+KidSalonia is located at JMD Suburbio 2, Sector 67, Gurugram, Haryana. Services use child-safe products and trained stylists for babies, toddlers, kids, tweens, mothers, and families. Open Monday and Wednesday-Friday, 11:30 AM to 8:30 PM, and Saturday-Sunday, 10:30 AM to 9:00 PM. Closed Tuesdays.
 
-## Pages
+## Core Pages
 
-- [Home](/): Premium kids salon in Gurugram — services, highlights, and booking.
-- [About Us](/about-us): Our story, philosophy, and commitment to child-safe grooming.
-- [Hair Services](/hair): Kids haircuts, styling, mundan ceremonies, and pricing.
-- [Nail Services](/nails): Kids nail art, extensions, and jelly manicures/pedicures.
-- [Skin Services](/skin): Kids party makeup and gentle skin care.
-- [Contact Us](/contact-us): Booking, location, hours, and contact details.
-- [Insights](/insights): Kids care blog with grooming tips and parenting advice.
+- [Home](/)
+- [hair](/hair)
+- [nails](/nails)
+- [skin](/skin)
+- [contact-us](/contact-us)
+- [about-us](/about-us)
+- [insights](/insights)
+- [best-kids-salon-gurugram](/best-kids-salon-gurugram)
+- [kids-salon-sector-67-gurugram](/kids-salon-sector-67-gurugram)
+- [kids-salon-near-sohna-road-gurugram](/kids-salon-near-sohna-road-gurugram)
+- [kids-salon-near-dlf-gurugram](/kids-salon-near-dlf-gurugram)
 
-## Local Landing Pages
+## Latest Guides
 
-- [Best Kids Salon in Gurugram](/best-kids-salon-gurugram)
-- [Kids Salon in Sector 67 Gurugram](/kids-salon-sector-67-gurugram)
-- [Kids Salon near Sohna Road Gurugram](/kids-salon-near-sohna-road-gurugram)
-- [Kids Salon near DLF Gurugram](/kids-salon-near-dlf-gurugram)
+- [kids facial monsoon care gurugram](/insights/kids-facial-monsoon-care-gurugram)
+- [toddler first salon visit guide gurugram](/insights/toddler-first-salon-visit-guide-gurugram)
+- [fathers day haircut bonding gurugram](/insights/fathers-day-haircut-bonding-gurugram)
+- [kids summer nail art trends 2026](/insights/kids-summer-nail-art-trends-2026)
+- [kids summer hair care indian climate](/insights/kids-summer-hair-care-indian-climate)
+- [mundan ceremony kids salon gurugram](/insights/mundan-ceremony-kids-salon-gurugram)
+- [birthday party kids salon gurugram](/insights/birthday-party-kids-salon-gurugram)
+- [is nail art safe for kids](/insights/is-nail-art-safe-for-kids)
+- [kids haircut price gurugram 2026](/insights/kids-haircut-price-gurugram-2026)
+- [when should babies get their first haircut gurugram](/insights/when-should-babies-get-their-first-haircut-gurugram)
+- [kids anti dandruff scalp treatment gurgaon may 18](/insights/kids-anti-dandruff-scalp-treatment-gurgaon-may-18)
+- [baby cradle cap care gurgaon may 17](/insights/baby-cradle-cap-care-gurgaon-may-17)
+- [kids body massage relaxation gurgaon may 16](/insights/kids-body-massage-relaxation-gurgaon-may-16)
+- [kids foot spa pedicure gurgaon may 15](/insights/kids-foot-spa-pedicure-gurgaon-may-15)
+- [kids hair spa deep conditioning gurgaon may 14](/insights/kids-hair-spa-deep-conditioning-gurgaon-may-14)
+- [easy school hairstyles kids gurgaon may 13](/insights/easy-school-hairstyles-kids-gurgaon-may-13)
+- [gentle ear piercing kids gurgaon may 12](/insights/gentle-ear-piercing-kids-gurgaon-may-12)
+- [safe temporary hair colour kids gurgaon may 11](/insights/safe-temporary-hair-colour-kids-gurgaon-may-11)
+- [traditional champi hair oil massage kids gurgaon may 10](/insights/traditional-champi-hair-oil-massage-kids-gurgaon-may-10)
+- [kids swim haircare chlorine protection gurgaon may 9](/insights/kids-swim-haircare-chlorine-protection-gurgaon-may-9)
+
+## Contact
+
+- Website: https://www.kidsalonia.com
+- Booking: https://www.kidsalonia.com/contact-us
+- Phone: +91 8130307036
+- Location: JMD Suburbio 2, Sector 67, Gurugram, Haryana

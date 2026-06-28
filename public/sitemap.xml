@@ -7,20 +7,14 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/hair</loc>
-    <lastmod>2026-03-08</lastmod>
+    <loc>https://www.kidsalonia.com/about-us</loc>
+    <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/nails</loc>
+    <loc>https://www.kidsalonia.com/best-kids-salon-gurugram</loc>
     <lastmod>2026-03-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/skin</loc>
-    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -28,7 +22,13 @@
     <loc>https://www.kidsalonia.com/contact-us</loc>
     <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/hair</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.kidsalonia.com/insights</loc>
@@ -37,14 +37,392 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.kidsalonia.com/insights/are-nail-extensions-safe-for-kids</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/baby-cradle-cap-care-gurgaon-may-17</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/benefits-of-head-massage-for-kids</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/best-nail-art-ideas-kids-birthday-party</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/best-summer-haircuts-for-kids-2026-trendy-low-maintenance-styles</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/best-summer-hairstyles-for-indian-kids</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/birthday-hairstyle-for-kids-2026-ideas</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/birthday-party-kids-salon-gurugram</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/child-first-salon-visit-stress-free-fun</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/choosing-perfect-haircut-for-kids-face-shape</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/choosing-right-hairstyle-indian-kids</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/curly-hair-care-guide-for-kids</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/dry-scalp-in-kids-causes-and-remedies</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/easy-school-hairstyles-kids-gurgaon-may-13</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/father-son-grooming-bonding-at-kids-salon</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/fathers-day-haircut-bonding-gurugram</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/first-haircut-for-kids-tips-and-what-to-expect</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/first-time-kids-salon-visit-guide</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/fun-nail-art-ideas-for-kids-birthday-parties</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/gentle-ear-piercing-kids-gurgaon-may-12</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/healthy-nail-care-habits-for-kids</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/how-kidsalonia-is-redefining-kids-grooming-in-gurgaon</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/how-to-choose-right-kids-salon-gurugram</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/how-to-detangle-kids-hair-without-tears</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/how-to-handle-kids-scared-of-haircuts</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/importance-of-regular-grooming-for-kids</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/is-nail-art-safe-for-kids</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-anti-dandruff-scalp-treatment-gurgaon-may-18</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-body-massage-relaxation-gurgaon-may-16</loc>
+    <lastmod>2026-05-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-facial-monsoon-care-gurugram</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-facial-spa-treatments-when-appropriate</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-foot-spa-pedicure-gurgaon-may-15</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-gentle-facial-summer-skin-may-5</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-hair-accessories-guide-style-and-safety</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-hair-spa-deep-conditioning-gurgaon-may-14</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-haircut-price-gurugram-2026</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-hairstyles-for-indian-weddings-2026</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.kidsalonia.com/insights/kids-manicure-guide-safe-nail-care-for-children</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.kidsalonia.com/insights/kids-modern-haircut-gurgaon-may-3</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-nail-art-ideas-safe-fun-designs-2026</loc>
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-nail-art-salon-gurgaon-may-4</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-nail-salon-gurgaon-nail-art-extensions</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-party-grooming-gurgaon-may-8</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-party-grooming-special-occasions</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-salon-accessories-guide-parents</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-salon-birthday-party-ideas-gurugram</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-shampoo-salon-experience-benefits</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-skincare-routine-indian-parents-guide</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-spa-day-guide-what-parents-should-know</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-summer-facial-skincare-april</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-summer-hair-care-indian-climate</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-summer-haircut-gurgaon-april</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-summer-haircut-styles-gurgaon-may</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-summer-nail-art-trends-2026</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-swim-haircare-chlorine-protection-gurgaon-may-9</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/kids-trendy-haircut-styles-summer-2026</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/light-playful-makeup-ideas-school-functions-family-weddings</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/mother-daughter-hair-bonding-rituals</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/mother-daughter-pedicure-bonding-guide</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/mother-daughter-pedicure-bonding-gurgaon-may-6</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/mother-daughter-pedicure-bonding-gurugram</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/mundan-ceremony-kids-salon-gurugram</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.kidsalonia.com/insights/professional-lice-treatment-safer-than-home-remedies</loc>
     <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/protecting-kids-skin-in-summer-heat</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/safe-temporary-hair-colour-kids-gurgaon-may-11</loc>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -61,38 +439,62 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/kids-nail-art-ideas-safe-fun-designs-2026</loc>
-    <lastmod>2026-03-08</lastmod>
+    <loc>https://www.kidsalonia.com/insights/summer-haircut-trends-for-kids-2026</loc>
+    <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/best-summer-haircuts-for-kids-2026-trendy-low-maintenance-styles</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://www.kidsalonia.com/insights/summer-skin-protection-guide-indian-kids</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/light-playful-makeup-ideas-school-functions-family-weddings</loc>
-    <lastmod>2026-02-26</lastmod>
+    <loc>https://www.kidsalonia.com/insights/summer-skincare-routine-for-kids-complete-guide</loc>
+    <lastmod>2026-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/are-nail-extensions-safe-for-kids</loc>
-    <lastmod>2026-02-24</lastmod>
+    <loc>https://www.kidsalonia.com/insights/teaching-kids-personal-hygiene-early</loc>
+    <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/birthday-hairstyle-for-kids-2026-ideas</loc>
-    <lastmod>2026-02-22</lastmod>
+    <loc>https://www.kidsalonia.com/insights/toddler-first-haircut-gurgaon-may-7</loc>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/child-first-salon-visit-stress-free-fun</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://www.kidsalonia.com/insights/toddler-first-salon-visit-guide-gurugram</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/toddler-haircut-guide-stress-free-tips</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/toddler-haircuts-without-tears-a-parents-guide-to-stress-free-salon-visits</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/traditional-champi-hair-oil-massage-kids-gurgaon-may-10</loc>
+    <lastmod>2026-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/weekly-hair-care-routine-indian-kids</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -103,31 +505,31 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/how-regular-haircuts-help-kids-hair-grow-healthy</loc>
-    <lastmod>2026-02-12</lastmod>
+    <loc>https://www.kidsalonia.com/insights/when-should-babies-get-their-first-haircut-gurugram</loc>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/best-kids-salon-in-gurgaon-kidsalonia</loc>
+    <loc>https://www.kidsalonia.com/insights/why-kids-need-separate-hair-products</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.kidsalonia.com/insights/why-kidsalonia-is-more-than-a-kids-salon-its-a-comfort-zone-for-children</loc>
     <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/the-ultimate-guide-to-kids-nail-art-safe-fun-and-creative</loc>
-    <lastmod>2026-02-05</lastmod>
+    <loc>https://www.kidsalonia.com/insights/why-regular-nail-trimming-is-important-for-kids</loc>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/best-kids-salon-gurugram</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/kids-salon-sector-67-gurugram</loc>
+    <loc>https://www.kidsalonia.com/kids-salon-near-dlf-gurugram</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -139,69 +541,21 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/kids-salon-near-dlf-gurugram</loc>
+    <loc>https://www.kidsalonia.com/kids-salon-sector-67-gurugram</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/dry-scalp-in-kids-causes-and-remedies</loc>
-    <lastmod>2026-03-23</lastmod>
+    <loc>https://www.kidsalonia.com/nails</loc>
+    <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.kidsalonia.com/insights/toddler-haircut-guide-stress-free-tips</loc>
-    <lastmod>2026-03-24</lastmod>
+    <loc>https://www.kidsalonia.com/skin</loc>
+    <lastmod>2026-03-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/best-nail-art-ideas-kids-birthday-party</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/curly-hair-care-guide-for-kids</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/kids-salon-birthday-party-ideas-gurugram</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/father-son-grooming-bonding-at-kids-salon</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/kids-hairstyles-for-indian-weddings-2026</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/mother-daughter-pedicure-bonding-guide</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/insights/kids-skincare-routine-indian-parents-guide</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.kidsalonia.com/about-us</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 </urlset>

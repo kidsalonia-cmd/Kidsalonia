@@ -30,8 +30,14 @@ const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="geo.region" content="IN-HR" />
+      <meta name="geo.placename" content="Gurugram" />
+      <meta name="geo.position" content="28.5035;77.0386" />
+      <meta name="ICBM" content="28.5035, 77.0386" />
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -39,6 +45,7 @@ const SEO = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:alt" content={`${fullTitle} - KidSalonia`} />
       <meta property="og:site_name" content="KidSalonia" />
       <meta property="og:locale" content="en_IN" />
 
@@ -64,7 +71,9 @@ export default SEO;
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "HairSalon",
+  "@id": "https://www.kidsalonia.com/#localbusiness",
   name: "KidSalonia",
+  alternateName: "KidSalonia Kids Salon",
   description:
     "A Premium Kids Salon Where Every Little Moment Is Designed With Care — From Gentle Haircuts To Playful Nail Art.",
   url: "https://www.kidsalonia.com",
@@ -77,11 +86,20 @@ export const localBusinessSchema = {
     addressRegion: "Haryana",
     addressCountry: "IN",
   },
+  areaServed: [
+    "Gurugram",
+    "Sector 67 Gurugram",
+    "Sohna Road",
+    "DLF Gurugram",
+    "Delhi NCR",
+  ],
   geo: {
     "@type": "GeoCoordinates",
     latitude: 28.5035,
     longitude: 77.0386,
   },
+  hasMap: "https://maps.google.com/?q=KidSalonia%20JMD%20Suburbio%202%20Gurugram",
+  paymentAccepted: ["Cash", "UPI", "Credit Card", "Debit Card"],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -98,6 +116,25 @@ export const localBusinessSchema = {
   ],
   priceRange: "₹₹",
   image: "https://www.kidsalonia.com/image/kidsaloniaNEWbanner.jpeg",
+  logo: "https://www.kidsalonia.com/favicon.webp",
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: "Kids Haircut" },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: "Kids Nail Art" },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: "Kids Skin Care" },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: "Mundan Ceremony" },
+    },
+  ],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
