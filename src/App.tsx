@@ -27,6 +27,7 @@ import KidsSalonGhaziabad from "./pages/KidsSalonGhaziabad";
 import KidsSalonDelhiNCR from "./pages/KidsSalonDelhiNCR";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import ConversionActions from "./components/ConversionActions";
 
 
 const queryClient = new QueryClient();
@@ -72,6 +73,7 @@ const App = () => (
 
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ConversionActions />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

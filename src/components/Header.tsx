@@ -64,9 +64,7 @@ const Header = () => {
             <Facebook size={20} />
           </a>
           <a
-            href="https://wa.me/918130307036"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact-us"
             className="bg-primary text-primary-foreground font-bold px-7 py-2.5 rounded-full text-sm hover:opacity-90 transition"
           >
             Book Now
@@ -131,9 +129,7 @@ const Header = () => {
             )
           )}
           <a
-            href="https://wa.me/918130307036"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact-us"
             className="block w-full bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-full text-base text-center"
             onClick={() => setMobileMenuOpen(false)}
           >

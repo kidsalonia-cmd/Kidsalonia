@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BookNowCTA from "@/components/BookNowCTA";
 import SocialSidebar from "@/components/SocialSidebar";
 import SEO, { localBusinessSchema, createFAQSchema } from "@/components/SEO";
 import hairHeroBanner from "@/assets/hair-hero-banner.jpg";
@@ -312,25 +313,12 @@ const Hair = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary py-16 text-center px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-          Book Your Child's Haircut Today
-        </h2>
-        <p className="text-primary-foreground/80 text-base md:text-lg max-w-2xl mx-auto mb-8">
-          Give your child the best hair experience in Gurugram. Call us or visit to book an appointment.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="tel:8130307036"
-            className="bg-white text-primary font-bold px-8 py-3 rounded-full text-base hover:bg-white/90 transition"
-          >
-            Call +91 8130307036
-          </a>
-          <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white font-bold px-8 py-3 rounded-full text-base hover:bg-white/10 transition">
-            Book Online
-          </a>
-        </div>
-      </section>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <BookNowCTA
+          title="Book Your Child's Haircut Today"
+          description="Book a kids haircut, mundan, party hair colour, or styling appointment at KidSalonia Gurugram."
+        />
+      </div>
 
       {/* FAQ Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

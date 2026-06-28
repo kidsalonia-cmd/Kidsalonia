@@ -5,7 +5,8 @@ import { Instagram, Facebook, MessageCircle, Calendar, Phone, Mail, MapPin, Cloc
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
-const WHATSAPP_URL = "https://wa.me/918130307036";
+const WHATSAPP_URL = "https://wa.me/918130307036?text=Hi%20KidSalonia%2C%20I%20want%20to%20book%20an%20appointment";
+const PHONE_URL = "tel:+918130307036";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -161,7 +162,7 @@ const Footer = () => {
 
               <li className="flex items-center gap-2.5">
                 <Phone size={15} className="text-[#EE2852] shrink-0" />
-                <a href="tel:8130307036" className="hover:text-black transition">+91 8130307036</a>
+                <a href={PHONE_URL} className="hover:text-black transition">+91 8130307036</a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={15} className="text-[#EE2852] shrink-0" />
@@ -186,11 +187,22 @@ const Footer = () => {
               Reserve your child's pampering session or talk to us directly — we usually reply within minutes.
             </p>
             <div className="space-y-3">
-
+              <Link
+                to="/contact-us"
+                className="flex items-center justify-center gap-2 bg-[#EE2852] text-white hover:bg-[#d5214a] font-semibold px-5 py-3 rounded-full text-sm transition"
+              >
+                <Calendar size={16} /> Book Appointment
+              </Link>
+              <a
+                href={PHONE_URL}
+                className="flex items-center justify-center gap-2 bg-white border-2 border-[#EE2852] text-[#EE2852] hover:bg-[#EE2852] hover:text-white font-semibold px-5 py-3 rounded-full text-sm transition"
+              >
+                <Phone size={16} /> Call Now
+              </a>
               <a
                 href={WHATSAPP_URL}
-                
-                
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-white border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-semibold px-5 py-3 rounded-full text-sm transition"
               >
                 <MessageCircle size={16} /> Chat on WhatsApp
