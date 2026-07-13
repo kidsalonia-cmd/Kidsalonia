@@ -10,7 +10,13 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-const BASE_URL = "https://www.kidsalonia.com";
+export const BASE_URL = "https://www.kidsalonia.com";
+export const BUSINESS_NAME = "KidSalonia";
+export const BUSINESS_PHONE = "+918130307036";
+export const BUSINESS_PHONE_ALT = "+919773864949";
+export const BUSINESS_ADDRESS =
+  "Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101";
+
 const DEFAULT_OG_IMAGE = `${BASE_URL}/image/kidsaloniaNEWbanner.jpeg`;
 
 const SEO = ({
@@ -22,40 +28,61 @@ const SEO = ({
   jsonLd,
   noIndex = false,
 }: SEOProps) => {
-  const fullTitle = title.includes("KidSalonia") ? title : `${title} | KidSalonia`;
-  const canonicalUrl = canonical || BASE_URL;
+  const fullTitle = title.includes(BUSINESS_NAME)
+    ? title
+    : `${title} | ${BUSINESS_NAME}`;
+
+  const canonicalUrl = canonical || `${BASE_URL}/`;
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta
+        name="keywords"
+        content="kids salon Gurgaon, kids haircut Gurgaon, baby haircut Gurgaon, mundan Gurgaon, nail art Gurgaon, manicure Gurgaon, pedicure Gurgaon, hairdresser Gurgaon, family salon Gurgaon, kids salon near Airia Mall"
+      />
+
       <link rel="canonical" href={canonicalUrl} />
       <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
       <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
-      <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+      <meta
+        name="robots"
+        content={
+          noIndex
+            ? "noindex, nofollow"
+            : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        }
+      />
+      <meta
+        name="googlebot"
+        content={
+          noIndex
+            ? "noindex, nofollow"
+            : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        }
+      />
+
       <meta name="geo.region" content="IN-HR" />
       <meta name="geo.placename" content="Gurugram" />
       <meta name="geo.position" content="28.5035;77.0386" />
       <meta name="ICBM" content="28.5035, 77.0386" />
 
-      {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:alt" content={`${fullTitle} - KidSalonia`} />
-      <meta property="og:site_name" content="KidSalonia" />
+      <meta property="og:site_name" content={BUSINESS_NAME} />
       <meta property="og:locale" content="en_IN" />
 
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {/* JSON-LD Structured Data */}
       {jsonLd && (
         <script type="application/ld+json">
           {JSON.stringify(Array.isArray(jsonLd) ? jsonLd : jsonLd)}
@@ -67,29 +94,72 @@ const SEO = ({
 
 export default SEO;
 
-// Reusable JSON-LD schemas
+export const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${BASE_URL}/#organization`,
+  name: BUSINESS_NAME,
+  url: BASE_URL,
+  logo: `${BASE_URL}/favicon.webp`,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: BUSINESS_PHONE,
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: BUSINESS_PHONE_ALT,
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+    },
+  ],
+  sameAs: [
+    "https://www.instagram.com/kidsalonia",
+    "https://www.facebook.com/kidsalonia",
+  ],
+};
+
+export const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${BASE_URL}/#website`,
+  name: BUSINESS_NAME,
+  url: BASE_URL,
+  publisher: {
+    "@id": `${BASE_URL}/#organization`,
+  },
+};
+
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HairSalon",
-  "@id": "https://www.kidsalonia.com/#localbusiness",
-  name: "KidSalonia",
-  alternateName: "KidSalonia Kids Salon",
+  "@type": ["HairSalon", "BeautySalon", "NailSalon", "LocalBusiness"],
+  "@id": `${BASE_URL}/#localbusiness`,
+  name: BUSINESS_NAME,
+  alternateName: "KidSalonia Kids Salon & Nail Studio",
   description:
-    "A Premium Kids Salon Where Every Little Moment Is Designed With Care — From Gentle Haircuts To Playful Nail Art.",
-  url: "https://www.kidsalonia.com",
-  telephone: "+918130307036",
+    "KidSalonia is a child-friendly kids salon, hairdresser, nail art studio, manicure and pedicure destination in Gurugram for kids, families and moms.",
+  url: BASE_URL,
+  telephone: BUSINESS_PHONE,
   email: "sales@kidsalonia.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Ground floor, A-19 JMD Suburbio 2",
+    streetAddress: "Ground Floor, A-19 JMD Suburbio 2",
     addressLocality: "Gurugram",
     addressRegion: "Haryana",
+    postalCode: "122101",
     addressCountry: "IN",
   },
   areaServed: [
     "Gurugram",
+    "Sector 57 Gurugram",
     "Sector 67 Gurugram",
+    "Airia Mall",
     "Sohna Road",
+    "Golf Course Extension Road",
     "DLF Gurugram",
     "Delhi NCR",
   ],
@@ -98,7 +168,8 @@ export const localBusinessSchema = {
     latitude: 28.5035,
     longitude: 77.0386,
   },
-  hasMap: "https://maps.google.com/?q=KidSalonia%20JMD%20Suburbio%202%20Gurugram",
+  hasMap:
+    "https://maps.google.com/?q=KidSalonia%20A-19%20JMD%20Suburbio%202%20Gurugram",
   paymentAccepted: ["Cash", "UPI", "Credit Card", "Debit Card"],
   openingHoursSpecification: [
     {
@@ -115,37 +186,95 @@ export const localBusinessSchema = {
     },
   ],
   priceRange: "₹₹",
-  image: "https://www.kidsalonia.com/image/kidsaloniaNEWbanner.jpeg",
-  logo: "https://www.kidsalonia.com/favicon.webp",
-  makesOffer: [
+  image: `${BASE_URL}/image/kidsaloniaNEWbanner.jpeg`,
+  logo: `${BASE_URL}/favicon.webp`,
+  contactPoint: [
     {
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: "Kids Haircut" },
+      "@type": "ContactPoint",
+      telephone: BUSINESS_PHONE,
+      contactType: "booking and customer support",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
     },
     {
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: "Kids Nail Art" },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: "Kids Skin Care" },
-    },
-    {
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: "Mundan Ceremony" },
+      "@type": "ContactPoint",
+      telephone: BUSINESS_PHONE_ALT,
+      contactType: "booking and customer support",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
     },
   ],
+  makesOffer: [
+    "Kids Haircut",
+    "Baby First Haircut",
+    "Mundan Ceremony",
+    "Nail Art",
+    "Nail Extensions",
+    "Manicure",
+    "Pedicure",
+    "Hair Styling",
+    "Hairdresser Services",
+    "Family Salon Services",
+  ].map((name) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name,
+      provider: { "@id": `${BASE_URL}/#localbusiness` },
+      areaServed: "Gurugram",
+    },
+  })),
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "500",
+    ratingValue: "4.9",
+    reviewCount: "69",
     bestRating: "5",
   },
-  sameAs: [
-    "https://www.instagram.com/kidsalonia",
-    "https://www.facebook.com/kidsalonia"
-  ],
+  parentOrganization: { "@id": `${BASE_URL}/#organization` },
+  sameAs: organizationSchema.sameAs,
 };
+
+export const createBreadcrumbSchema = (
+  items: { name: string; url: string }[]
+) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+});
+
+export const createServiceSchema = ({
+  name,
+  description,
+  url,
+  serviceType = name,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  serviceType?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${url}#service`,
+  name,
+  serviceType,
+  description,
+  provider: { "@id": `${BASE_URL}/#localbusiness` },
+  areaServed: {
+    "@type": "City",
+    name: "Gurugram",
+  },
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: url,
+    servicePhone: BUSINESS_PHONE,
+  },
+});
 
 export const createBlogPostSchema = (blog: {
   title: string;
@@ -165,23 +294,25 @@ export const createBlogPostSchema = (blog: {
   author: {
     "@type": "Organization",
     name: blog.author,
-    url: "https://www.kidsalonia.com",
+    url: BASE_URL,
   },
   publisher: {
     "@type": "Organization",
-    name: "KidSalonia",
+    name: BUSINESS_NAME,
     logo: {
       "@type": "ImageObject",
-      url: "https://www.kidsalonia.com/image/logo.webp",
+      url: `${BASE_URL}/image/logo.webp`,
     },
   },
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://www.kidsalonia.com/insights/${blog.slug}`,
+    "@id": `${BASE_URL}/insights/${blog.slug}`,
   },
 });
 
-export const createFAQSchema = (faqs: { question: string; answer: string }[]) => ({
+export const createFAQSchema = (
+  faqs: { question: string; answer: string }[]
+) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: faqs.map((faq) => ({

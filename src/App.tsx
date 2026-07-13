@@ -1,3 +1,4 @@
+import LocationServicePage from "./pages/seo/LocationServicePage";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -71,6 +72,7 @@ const App = () => (
           <Route path="/locations/kids-salon-delhi-ncr" element={<KidsSalonDelhiNCR />} />
           <Route path="/locations/kids-salon-delhi-ncr/" element={<KidsSalonDelhiNCR />} />
 
+           <Route path="/:slug" element={<LocationServicePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ConversionActions />

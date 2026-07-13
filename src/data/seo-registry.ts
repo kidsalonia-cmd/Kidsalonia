@@ -21,12 +21,12 @@ export interface PageSEOEntry {
 export const seoRegistry: PageSEOEntry[] = [
   {
     path: "/",
-    title: "KidSalonia - Premium Kids Salon in Gurugram | Haircuts, Nail Art & Skin Care",
-    metaDescription: "KidSalonia is Gurugram's premium kids salon offering gentle haircuts, playful nail art, kids party makeup, and safe skin care. Book now at +91 8130307036.",
-    h1: "KidSalonia — Premium Kids Salon",
-    primaryKeywords: ["kids salon Gurugram", "premium kids salon", "children salon"],
-    secondaryKeywords: ["kids haircut", "kids nail art", "kids party makeup", "baby haircut"],
-    longTailKeywords: ["kids salon near me Gurugram", "kids salon Sector 67", "children haircut near DLF"],
+    title: "Best Kids Salon & Nail Art Studio in Gurgaon | KidSalonia",
+    metaDescription: "KidSalonia is a trusted kids salon, hairdresser and nail art studio in Gurgaon for kids haircuts, baby first haircut, mundan, manicure, pedicure and family salon services near Airia Mall.",
+    h1: "Best Kids Salon & Nail Art Studio in Gurgaon",
+    primaryKeywords: ["kids salon Gurgaon", "kids haircut Gurgaon", "nail art Gurgaon"],
+    secondaryKeywords: ["baby haircut Gurgaon", "mundan Gurgaon", "manicure Gurgaon", "pedicure Gurgaon", "hairdresser Gurgaon"],
+    longTailKeywords: ["kids salon near Airia Mall", "baby first haircut Gurgaon", "kids salon near JMD Suburbio 2", "family salon Gurgaon"],
     keywordRanks: {
       "kids salon Gurugram": 8,
       "premium kids salon": 15,
@@ -39,11 +39,11 @@ export const seoRegistry: PageSEOEntry[] = [
       "kids salon Sector 67": 3,
       "children haircut near DLF": 9,
     },
-    jsonLdTypes: ["LocalBusiness (HairSalon)", "FAQPage"],
+    jsonLdTypes: ["Organization", "LocalBusiness (HairSalon, BeautySalon, NailSalon)", "Service", "FAQPage", "BreadcrumbList"],
     faqCount: 6,
-    serviceOffersCount: 0,
+    serviceOffersCount: 9,
     images: 12,
-    lastUpdated: "2026-03-08",
+    lastUpdated: "2026-07-05",
     status: "live",
   },
   {

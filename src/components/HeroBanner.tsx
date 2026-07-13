@@ -7,7 +7,7 @@ const HeroBanner = () => {
       {/* Desktop Banner */}
       <div className="hidden lg:block relative w-full">
         <img
-          alt="Mom & Daughter Pampering Time - Navratri Special"
+          alt="Kids salon, nail art, manicure and pedicure offers at KidSalonia Gurgaon"
           className="w-full h-auto block"
           src={heroBanner}
         />
@@ -23,7 +23,7 @@ const HeroBanner = () => {
       {/* Mobile Banner */}
       <div className="block lg:hidden relative w-full">
         <img
-          alt="Mom & Daughter Pampering Time - Navratri Special"
+          alt="Kids salon, nail art, manicure and pedicure offers at KidSalonia Gurgaon"
           className="w-full h-auto block"
           src={heroBanner}
         />

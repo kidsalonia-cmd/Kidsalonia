@@ -7,10 +7,10 @@ const IntroSection = () => {
     <section className="grid grid-cols-1 lg:grid-cols-2">
       <div className="relative flex flex-col justify-center bg-secondary px-6 py-4 lg:px-20">
         <h1 className="max-w-xl md:pt-4 pt-8 text-4xl font-extrabold leading-tight text-foreground lg:text-5xl">
-          Kids Salon in Gurgaon – Haircuts, Nail Art & Skin for Kids | KidSalonia
+          Best Kids Salon & Nail Art Studio in Gurgaon
         </h1>
         <p className="mt-6 max-w-lg text-sm leading-relaxed text-muted-foreground">
-          A Premium Kids & Family Salon in Gurgaon for Kids, Women and Parents Offering Gentle Haircuts, Nail Art, Styling and Safe Self-Care Experiences in a Comfortable Environment
+          KidSalonia is a trusted kids salon, hairdresser and nail studio in Gurugram for kids haircuts, baby first haircut, mundan, nail art, manicure, pedicure and family salon services near Airia Mall and JMD Suburbio 2.
         </p>
         <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" >
           <button className="relative z-10 mt-6 rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
@@ -20,7 +20,7 @@ const IntroSection = () => {
         <div className="hidden lg:block absolute bottom-0 left-0 h-44 w-full px-4">
           <img
             src={beautyImg}
-            alt="Beauty"
+            alt="Kids nail art, manicure and pedicure at KidSalonia Gurgaon"
             className="mx-auto w-auto h-[160px] object-contain"
           />
         </div>
@@ -28,7 +28,7 @@ const IntroSection = () => {
       <div className="relative bg-background h-96 sm:h-80 md:h-96 lg:h-full w-full">
         <img
           src={hairImg}
-          alt="Kids Salon"
+          alt="Child-friendly kids salon and hairdresser in Gurgaon"
           className="h-full w-full object-contain"
         />
       </div>

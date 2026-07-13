@@ -83,7 +83,7 @@ const blogEntries = Array.from(
 const routes = uniqueByPath([...registryEntries, ...blogEntries]);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${routes
   .map(
     (route) => `  <url>
@@ -91,6 +91,7 @@ ${routes
     <lastmod>${route.lastmod}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="${escapeXml(site + route.path)}" />
   </url>`,
   )
   .join("\n")}
@@ -112,7 +113,7 @@ const llms = `# KidSalonia
 
 > KidSalonia is Gurugram's premium kids and family salon for gentle haircuts, mundan, nail art, skin care, party grooming, and child-friendly salon experiences.
 
-KidSalonia is located at JMD Suburbio 2, Sector 67, Gurugram, Haryana. Services use child-safe products and trained stylists for babies, toddlers, kids, tweens, mothers, and families. Open Monday and Wednesday-Friday, 11:30 AM to 8:30 PM, and Saturday-Sunday, 10:30 AM to 9:00 PM. Closed Tuesdays.
+KidSalonia is located at Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101, close to Airia Mall and Golf Course Extension Road. Services use child-safe products and trained stylists for babies, toddlers, kids, tweens, mothers, and families. Open Monday and Wednesday-Friday, 11:30 AM to 8:30 PM, and Saturday-Sunday, 10:30 AM to 9:00 PM. Closed Tuesdays.
 
 ## Core Pages
 
@@ -127,7 +128,7 @@ ${latestBlogs}
 - Website: ${site}
 - Booking: ${site}/contact-us
 - Phone: +91 8130307036
-- Location: JMD Suburbio 2, Sector 67, Gurugram, Haryana
+- Location: Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101
 `;
 
 writeFileSync(resolve(root, "public/sitemap.xml"), sitemap);
