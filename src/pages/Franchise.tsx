@@ -312,7 +312,7 @@ const Franchise = () => {
                 </a>
 
                 <a
-                  href="tel:+919999999999"
+                  href="tel:+919773864949"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-3.5 font-semibold text-slate-800 transition hover:border-pink-300 hover:text-pink-700"
                 >
                   <Phone className="h-5 w-5" />
