@@ -25,6 +25,24 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+      {/* Top CTA Bar */}
+<div className="hidden lg:flex items-center justify-center gap-6 bg-gradient-to-r from-pink-600 to-rose-500 px-6 py-2 text-white">
+  <a
+    href="https://wa.me/+919773864949"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-full bg-green-500 px-5 py-2 font-semibold shadow transition hover:bg-green-600"
+  >
+    💬 Reserve Your Kid's Slot
+  </a>
+
+  <a
+    href="tel:+919773864949"
+    className="rounded-full bg-red-500 px-5 py-2 font-semibold shadow transition hover:bg-red-600"
+  >
+    📞 Call Us to Reserve Your Slot
+  </a>
+</div>
       {/* Main Header */}
       <div className="flex items-center justify-between px-4 py-3 sm:px-6 lg:px-16">
         {/* Logo */}
@@ -127,6 +145,22 @@ const Header = () => {
       </nav>
 
       {/* Mobile Menu */}
+      {/* Mobile CTA */}
+<div className="grid grid-cols-2 lg:hidden">
+  <a
+    href="https://wa.me/+919773864949"
+    className="bg-green-500 py-3 text-center text-xs font-bold text-white"
+  >
+    💬 Reserve Slot
+  </a>
+
+  <a
+    href="tel:+919773864949"
+    className="bg-red-500 py-3 text-center text-xs font-bold text-white"
+  >
+    📞 Call Now
+  </a>
+</div>
       {mobileMenuOpen && (
         <nav className="space-y-4 border-t border-border bg-background px-6 py-5 lg:hidden">
           {navItems.map((item) =>
