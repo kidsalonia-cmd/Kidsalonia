@@ -28,7 +28,7 @@ const Header = () => {
       {/* Top CTA Bar */}
 <div className="hidden lg:flex items-center justify-center gap-6 bg-gradient-to-r from-pink-600 to-rose-500 px-6 py-2 text-white">
   <a
-    href="https://wa.me/+919773864949"
+    href="https://wa.me/919773864949?text=Hi%20Kidsalonia!%20I'd%20like%20to%20reserve%20a%20slot%20for%20my%20child.%20Please%20share%20the%20available%20timings."
     target="_blank"
     rel="noopener noreferrer"
     className="rounded-full bg-green-500 px-5 py-2 font-semibold shadow transition hover:bg-green-600"
