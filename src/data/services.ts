@@ -25,7 +25,7 @@ const bookingAnswer =
 
 export const seoServices: SEOServicePage[] = [
   {
-    slug: "kids-haircut",
+    slug: "kids-haircut-gurgaon",
     category: "kids-salon",
     title: "Kids Haircut Gurgaon | Child-Friendly Salon",
     h1: "Kids Haircut in Gurgaon",
