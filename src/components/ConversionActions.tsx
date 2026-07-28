@@ -1,6 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Calendar, Copy, MessageCircle, Phone, X } from "lucide-react";
+import {
+  Calendar,
+  Clock3,
+  Copy,
+  Gift,
+  MessageCircle,
+  Phone,
+  Sparkles,
+  X,
+} from "lucide-react";
 
 const PHONE_NUMBER = "+918130307036";
 const COUPON_CODE = "KIDS15";
@@ -16,9 +25,18 @@ const WHATSAPP_URL = createWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE);
 
 const getFridayOfferEnd = (date: Date) => {
   const end = new Date(date);
-  end.setDate(date.getDate() + (5 - date.getDay()));
+  const daysUntilFriday = (5 - date.getDay() + 7) % 7;
+  end.setDate(date.getDate() + daysUntilFriday);
   end.setHours(21, 0, 0, 0);
   return end;
+};
+
+const getCountdown = (milliseconds: number) => {
+  const totalMinutes = Math.max(0, Math.floor(milliseconds / 60000));
+  const days = Math.floor(totalMinutes / 1440);
+  const hours = Math.floor((totalMinutes % 1440) / 60);
+  const minutes = totalMinutes % 60;
+  return { days, hours, minutes };
 };
 
 const ConversionActions = () => {
@@ -44,6 +62,7 @@ const ConversionActions = () => {
     now.getDay() <= 5 &&
     now.getTime() < offerEnd.getTime();
 
+  const countdown = getCountdown(offerEnd.getTime() - now.getTime());
   const whatsappUrl = createWhatsAppUrl(
     isWeekdayOffer ? OFFER_WHATSAPP_MESSAGE : DEFAULT_WHATSAPP_MESSAGE,
   );
@@ -95,6 +114,32 @@ const ConversionActions = () => {
 
   return (
     <>
+      <button
+        type="button"
+        onClick={() => setShowOffer(true)}
+        className="fixed bottom-[9.5rem] right-5 z-50 hidden items-center gap-2 rounded-full border-2 border-white bg-gradient-to-r from-fuchsia-600 to-orange-500 px-5 py-3 text-sm font-black text-white shadow-xl transition hover:-translate-y-1 md:inline-flex"
+        aria-label="View all KidSalonia offers"
+      >
+        <Gift size={19} />
+        {isWeekdayOffer ? "15% OFF · View Offer" : "View Offers"}
+        <Sparkles size={16} />
+      </button>
+
+      <button
+        type="button"
+        onClick={() => setShowOffer(true)}
+        className="fixed inset-x-3 bottom-[4.25rem] z-50 flex items-center justify-between rounded-2xl bg-gradient-to-r from-fuchsia-600 to-orange-500 px-4 py-2.5 text-left text-white shadow-xl md:hidden"
+        aria-label="View all KidSalonia offers"
+      >
+        <span className="flex items-center gap-2 text-xs font-black">
+          <Gift size={17} />
+          {isWeekdayOffer ? "15% OFF eligible services" : "See KidSalonia offers"}
+        </span>
+        <span className="rounded-full bg-white/20 px-3 py-1 text-[10px] font-bold">
+          View
+        </span>
+      </button>
+
       <div className="fixed bottom-6 right-5 z-50 hidden flex-col items-end gap-3 md:flex">
         <a
           href={`tel:${PHONE_NUMBER}`}
@@ -146,59 +191,99 @@ const ConversionActions = () => {
         </Link>
       </div>
 
-      {showOffer && isWeekdayOffer && (
+      {showOffer && (
         <div
           className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="weekday-offer-title"
+          aria-labelledby="offers-title"
         >
-          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white p-7 text-center shadow-2xl">
-            <button
-              type="button"
-              onClick={() => {
-                setShowOffer(false);
-                setDismissed(true);
-              }}
-              className="absolute right-4 top-4 rounded-full p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
-              aria-label="Close weekday offer"
-            >
-              <X size={20} />
-            </button>
+          <div className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl">
+            <div className="bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-400 px-7 py-7 text-white">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowOffer(false);
+                  setDismissed(true);
+                }}
+                className="absolute right-4 top-4 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/25"
+                aria-label="Close offers"
+              >
+                <X size={20} />
+              </button>
 
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-yellow-400 text-2xl">
-              🎁
+              <div className="flex items-center gap-3">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 text-2xl">
+                  🎁
+                </div>
+                <div>
+                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-white/80">
+                    KidSalonia Specials
+                  </p>
+                  <h2 id="offers-title" className="text-3xl font-black">
+                    Current Offers
+                  </h2>
+                </div>
+              </div>
             </div>
-            <p className="text-sm font-extrabold uppercase tracking-widest text-primary">
-              Before You Go
-            </p>
-            <h2 id="weekday-offer-title" className="mt-2 text-3xl font-black text-slate-950">
-              Save 15% Today
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
-              Book an eligible KidSalonia service from Monday to Friday and use the coupon below. Mundan is excluded.
-            </p>
 
-            <button
-              type="button"
-              onClick={copyCoupon}
-              className="mx-auto mt-5 flex items-center gap-2 rounded-2xl border-2 border-dashed border-primary bg-primary/5 px-6 py-3 text-xl font-black tracking-[0.2em] text-primary"
-            >
-              {COUPON_CODE} <Copy size={18} />
-            </button>
-            {copied && <p className="mt-2 text-xs font-bold text-green-600">Coupon copied</p>}
+            <div className="p-6 sm:p-7">
+              <div className="rounded-3xl border-2 border-dashed border-primary/35 bg-primary/5 p-5">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-widest text-primary">
+                      Monday to Friday
+                    </p>
+                    <h3 className="mt-1 text-2xl font-black text-slate-950">
+                      15% OFF Eligible Services
+                    </h3>
+                  </div>
+                  <span
+                    className={`rounded-full px-3 py-1 text-xs font-black ${
+                      isWeekdayOffer
+                        ? "bg-emerald-100 text-emerald-700"
+                        : "bg-slate-100 text-slate-600"
+                    }`}
+                  >
+                    {isWeekdayOffer ? "ACTIVE NOW" : "WEEKDAY OFFER"}
+                  </span>
+                </div>
 
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 font-extrabold text-white shadow-lg transition hover:scale-[1.02]"
-            >
-              <MessageCircle size={21} /> Claim 15% Off on WhatsApp
-            </a>
-            <p className="mt-3 text-xs text-slate-500">
-              Valid Monday to Friday until 9:00 PM. Mundan excluded. Terms may apply.
-            </p>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Save 15% on haircuts, nail art, grooming and other eligible salon services. Mundan services are excluded.
+                </p>
+
+                {isWeekdayOffer && (
+                  <div className="mt-4 flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-sm">
+                    <Clock3 size={17} className="text-primary" />
+                    Ends in {countdown.days} days, {countdown.hours} hours and {countdown.minutes} minutes
+                  </div>
+                )}
+
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                  <button
+                    type="button"
+                    onClick={copyCoupon}
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-primary px-5 py-3 text-sm font-black text-primary transition hover:bg-primary hover:text-white"
+                  >
+                    <Copy size={17} /> {copied ? "Coupon Copied" : `Copy ${COUPON_CODE}`}
+                  </button>
+
+                  <a
+                    href={createWhatsAppUrl(OFFER_WHATSAPP_MESSAGE)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5"
+                  >
+                    <MessageCircle size={18} /> Claim on WhatsApp
+                  </a>
+                </div>
+              </div>
+
+              <p className="mt-4 text-center text-xs text-slate-500">
+                Offer valid Monday to Friday until 9:00 PM. Mundan excluded. Terms and conditions may apply.
+              </p>
+            </div>
           </div>
         </div>
       )}
