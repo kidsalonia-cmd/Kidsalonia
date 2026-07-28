@@ -59,7 +59,7 @@ const Header = () => {
               </p>
               <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-semibold text-white/90">
                 <span className="inline-flex items-center gap-1">
-                  <Star size={13} fill="currentColor" /> 4.9 Parent Rating
+                  <Star size={13} fill="currentColor" /> 1500+ Happy Kids
                 </span>
                 <span className="inline-flex items-center gap-1">
                   <ShieldCheck size={13} /> Safe &amp; Hygienic
