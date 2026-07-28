@@ -1,0 +1,118 @@
+import { Link } from "react-router-dom";
+
+import weekOneImage from "@/assets/gallery/gallery-16.jpg";
+import weekTwoImage from "@/assets/gallery/gallery-19.png";
+import weekThreeImage from "@/assets/gallery/gallery-25.png";
+import weekFourImage from "@/assets/gallery/gallery-27.png";
+
+const weeklyBanners = [
+  {
+    image: weekOneImage,
+    eyebrow: "Fresh Look Week",
+    title: "A Fun New Haircut for Your Little Star",
+    description:
+      "Book a child-friendly haircut with trained kids stylists in a joyful and hygienic salon.",
+    buttonText: "Reserve a Haircut",
+    link: "/contact-us",
+    alt: "Happy child after a haircut at KidSalonia Gurgaon",
+  },
+  {
+    image: weekTwoImage,
+    eyebrow: "Nail Art Week",
+    title: "Colourful Nail Art Made for Little Hands",
+    description:
+      "Explore playful, age-appropriate nail designs created with care at KidSalonia.",
+    buttonText: "Book Nail Art",
+    link: "/contact-us",
+    alt: "Colourful kids nail art at KidSalonia Gurgaon",
+  },
+  {
+    image: weekThreeImage,
+    eyebrow: "Makeover Week",
+    title: "Make Their Salon Visit Feel Extra Special",
+    description:
+      "From stylish trims to cheerful makeovers, give your child a salon day to remember.",
+    buttonText: "Book a Makeover",
+    link: "/contact-us",
+    alt: "Child haircut transformation at KidSalonia kids salon",
+  },
+  {
+    image: weekFourImage,
+    eyebrow: "Gentle Care Week",
+    title: "Relaxing Hair Care in a Kid-Friendly Space",
+    description:
+      "Enjoy gentle hair wash and grooming services designed to keep children comfortable and smiling.",
+    buttonText: "Reserve a Slot",
+    link: "/contact-us",
+    alt: "Kids shampoo and hair care service at KidSalonia Gurgaon",
+  },
+];
+
+const getWeekNumber = (date: Date) => {
+  const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+  const elapsedDays = Math.floor(
+    (date.getTime() - firstDayOfYear.getTime()) / 86400000,
+  );
+
+  return Math.ceil((elapsedDays + firstDayOfYear.getDay() + 1) / 7);
+};
+
+const WeeklyBanner = () => {
+  const weekNumber = getWeekNumber(new Date());
+  const banner = weeklyBanners[(weekNumber - 1) % weeklyBanners.length];
+
+  return (
+    <section aria-label="KidSalonia weekly special" className="bg-background px-4 py-6 sm:px-6 lg:px-16">
+      <div className="relative mx-auto min-h-[320px] max-w-7xl overflow-hidden rounded-[2rem] shadow-xl sm:min-h-[390px]">
+        <img
+          src={banner.image}
+          alt={banner.alt}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          loading="eager"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/10" />
+
+        <div className="relative z-10 flex min-h-[320px] max-w-2xl flex-col justify-center px-6 py-10 text-white sm:min-h-[390px] sm:px-10 lg:px-14">
+          <span className="mb-4 w-fit rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary-foreground shadow">
+            Weekly Special · Week {weekNumber}
+          </span>
+
+          <p className="mb-2 text-sm font-bold uppercase tracking-widest text-white/80">
+            {banner.eyebrow}
+          </p>
+
+          <h2 className="max-w-xl text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+            {banner.title}
+          </h2>
+
+          <p className="mt-4 max-w-xl text-base leading-7 text-white/90 sm:text-lg">
+            {banner.description}
+          </p>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link
+              to={banner.link}
+              className="rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90"
+            >
+              {banner.buttonText}
+            </Link>
+
+            <a
+              href={`https://wa.me/918130307036?text=${encodeURIComponent(
+                "Hi Kidsalonia! I'd like to reserve a slot for my child. Please share the available timings.",
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-white/70 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white hover:text-foreground"
+            >
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default WeeklyBanner;
