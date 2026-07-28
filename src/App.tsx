@@ -13,6 +13,7 @@ import Hair from "./pages/Hair";
 import Nails from "./pages/Nails";
 import Skin from "./pages/Skin";
 import AboutUs from "./pages/AboutUs";
+import Offers from "./pages/Offers";
 import AdminSeo from "./pages/AdminSeo";
 import BestKidsSalon from "./pages/BestKidsSalon";
 import KidsSalonSector67 from "./pages/KidsSalonSector67";
@@ -48,17 +49,14 @@ const App = () => (
           <Route path="/" element={<Index />} />
 
           <Route path="/contact-us" element={<ContactUs />} />
-
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/offers" element={<Offers />} />
 
           <Route path="/hair" element={<Hair />} />
-
           <Route path="/skin" element={<Skin />} />
-
           <Route path="/nails" element={<Nails />} />
 
           <Route path="/insights" element={<Insights />} />
-
           <Route path="/insights/:slug" element={<BlogPost />} />
 
           <Route path="/admin/seo" element={<AdminSeo />} />
@@ -168,13 +166,10 @@ const App = () => (
             element={<KidsSalonDelhiNCR />}
           />
 
-          {/* Franchise Route */}
           <Route path="/franchise" element={<Franchise />} />
 
-          {/* Dynamic SEO Route */}
           <Route path="/:slug" element={<LocationServicePage />} />
 
-          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
 
