@@ -1,14 +1,30 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Facebook, Instagram, Menu, X } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Menu,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  X,
+} from "lucide-react";
 
 import logo from "@/assets/Logo2.webp";
+
+const PHONE_NUMBER = "+918130307036";
+const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
+  "Hi KidSalonia! I would like to reserve a slot for my child. Please share the available timings.",
+)}`;
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isFranchisePage = location.pathname === "/franchise";
 
   const navItems = [
     { label: "About Us", href: "/about-us" },
@@ -24,28 +40,60 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
-      {/* Top CTA Bar */}
-<div className="hidden lg:flex items-center justify-center gap-6 bg-gradient-to-r from-pink-600 to-rose-500 px-6 py-2 text-white">
-  <a
-    href="https://wa.me/919773864949?text=Hi%20Kidsalonia!%20I'd%20like%20to%20reserve%20a%20slot%20for%20my%20child.%20Please%20share%20the%20available%20timings."
-    target="_blank"
-    rel="noopener noreferrer"
-    className="rounded-full bg-green-500 px-5 py-2 font-semibold shadow transition hover:bg-green-600"
-  >
-    💬 Reserve Your Kid's Slot
-  </a>
+    <header className="sticky top-0 z-50 w-full bg-background shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
+      {!isFranchisePage && (
+        <div className="relative hidden overflow-hidden bg-gradient-to-r from-fuchsia-600 via-pink-500 to-sky-500 text-white lg:block">
+          <div className="pointer-events-none absolute inset-0 opacity-30">
+            <span className="absolute left-[4%] top-2 text-lg">⭐</span>
+            <span className="absolute left-[14%] bottom-1 text-base">🎈</span>
+            <span className="absolute left-[27%] top-1 text-sm">✨</span>
+            <span className="absolute right-[22%] bottom-1 text-base">🫧</span>
+            <span className="absolute right-[8%] top-1 text-lg">🌈</span>
+          </div>
 
-  <a
-    href="tel:+919773864949"
-    className="rounded-full bg-red-500 px-5 py-2 font-semibold shadow transition hover:bg-red-600"
-  >
-    📞 Call Us to Reserve Your Slot
-  </a>
-</div>
-      {/* Main Header */}
+          <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3">
+            <div className="min-w-0">
+              <p className="flex items-center gap-2 text-sm font-black tracking-wide">
+                <Sparkles size={17} className="shrink-0" />
+                Make Your Child Smile Today!
+              </p>
+              <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-semibold text-white/90">
+                <span className="inline-flex items-center gap-1">
+                  <Star size={13} fill="currentColor" /> 4.9 Parent Rating
+                </span>
+                <span className="inline-flex items-center gap-1">
+                  <ShieldCheck size={13} /> Safe &amp; Hygienic
+                </span>
+                <span>✂️ Haircuts</span>
+                <span>💅 Nail Art</span>
+                <span>🎀 Fun Experience</span>
+              </div>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-3">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border-2 border-white/35 bg-emerald-500 px-5 py-2.5 text-sm font-extrabold shadow-[0_5px_0_rgba(5,120,87,0.45)] transition hover:-translate-y-0.5 hover:bg-emerald-400 hover:shadow-[0_7px_0_rgba(5,120,87,0.4)] active:translate-y-0 active:shadow-none"
+              >
+                <MessageCircle size={18} className="transition group-hover:rotate-6" />
+                Reserve My Kid&apos;s Slot
+              </a>
+
+              <a
+                href={`tel:${PHONE_NUMBER}`}
+                className="group inline-flex items-center gap-2 rounded-full border-2 border-white/35 bg-orange-500 px-5 py-2.5 text-sm font-extrabold shadow-[0_5px_0_rgba(194,65,12,0.45)] transition hover:-translate-y-0.5 hover:bg-orange-400 hover:shadow-[0_7px_0_rgba(194,65,12,0.4)] active:translate-y-0 active:shadow-none"
+              >
+                <Phone size={18} className="transition group-hover:-rotate-12" />
+                Call to Reserve
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center justify-between px-4 py-3 sm:px-6 lg:px-16">
-        {/* Logo */}
         <Link to="/" onClick={closeMobileMenu}>
           <img
             src={logo}
@@ -54,7 +102,6 @@ const Header = () => {
           />
         </Link>
 
-        {/* Brand Name */}
         <div className="flex flex-1 justify-center">
           <Link
             to="/"
@@ -72,7 +119,6 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Desktop Actions */}
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href="https://www.instagram.com/kidsalonia"
@@ -103,13 +149,12 @@ const Header = () => {
 
           <Link
             to="/contact-us"
-            className="rounded-full bg-primary px-7 py-2.5 text-sm font-bold text-primary-foreground transition hover:opacity-90"
+            className="rounded-full bg-primary px-7 py-2.5 text-sm font-bold text-primary-foreground shadow-sm transition hover:-translate-y-0.5 hover:opacity-90"
           >
             Book Now
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           type="button"
           className="p-2 lg:hidden"
@@ -121,7 +166,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Desktop Navigation */}
       <nav className="hidden justify-center gap-12 border-t border-border/30 py-3 lg:flex">
         {navItems.map((item) =>
           item.href.startsWith("/") && !item.href.startsWith("/#") ? (
@@ -144,23 +188,26 @@ const Header = () => {
         )}
       </nav>
 
-      {/* Mobile Menu */}
-      {/* Mobile CTA */}
-<div className="grid grid-cols-2 lg:hidden">
-  <a
-    href="https://wa.me/+919773864949"
-    className="bg-green-500 py-3 text-center text-xs font-bold text-white"
-  >
-    💬 Reserve Slot
-  </a>
+      {!isFranchisePage && (
+        <div className="grid grid-cols-2 overflow-hidden border-t border-white/20 lg:hidden">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 bg-emerald-500 py-3 text-center text-xs font-extrabold text-white"
+          >
+            <MessageCircle size={16} /> Reserve Slot
+          </a>
 
-  <a
-    href="tel:+919773864949"
-    className="bg-red-500 py-3 text-center text-xs font-bold text-white"
-  >
-    📞 Call Now
-  </a>
-</div>
+          <a
+            href={`tel:${PHONE_NUMBER}`}
+            className="flex items-center justify-center gap-2 bg-orange-500 py-3 text-center text-xs font-extrabold text-white"
+          >
+            <Phone size={16} /> Call Now
+          </a>
+        </div>
+      )}
+
       {mobileMenuOpen && (
         <nav className="space-y-4 border-t border-border bg-background px-6 py-5 lg:hidden">
           {navItems.map((item) =>
