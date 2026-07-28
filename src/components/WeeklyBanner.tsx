@@ -89,12 +89,15 @@ const WeeklyBanner = () => {
   const weekNumber = getWeekNumber(now);
   const banner = weeklyBanners[(weekNumber - 1) % weeklyBanners.length];
   const day = now.getDay();
-  const offerEnd = useMemo(() => getFridayOfferEnd(now), [now.getFullYear(), now.getMonth(), now.getDate()]);
+  const offerEnd = useMemo(
+    () => getFridayOfferEnd(now),
+    [now.getFullYear(), now.getMonth(), now.getDate()],
+  );
   const isWeekday = day >= 1 && day <= 5 && now.getTime() < offerEnd.getTime();
   const countdown = formatCountdown(offerEnd.getTime() - now.getTime());
 
   const whatsappMessage = isWeekday
-    ? "Hi Kidsalonia! I'd like to book a service using the weekday 15% off offer. Please share the available timings."
+    ? "Hi Kidsalonia! I'd like to book an eligible service using the weekday 15% off offer. I understand that Mundan is excluded. Please share the available timings."
     : "Hi Kidsalonia! I'd like to reserve a slot for my child. Please share the available timings.";
 
   return (
@@ -118,14 +121,14 @@ const WeeklyBanner = () => {
               Monday–Friday
             </p>
             <p className="text-2xl font-black sm:text-3xl">15% OFF</p>
-            <p className="text-xs font-bold uppercase">All Services</p>
+            <p className="text-xs font-bold uppercase">Except Mundan</p>
           </div>
         )}
 
         <div className="relative z-10 flex min-h-[360px] max-w-2xl flex-col justify-center px-6 py-10 text-white sm:min-h-[430px] sm:px-10 lg:px-14">
           <span className="mb-4 w-fit rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary-foreground shadow">
             {isWeekday
-              ? "Weekday Special · 15% Off All Services"
+              ? "Weekday Special · 15% Off Eligible Services"
               : `Weekly Special · Week ${weekNumber}`}
           </span>
 
@@ -134,12 +137,12 @@ const WeeklyBanner = () => {
           </p>
 
           <h2 className="max-w-xl text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-            {isWeekday ? "Enjoy 15% Off on All Services" : banner.title}
+            {isWeekday ? "Enjoy 15% Off on Eligible Services" : banner.title}
           </h2>
 
           <p className="mt-4 max-w-xl text-base leading-7 text-white/90 sm:text-lg">
             {isWeekday
-              ? "Visit KidSalonia from Monday to Friday and save 15% on haircuts, nail art, grooming, mundan and all other salon services."
+              ? "Visit KidSalonia from Monday to Friday and save 15% on haircuts, nail art, grooming and other eligible salon services. Mundan services are excluded."
               : banner.description}
           </p>
 
@@ -176,7 +179,7 @@ const WeeklyBanner = () => {
 
           {isWeekday && (
             <p className="mt-4 text-xs text-white/75">
-              Offer ends Friday at 9:00 PM. Terms and conditions may apply.
+              Offer ends Friday at 9:00 PM. Mundan excluded. Terms and conditions may apply.
             </p>
           )}
         </div>
