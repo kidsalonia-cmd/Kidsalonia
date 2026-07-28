@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
@@ -57,7 +57,60 @@ const ContactUs = () => {
   });
   const [website, setWebsite] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [bookedSlots, setBookedSlots] = useState<string[]>([]);
+  const [isCheckingSlots, setIsCheckingSlots] = useState(false);
   const availableTimeSlots = getAvailableTimeSlots(formData.preferredDate);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const checkSlots = async () => {
+      if (!formData.preferredDate || isTuesday(formData.preferredDate)) {
+        setBookedSlots([]);
+        return;
+      }
+
+      setIsCheckingSlots(true);
+
+      try {
+        const results = await Promise.all(
+          getAvailableTimeSlots(formData.preferredDate).map(async (slot) => {
+            const params = new URLSearchParams({
+              date: formData.preferredDate,
+              time: getStartTime(slot.value),
+              stylist: DEFAULT_STYLIST,
+            });
+
+            const response = await fetch(
+              `${KIDSALONIA_AI_URL}/api/appointments/availability?${params.toString()}`,
+              {
+                headers: { Accept: "application/json" },
+                cache: "no-store",
+              }
+            );
+
+            const result = await response.json().catch(() => null);
+            return !response.ok || !result?.available ? slot.value : null;
+          })
+        );
+
+        if (!cancelled) {
+          setBookedSlots(results.filter((slot): slot is string => Boolean(slot)));
+        }
+      } catch (error) {
+        console.error("Unable to check booked slots:", error);
+        if (!cancelled) setBookedSlots([]);
+      } finally {
+        if (!cancelled) setIsCheckingSlots(false);
+      }
+    };
+
+    checkSlots();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [formData.preferredDate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,6 +124,11 @@ const ContactUs = () => {
 
     if (isTuesday(formData.preferredDate)) {
       toast.error("We are closed on Tuesday. Please choose another date.");
+      return;
+    }
+
+    if (bookedSlots.includes(formData.preferredTime)) {
+      toast.error("This slot is already booked. Please choose another time.");
       return;
     }
 
@@ -101,9 +159,10 @@ const ContactUs = () => {
       const availabilityResult = await availabilityResponse.json().catch(() => null);
 
       if (!availabilityResponse.ok || !availabilityResult?.available) {
+        setBookedSlots((current) => [...new Set([...current, formData.preferredTime])]);
         throw new Error(
           availabilityResult?.message ||
-            "This appointment slot is no longer available. Please choose another time."
+            "This appointment slot is already booked. Please choose another time."
         );
       }
 
@@ -165,6 +224,7 @@ const ContactUs = () => {
         message: "",
       });
       setWebsite("");
+      setBookedSlots([]);
     } catch (err) {
       console.error("Booking form error:", err);
       toast.error(
@@ -314,15 +374,31 @@ const ContactUs = () => {
                       value={formData.preferredTime}
                       onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
                       className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground disabled:opacity-60"
-                      disabled={isTuesday(formData.preferredDate)}
+                      disabled={isTuesday(formData.preferredDate) || isCheckingSlots}
                       required
                     >
-                      <option value="">Select Time Slot</option>
-                      {availableTimeSlots.map((slot) => (
-                        <option key={slot.value} value={slot.value}>{slot.label}</option>
-                      ))}
+                      <option value="">
+                        {isCheckingSlots ? "Checking slots..." : "Select Time Slot"}
+                      </option>
+                      {availableTimeSlots.map((slot) => {
+                        const isBooked = bookedSlots.includes(slot.value);
+                        return (
+                          <option
+                            key={slot.value}
+                            value={slot.value}
+                            disabled={isBooked}
+                            className={isBooked ? "text-gray-400" : ""}
+                          >
+                            {slot.label}{isBooked ? " — Already Booked" : ""}
+                          </option>
+                        );
+                      })}
                     </select>
-                    <p className="text-xs text-muted-foreground mt-1 ml-1">Preferred Time</p>
+                    <p className="text-xs text-muted-foreground mt-1 ml-1">
+                      {bookedSlots.length > 0
+                        ? "Booked slots are disabled"
+                        : "Preferred Time"}
+                    </p>
                   </div>
                 </div>
                 <label htmlFor="contact-message" className="sr-only">Your Message</label>
@@ -337,7 +413,7 @@ const ContactUs = () => {
                 />
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || isCheckingSlots}
                   className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:opacity-90 transition disabled:opacity-50"
                 >
                   {isSubmitting ? "Booking..." : "Book Appointment"}
