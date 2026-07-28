@@ -58,11 +58,21 @@ const getWeekNumber = (date: Date) => {
 };
 
 const WeeklyBanner = () => {
-  const weekNumber = getWeekNumber(new Date());
+  const today = new Date();
+  const weekNumber = getWeekNumber(today);
   const banner = weeklyBanners[(weekNumber - 1) % weeklyBanners.length];
+  const day = today.getDay();
+  const isWeekday = day >= 1 && day <= 5;
+
+  const whatsappMessage = isWeekday
+    ? "Hi Kidsalonia! I'd like to book a service using the weekday 15% off offer. Please share the available timings."
+    : "Hi Kidsalonia! I'd like to reserve a slot for my child. Please share the available timings.";
 
   return (
-    <section aria-label="KidSalonia weekly special" className="bg-background px-4 py-6 sm:px-6 lg:px-16">
+    <section
+      aria-label="KidSalonia weekly special"
+      className="bg-background px-4 py-6 sm:px-6 lg:px-16"
+    >
       <div className="relative mx-auto min-h-[320px] max-w-7xl overflow-hidden rounded-[2rem] shadow-xl sm:min-h-[390px]">
         <img
           src={banner.image}
@@ -73,21 +83,35 @@ const WeeklyBanner = () => {
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/10" />
 
+        {isWeekday && (
+          <div className="absolute right-4 top-4 z-20 rounded-2xl bg-yellow-400 px-5 py-3 text-center text-slate-950 shadow-xl sm:right-8 sm:top-8 sm:px-7 sm:py-4">
+            <p className="text-xs font-extrabold uppercase tracking-widest">
+              Monday–Friday
+            </p>
+            <p className="text-2xl font-black sm:text-3xl">15% OFF</p>
+            <p className="text-xs font-bold uppercase">All Services</p>
+          </div>
+        )}
+
         <div className="relative z-10 flex min-h-[320px] max-w-2xl flex-col justify-center px-6 py-10 text-white sm:min-h-[390px] sm:px-10 lg:px-14">
           <span className="mb-4 w-fit rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary-foreground shadow">
-            Weekly Special · Week {weekNumber}
+            {isWeekday
+              ? "Weekday Special · 15% Off All Services"
+              : `Weekly Special · Week ${weekNumber}`}
           </span>
 
           <p className="mb-2 text-sm font-bold uppercase tracking-widest text-white/80">
-            {banner.eyebrow}
+            {isWeekday ? "Monday to Friday Offer" : banner.eyebrow}
           </p>
 
           <h2 className="max-w-xl text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-            {banner.title}
+            {isWeekday ? "Enjoy 15% Off on All Services" : banner.title}
           </h2>
 
           <p className="mt-4 max-w-xl text-base leading-7 text-white/90 sm:text-lg">
-            {banner.description}
+            {isWeekday
+              ? "Visit KidSalonia from Monday to Friday and save 15% on haircuts, nail art, grooming, mundan and all other salon services."
+              : banner.description}
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">
@@ -95,12 +119,12 @@ const WeeklyBanner = () => {
               to={banner.link}
               className="rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90"
             >
-              {banner.buttonText}
+              {isWeekday ? "Claim 15% Off" : banner.buttonText}
             </Link>
 
             <a
               href={`https://wa.me/918130307036?text=${encodeURIComponent(
-                "Hi Kidsalonia! I'd like to reserve a slot for my child. Please share the available timings.",
+                whatsappMessage,
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -109,6 +133,12 @@ const WeeklyBanner = () => {
               WhatsApp Us
             </a>
           </div>
+
+          {isWeekday && (
+            <p className="mt-4 text-xs text-white/75">
+              Offer valid Monday to Friday. Terms and conditions may apply.
+            </p>
+          )}
         </div>
       </div>
     </section>
