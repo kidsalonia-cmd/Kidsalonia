@@ -33,10 +33,11 @@ const getFridayOfferEnd = (date: Date) => {
 
 const getCountdown = (milliseconds: number) => {
   const totalMinutes = Math.max(0, Math.floor(milliseconds / 60000));
-  const days = Math.floor(totalMinutes / 1440);
-  const hours = Math.floor((totalMinutes % 1440) / 60);
-  const minutes = totalMinutes % 60;
-  return { days, hours, minutes };
+  return {
+    days: Math.floor(totalMinutes / 1440),
+    hours: Math.floor((totalMinutes % 1440) / 60),
+    minutes: totalMinutes % 60,
+  };
 };
 
 const ConversionActions = () => {
@@ -75,30 +76,25 @@ const ConversionActions = () => {
   useEffect(() => {
     setShowOffer(false);
     setDismissed(false);
+    setCopied(false);
   }, [location.pathname]);
 
   useEffect(() => {
     if (!isWeekdayOffer || dismissed) return;
 
-    const alreadySeen = sessionStorage.getItem("kidsalonia-weekday-offer-seen");
-    if (alreadySeen) return;
+    const show = () => setShowOffer(true);
+    const pageTimer = window.setTimeout(show, 8000);
 
-    const show = () => {
-      setShowOffer(true);
-      sessionStorage.setItem("kidsalonia-weekday-offer-seen", "true");
-    };
-
-    const mobileTimer = window.setTimeout(show, 25000);
     const handleMouseLeave = (event: MouseEvent) => {
       if (event.clientY <= 8 && window.innerWidth >= 768) show();
     };
 
     document.addEventListener("mouseleave", handleMouseLeave);
     return () => {
-      window.clearTimeout(mobileTimer);
+      window.clearTimeout(pageTimer);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [isWeekdayOffer, dismissed]);
+  }, [location.pathname, isWeekdayOffer, dismissed]);
 
   const copyCoupon = async () => {
     try {
@@ -117,7 +113,7 @@ const ConversionActions = () => {
       <button
         type="button"
         onClick={() => setShowOffer(true)}
-        className="fixed bottom-[9.5rem] right-5 z-50 hidden items-center gap-2 rounded-full border-2 border-white bg-gradient-to-r from-fuchsia-600 to-orange-500 px-5 py-3 text-sm font-black text-white shadow-xl transition hover:-translate-y-1 md:inline-flex"
+        className="fixed bottom-[9.5rem] right-5 z-[70] hidden items-center gap-2 rounded-full border-2 border-white bg-gradient-to-r from-fuchsia-600 to-orange-500 px-5 py-3 text-sm font-black text-white shadow-xl transition hover:-translate-y-1 md:inline-flex"
         aria-label="View all KidSalonia offers"
       >
         <Gift size={19} />
@@ -128,22 +124,20 @@ const ConversionActions = () => {
       <button
         type="button"
         onClick={() => setShowOffer(true)}
-        className="fixed inset-x-3 bottom-[4.25rem] z-50 flex items-center justify-between rounded-2xl bg-gradient-to-r from-fuchsia-600 to-orange-500 px-4 py-2.5 text-left text-white shadow-xl md:hidden"
+        className="fixed inset-x-3 bottom-[4.25rem] z-[70] flex items-center justify-between rounded-2xl bg-gradient-to-r from-fuchsia-600 to-orange-500 px-4 py-2.5 text-left text-white shadow-xl md:hidden"
         aria-label="View all KidSalonia offers"
       >
         <span className="flex items-center gap-2 text-xs font-black">
           <Gift size={17} />
           {isWeekdayOffer ? "15% OFF eligible services" : "See KidSalonia offers"}
         </span>
-        <span className="rounded-full bg-white/20 px-3 py-1 text-[10px] font-bold">
-          View
-        </span>
+        <span className="rounded-full bg-white/20 px-3 py-1 text-[10px] font-bold">View</span>
       </button>
 
-      <div className="fixed bottom-6 right-5 z-50 hidden flex-col items-end gap-3 md:flex">
+      <div className="fixed bottom-6 right-5 z-[70] hidden flex-col items-end gap-3 md:flex">
         <a
           href={`tel:${PHONE_NUMBER}`}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition hover:scale-105 hover:opacity-90"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition hover:scale-105"
           aria-label="Call KidSalonia"
         >
           <Phone size={22} />
@@ -152,7 +146,7 @@ const ConversionActions = () => {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:opacity-90 ${
+          className={`flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 ${
             isWeekdayOffer ? "h-12 px-5 font-bold" : "h-12 w-12"
           }`}
           aria-label="Book KidSalonia appointment on WhatsApp"
@@ -162,42 +156,26 @@ const ConversionActions = () => {
         </a>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-3 border-t border-black/10 bg-white shadow-[0_-4px_16px_rgba(0,0,0,0.12)] md:hidden">
-        <a
-          href={`tel:${PHONE_NUMBER}`}
-          className="flex flex-col items-center justify-center gap-1 py-2.5 text-xs font-bold text-black"
-          aria-label="Call KidSalonia"
-        >
-          <Phone size={18} className="text-primary" />
-          Call
+      <div className="fixed inset-x-0 bottom-0 z-[70] grid grid-cols-3 border-t border-black/10 bg-white shadow-[0_-4px_16px_rgba(0,0,0,0.12)] md:hidden">
+        <a href={`tel:${PHONE_NUMBER}`} className="flex flex-col items-center justify-center gap-1 py-2.5 text-xs font-bold text-black">
+          <Phone size={18} className="text-primary" /> Call
         </a>
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center gap-1 border-x border-black/10 py-2.5 text-xs font-bold text-black"
-          aria-label="Book KidSalonia appointment on WhatsApp"
         >
           <MessageCircle size={18} className="text-[#25D366]" />
           {isWeekdayOffer ? "Get 15% Off" : "WhatsApp"}
         </a>
-        <Link
-          to="/contact-us"
-          className="flex flex-col items-center justify-center gap-1 bg-primary py-2.5 text-xs font-bold text-primary-foreground"
-          aria-label="Book KidSalonia appointment online"
-        >
-          <Calendar size={18} />
-          Book Now
+        <Link to="/contact-us" className="flex flex-col items-center justify-center gap-1 bg-primary py-2.5 text-xs font-bold text-primary-foreground">
+          <Calendar size={18} /> Book Now
         </Link>
       </div>
 
       {showOffer && (
-        <div
-          className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="offers-title"
-        >
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="offers-title">
           <div className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl">
             <div className="bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-400 px-7 py-7 text-white">
               <button
@@ -206,23 +184,17 @@ const ConversionActions = () => {
                   setShowOffer(false);
                   setDismissed(true);
                 }}
-                className="absolute right-4 top-4 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/25"
+                className="absolute right-4 top-4 rounded-full bg-white/15 p-2 text-white hover:bg-white/25"
                 aria-label="Close offers"
               >
                 <X size={20} />
               </button>
 
               <div className="flex items-center gap-3">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 text-2xl">
-                  🎁
-                </div>
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 text-2xl">🎁</div>
                 <div>
-                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-white/80">
-                    KidSalonia Specials
-                  </p>
-                  <h2 id="offers-title" className="text-3xl font-black">
-                    Current Offers
-                  </h2>
+                  <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-white/80">KidSalonia Specials</p>
+                  <h2 id="offers-title" className="text-3xl font-black">Current Offers</h2>
                 </div>
               </div>
             </div>
@@ -231,20 +203,10 @@ const ConversionActions = () => {
               <div className="rounded-3xl border-2 border-dashed border-primary/35 bg-primary/5 p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-xs font-black uppercase tracking-widest text-primary">
-                      Monday to Friday
-                    </p>
-                    <h3 className="mt-1 text-2xl font-black text-slate-950">
-                      15% OFF Eligible Services
-                    </h3>
+                    <p className="text-xs font-black uppercase tracking-widest text-primary">Monday to Friday</p>
+                    <h3 className="mt-1 text-2xl font-black text-slate-950">15% OFF Eligible Services</h3>
                   </div>
-                  <span
-                    className={`rounded-full px-3 py-1 text-xs font-black ${
-                      isWeekdayOffer
-                        ? "bg-emerald-100 text-emerald-700"
-                        : "bg-slate-100 text-slate-600"
-                    }`}
-                  >
+                  <span className={`rounded-full px-3 py-1 text-xs font-black ${isWeekdayOffer ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-slate-600"}`}>
                     {isWeekdayOffer ? "ACTIVE NOW" : "WEEKDAY OFFER"}
                   </span>
                 </div>
@@ -261,20 +223,10 @@ const ConversionActions = () => {
                 )}
 
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                  <button
-                    type="button"
-                    onClick={copyCoupon}
-                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-primary px-5 py-3 text-sm font-black text-primary transition hover:bg-primary hover:text-white"
-                  >
+                  <button type="button" onClick={copyCoupon} className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-primary px-5 py-3 text-sm font-black text-primary hover:bg-primary hover:text-white">
                     <Copy size={17} /> {copied ? "Coupon Copied" : `Copy ${COUPON_CODE}`}
                   </button>
-
-                  <a
-                    href={createWhatsAppUrl(OFFER_WHATSAPP_MESSAGE)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5"
-                  >
+                  <a href={createWhatsAppUrl(OFFER_WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-black text-white hover:-translate-y-0.5">
                     <MessageCircle size={18} /> Claim on WhatsApp
                   </a>
                 </div>
