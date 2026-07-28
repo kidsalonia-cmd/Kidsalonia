@@ -60,6 +60,10 @@ const ContactUs = () => {
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
   const [isCheckingSlots, setIsCheckingSlots] = useState(false);
   const availableTimeSlots = getAvailableTimeSlots(formData.preferredDate);
+  const availableSlotCount = availableTimeSlots.filter(
+    (slot) => !bookedSlots.includes(slot.value)
+  ).length;
+  const fewSlotsLeft = availableSlotCount > 0 && availableSlotCount <= 3;
 
   useEffect(() => {
     let cancelled = false;
@@ -160,6 +164,7 @@ const ContactUs = () => {
 
       if (!availabilityResponse.ok || !availabilityResult?.available) {
         setBookedSlots((current) => [...new Set([...current, formData.preferredTime])]);
+        setFormData((current) => ({ ...current, preferredTime: "" }));
         throw new Error(
           availabilityResult?.message ||
             "This appointment slot is already booked. Please choose another time."
@@ -349,58 +354,119 @@ const ContactUs = () => {
                   className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
                   required
                 />
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label htmlFor="preferred-date" className="sr-only">Preferred Date</label>
-                    <input
-                      id="preferred-date"
-                      name="preferredDate"
-                      type="date"
-                      value={formData.preferredDate}
-                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value, preferredTime: "" })}
-                      min={new Date().toISOString().split("T")[0]}
-                      className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
-                      required
-                    />
-                    <p className="text-xs text-muted-foreground mt-1 ml-1">
-                      {isTuesday(formData.preferredDate) ? "Tuesday is closed" : "Preferred Date"}
-                    </p>
+
+                <div>
+                  <label htmlFor="preferred-date" className="block text-sm font-semibold text-foreground mb-2">
+                    Select Date
+                  </label>
+                  <input
+                    id="preferred-date"
+                    name="preferredDate"
+                    type="date"
+                    value={formData.preferredDate}
+                    onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value, preferredTime: "" })}
+                    min={new Date().toISOString().split("T")[0]}
+                    className="w-full px-4 py-3 border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground"
+                    required
+                  />
+                  <p className="text-xs text-muted-foreground mt-1 ml-1">
+                    {isTuesday(formData.preferredDate) ? "Tuesday is closed" : "Choose your preferred appointment date"}
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <label className="text-sm font-semibold text-foreground">Select Time</label>
+                    {formData.preferredDate && !isTuesday(formData.preferredDate) && !isCheckingSlots && (
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${fewSlotsLeft ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`}>
+                        {fewSlotsLeft ? `${availableSlotCount} slots left` : `${availableSlotCount} available`}
+                      </span>
+                    )}
                   </div>
-                  <div>
-                    <label htmlFor="preferred-time" className="sr-only">Preferred Time</label>
-                    <select
-                      id="preferred-time"
-                      name="preferredTime"
-                      value={formData.preferredTime}
-                      onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                      className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-foreground disabled:opacity-60"
-                      disabled={isTuesday(formData.preferredDate) || isCheckingSlots}
-                      required
-                    >
-                      <option value="">
-                        {isCheckingSlots ? "Checking slots..." : "Select Time Slot"}
-                      </option>
+
+                  <div className="flex flex-wrap gap-2 text-xs mb-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-emerald-700">
+                      <span className="h-2 w-2 rounded-full bg-emerald-500" /> Available
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-amber-700">
+                      <span className="h-2 w-2 rounded-full bg-amber-500" /> Few slots left
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1 text-gray-500">
+                      <span className="h-2 w-2 rounded-full bg-gray-400" /> Booked
+                    </span>
+                  </div>
+
+                  {!formData.preferredDate ? (
+                    <div className="rounded-xl border border-dashed border-border bg-muted/30 p-5 text-center text-sm text-muted-foreground">
+                      Select a date to view available time slots.
+                    </div>
+                  ) : isTuesday(formData.preferredDate) ? (
+                    <div className="rounded-xl border border-red-200 bg-red-50 p-5 text-center text-sm font-medium text-red-600">
+                      We are closed on Tuesday. Please choose another date.
+                    </div>
+                  ) : isCheckingSlots ? (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {availableTimeSlots.map((slot) => (
+                        <div key={slot.value} className="h-16 rounded-2xl bg-gray-100 animate-pulse" />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                       {availableTimeSlots.map((slot) => {
                         const isBooked = bookedSlots.includes(slot.value);
+                        const isSelected = formData.preferredTime === slot.value;
+                        const showFewSlots = fewSlotsLeft && !isBooked;
+
                         return (
-                          <option
+                          <button
                             key={slot.value}
-                            value={slot.value}
+                            type="button"
                             disabled={isBooked}
-                            className={isBooked ? "text-gray-400" : ""}
+                            onClick={() => setFormData({ ...formData, preferredTime: slot.value })}
+                            aria-pressed={isSelected}
+                            className={`relative min-h-16 rounded-2xl border px-3 py-3 text-left transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                              isBooked
+                                ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400 opacity-75"
+                                : isSelected
+                                  ? "border-primary bg-primary text-primary-foreground shadow-lg ring-2 ring-primary/20 scale-[1.02]"
+                                  : showFewSlots
+                                    ? "border-amber-300 bg-amber-50 text-amber-800 hover:border-amber-400 hover:shadow-md"
+                                    : "border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-400 hover:shadow-md"
+                            }`}
                           >
-                            {slot.label}{isBooked ? " — Already Booked" : ""}
-                          </option>
+                            <span className="block text-sm font-bold">{slot.label}</span>
+                            <span className={`mt-1 inline-flex items-center gap-1 text-[11px] font-semibold ${
+                              isSelected ? "text-primary-foreground/90" : ""
+                            }`}>
+                              <span className={`h-2 w-2 rounded-full ${
+                                isBooked
+                                  ? "bg-gray-400"
+                                  : isSelected
+                                    ? "bg-white"
+                                    : showFewSlots
+                                      ? "bg-amber-500"
+                                      : "bg-emerald-500"
+                              }`} />
+                              {isBooked ? "Booked" : showFewSlots ? "Few slots left" : isSelected ? "Selected" : "Available"}
+                            </span>
+                            {isBooked && (
+                              <span className="absolute right-2 top-2 rounded-full bg-gray-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gray-500">
+                                Booked
+                              </span>
+                            )}
+                          </button>
                         );
                       })}
-                    </select>
-                    <p className="text-xs text-muted-foreground mt-1 ml-1">
-                      {bookedSlots.length > 0
-                        ? "Booked slots are disabled"
-                        : "Preferred Time"}
-                    </p>
-                  </div>
+                    </div>
+                  )}
+
+                  {formData.preferredTime && (
+                    <div className="mt-3 rounded-xl bg-primary/10 px-4 py-3 text-sm text-foreground">
+                      Selected slot: <strong>{availableTimeSlots.find((slot) => slot.value === formData.preferredTime)?.label}</strong>
+                    </div>
+                  )}
                 </div>
+
                 <label htmlFor="contact-message" className="sr-only">Your Message</label>
                 <textarea
                   id="contact-message"
@@ -413,7 +479,7 @@ const ContactUs = () => {
                 />
                 <button
                   type="submit"
-                  disabled={isSubmitting || isCheckingSlots}
+                  disabled={isSubmitting || isCheckingSlots || !formData.preferredTime}
                   className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:opacity-90 transition disabled:opacity-50"
                 >
                   {isSubmitting ? "Booking..." : "Book Appointment"}
