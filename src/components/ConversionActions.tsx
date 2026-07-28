@@ -7,7 +7,7 @@ const COUPON_CODE = "KIDS15";
 const DEFAULT_WHATSAPP_MESSAGE =
   "Hi KidSalonia, I want to book an appointment. Please share the available timings.";
 const OFFER_WHATSAPP_MESSAGE =
-  "Hi KidSalonia, I want to claim 15% off on all services using coupon KIDS15. Please share the available weekday timings.";
+  "Hi KidSalonia, I want to claim 15% off on eligible services using coupon KIDS15. I understand that Mundan is excluded. Please share the available weekday timings.";
 
 const createWhatsAppUrl = (message: string) =>
   `https://wa.me/918130307036?text=${encodeURIComponent(message)}`;
@@ -59,6 +59,19 @@ const ConversionActions = () => {
   }, [location.pathname]);
 
   useEffect(() => {
+    const previousPaddingTop = document.body.style.paddingTop;
+    const previousTransition = document.body.style.transition;
+
+    document.body.style.paddingTop = isWeekdayOffer ? "44px" : "0px";
+    document.body.style.transition = "padding-top 200ms ease";
+
+    return () => {
+      document.body.style.paddingTop = previousPaddingTop;
+      document.body.style.transition = previousTransition;
+    };
+  }, [isWeekdayOffer]);
+
+  useEffect(() => {
     if (!isWeekdayOffer || dismissed) return;
 
     const alreadySeen = sessionStorage.getItem("kidsalonia-weekday-offer-seen");
@@ -96,8 +109,8 @@ const ConversionActions = () => {
   return (
     <>
       {isWeekdayOffer && (
-        <div className="fixed inset-x-0 top-0 z-[70] bg-yellow-400 px-3 py-2 text-center text-xs font-extrabold text-slate-950 shadow-md sm:text-sm">
-          <span>🔥 Weekday Deal: 15% off all services</span>
+        <div className="fixed inset-x-0 top-0 z-[70] flex min-h-[44px] items-center justify-center bg-yellow-400 px-3 py-2 text-center text-xs font-extrabold text-slate-950 shadow-md sm:text-sm">
+          <span>🔥 Weekday Deal: 15% off eligible services. Mundan excluded.</span>
           <button
             type="button"
             onClick={copyCoupon}
@@ -117,11 +130,7 @@ const ConversionActions = () => {
         </div>
       )}
 
-      <div
-        className={`hidden md:flex fixed right-5 z-50 flex-col items-end gap-3 ${
-          isWeekdayOffer ? "bottom-6" : "bottom-6"
-        }`}
-      >
+      <div className="fixed bottom-6 right-5 z-50 hidden flex-col items-end gap-3 md:flex">
         <a
           href={`tel:${PHONE_NUMBER}`}
           className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition hover:scale-105 hover:opacity-90"
@@ -202,7 +211,7 @@ const ConversionActions = () => {
               Save 15% Today
             </h2>
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              Book any KidSalonia service from Monday to Friday and use the coupon below.
+              Book an eligible KidSalonia service from Monday to Friday and use the coupon below. Mundan is excluded.
             </p>
 
             <button
@@ -223,7 +232,7 @@ const ConversionActions = () => {
               <MessageCircle size={21} /> Claim 15% Off on WhatsApp
             </a>
             <p className="mt-3 text-xs text-slate-500">
-              Valid Monday to Friday until 9:00 PM. Terms may apply.
+              Valid Monday to Friday until 9:00 PM. Mundan excluded. Terms may apply.
             </p>
           </div>
         </div>
