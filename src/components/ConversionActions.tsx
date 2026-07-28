@@ -59,19 +59,6 @@ const ConversionActions = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    const previousPaddingTop = document.body.style.paddingTop;
-    const previousTransition = document.body.style.transition;
-
-    document.body.style.paddingTop = isWeekdayOffer ? "44px" : "0px";
-    document.body.style.transition = "padding-top 200ms ease";
-
-    return () => {
-      document.body.style.paddingTop = previousPaddingTop;
-      document.body.style.transition = previousTransition;
-    };
-  }, [isWeekdayOffer]);
-
-  useEffect(() => {
     if (!isWeekdayOffer || dismissed) return;
 
     const alreadySeen = sessionStorage.getItem("kidsalonia-weekday-offer-seen");
@@ -108,28 +95,6 @@ const ConversionActions = () => {
 
   return (
     <>
-      {isWeekdayOffer && (
-        <div className="fixed inset-x-0 top-0 z-[70] flex min-h-[44px] items-center justify-center bg-yellow-400 px-3 py-2 text-center text-xs font-extrabold text-slate-950 shadow-md sm:text-sm">
-          <span>🔥 Weekday Deal: 15% off eligible services. Mundan excluded.</span>
-          <button
-            type="button"
-            onClick={copyCoupon}
-            className="ml-2 inline-flex items-center gap-1 rounded-full bg-slate-950 px-3 py-1 text-[11px] font-black text-white transition hover:opacity-85 sm:text-xs"
-            aria-label="Copy coupon KIDS15"
-          >
-            <Copy size={12} /> {copied ? "Copied!" : "Use KIDS15"}
-          </button>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-2 underline underline-offset-2"
-          >
-            Claim now
-          </a>
-        </div>
-      )}
-
       <div className="fixed bottom-6 right-5 z-50 hidden flex-col items-end gap-3 md:flex">
         <a
           href={`tel:${PHONE_NUMBER}`}
