@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import weekOneImage from "@/assets/gallery/gallery-16.jpg";
@@ -57,12 +58,40 @@ const getWeekNumber = (date: Date) => {
   return Math.ceil((elapsedDays + firstDayOfYear.getDay() + 1) / 7);
 };
 
+const getFridayOfferEnd = (date: Date) => {
+  const offerEnd = new Date(date);
+  const daysUntilFriday = 5 - date.getDay();
+
+  offerEnd.setDate(date.getDate() + daysUntilFriday);
+  offerEnd.setHours(21, 0, 0, 0);
+
+  return offerEnd;
+};
+
+const formatCountdown = (milliseconds: number) => {
+  const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return { days, hours, minutes, seconds };
+};
+
 const WeeklyBanner = () => {
-  const today = new Date();
-  const weekNumber = getWeekNumber(today);
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const weekNumber = getWeekNumber(now);
   const banner = weeklyBanners[(weekNumber - 1) % weeklyBanners.length];
-  const day = today.getDay();
-  const isWeekday = day >= 1 && day <= 5;
+  const day = now.getDay();
+  const offerEnd = useMemo(() => getFridayOfferEnd(now), [now.getFullYear(), now.getMonth(), now.getDate()]);
+  const isWeekday = day >= 1 && day <= 5 && now.getTime() < offerEnd.getTime();
+  const countdown = formatCountdown(offerEnd.getTime() - now.getTime());
 
   const whatsappMessage = isWeekday
     ? "Hi Kidsalonia! I'd like to book a service using the weekday 15% off offer. Please share the available timings."
@@ -73,7 +102,7 @@ const WeeklyBanner = () => {
       aria-label="KidSalonia weekly special"
       className="bg-background px-4 py-6 sm:px-6 lg:px-16"
     >
-      <div className="relative mx-auto min-h-[320px] max-w-7xl overflow-hidden rounded-[2rem] shadow-xl sm:min-h-[390px]">
+      <div className="relative mx-auto min-h-[360px] max-w-7xl overflow-hidden rounded-[2rem] shadow-xl sm:min-h-[430px]">
         <img
           src={banner.image}
           alt={banner.alt}
@@ -81,7 +110,7 @@ const WeeklyBanner = () => {
           loading="eager"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/15" />
 
         {isWeekday && (
           <div className="absolute right-4 top-4 z-20 rounded-2xl bg-yellow-400 px-5 py-3 text-center text-slate-950 shadow-xl sm:right-8 sm:top-8 sm:px-7 sm:py-4">
@@ -93,7 +122,7 @@ const WeeklyBanner = () => {
           </div>
         )}
 
-        <div className="relative z-10 flex min-h-[320px] max-w-2xl flex-col justify-center px-6 py-10 text-white sm:min-h-[390px] sm:px-10 lg:px-14">
+        <div className="relative z-10 flex min-h-[360px] max-w-2xl flex-col justify-center px-6 py-10 text-white sm:min-h-[430px] sm:px-10 lg:px-14">
           <span className="mb-4 w-fit rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary-foreground shadow">
             {isWeekday
               ? "Weekday Special · 15% Off All Services"
@@ -113,6 +142,17 @@ const WeeklyBanner = () => {
               ? "Visit KidSalonia from Monday to Friday and save 15% on haircuts, nail art, grooming, mundan and all other salon services."
               : banner.description}
           </p>
+
+          {isWeekday && (
+            <div className="mt-5 w-fit rounded-2xl border border-white/30 bg-black/30 px-5 py-4 backdrop-blur-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-yellow-300">
+                ⏰ Weekday Offer Ends In
+              </p>
+              <p className="mt-1 text-xl font-extrabold sm:text-2xl" aria-live="polite">
+                {countdown.days} Days {countdown.hours} Hours {countdown.minutes} Minutes {countdown.seconds} Seconds
+              </p>
+            </div>
+          )}
 
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
@@ -136,7 +176,7 @@ const WeeklyBanner = () => {
 
           {isWeekday && (
             <p className="mt-4 text-xs text-white/75">
-              Offer valid Monday to Friday. Terms and conditions may apply.
+              Offer ends Friday at 9:00 PM. Terms and conditions may apply.
             </p>
           )}
         </div>
