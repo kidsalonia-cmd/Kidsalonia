@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import HeroBanner from "@/components/HeroBanner";
+import WeeklyBanner from "@/components/WeeklyBanner";
 import IntroSection from "@/components/IntroSection";
 import HairSection from "@/components/HairSection";
 import NailsSection from "@/components/NailsSection";
@@ -70,7 +71,7 @@ const homepageBreadcrumbSchema = createBreadcrumbSchema([
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
       <SEO
         title="Best Kids Salon, Nail Art & Mundan in Gurgaon | KidSalonia"
         description="KidSalonia is Gurugram’s trusted kids salon and nail art studio for kids haircuts, baby first haircut, mundan, manicure, pedicure and hairdresser services near Airia Mall."
@@ -88,6 +89,7 @@ const Index = () => {
       <Header />
       <SocialSidebar />
       <HeroBanner />
+      <WeeklyBanner />
       <IntroSection />
       <HairSection />
       <NailsSection />
