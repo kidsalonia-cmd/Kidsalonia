@@ -115,7 +115,7 @@ const getLocationContext = (location: string) => {
   )} and nearby communities. Advance booking helps customers confirm the service, preferred time and expected visit duration before travelling.`;
 };
 
-const LocationServicePage = () => {
+const LocationServicePagePhase1 = () => {
   const { slug = "" } = useParams();
   const matchedService = getMatchedService(slug);
   const matchedLocation = matchedService
@@ -372,4 +372,4 @@ const LocationServicePage = () => {
   );
 };
 
-export default LocationServicePage;
+export default LocationServicePagePhase1;
