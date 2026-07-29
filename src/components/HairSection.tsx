@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ServiceItem from "./ServiceItem";
 import hairPriceImg from "@/assets/hair-newprice.png";
 import hairssImg from "@/assets/hairss.png";
+import KidsStickers from "@/components/KidsStickers";
 
 const hairServices = [
   { name: "BOYS HAIRCUT", description: "Clean and comfortable cuts for boys of all ages.", price: "₹ 299" },
@@ -23,16 +24,22 @@ const hairServices = [
 
 const HairSection = () => {
   return (
-    <section id="hair" className="bg-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-full w-full">
+    <section id="hair" className="relative isolate overflow-hidden bg-background py-4 sm:py-8">
+      <KidsStickers items={[
+        { id: "hair-scissors", icon: "scissors", size: 66, animation: "rotate", delay: -1, position: { right: "2%", top: "10%" }, className: "hidden xl:block" },
+        { id: "hair-comb", icon: "comb", size: 55, animation: "float", delay: -2, position: { left: "1%", bottom: "25%" }, className: "hidden lg:block" },
+        { id: "hair-teddy", icon: "teddy", size: 62, animation: "bounce", delay: -3, position: { right: "3%", bottom: "4%" }, className: "hidden md:block" },
+        { id: "hair-bubbles", icon: "bubbles", size: 50, animation: "float", delay: -1.5, position: { left: "2%", top: "40%" }, opacity: 0.65 },
+      ]} />
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
+        <div className="ks-image-frame relative min-h-[300px] w-full sm:min-h-[400px] lg:min-h-full">
           <img
             src={hairPriceImg}
             alt="Kids Haircut"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative flex justify-center">
+        <div className="ks-section-panel relative flex justify-center rounded-[2rem]">
           <div className="w-full max-w-2xl px-6 py-10">
             <div className="relative flex items-start justify-between">
               <h2 className="text-4xl font-bold text-primary leading-tight">
@@ -55,7 +62,7 @@ const HairSection = () => {
               KidSalonia is a trusted kids and adult salon in Gurugram offering grooming, nail care and styling services for children, women and families.
             </p>
             <Link to="/book?service=kids-haircut">
-              <span className="mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
+              <span className="ks-button-3d mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90">
                 Book
               </span>
             </Link>

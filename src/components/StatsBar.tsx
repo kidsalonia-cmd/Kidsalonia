@@ -7,12 +7,12 @@ const stats = [
 
 const StatsBar = () => {
   return (
-    <div className="bg-primary text-primary-foreground py-10 px-6 w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+    <div className="w-full bg-gradient-to-r from-primary via-pink-500 to-orange-400 px-6 py-10 text-primary-foreground">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {stats.map((stat, i) => (
           <div
             key={stat.label}
-            className={`flex flex-col items-center text-center py-6 ${
+            className={`ks-stat-card flex flex-col items-center rounded-2xl border border-white/20 bg-white/10 py-6 text-center backdrop-blur-sm ${
               i < stats.length - 1 ? "md:border-r md:border-primary-foreground/50" : ""
             }`}
           >

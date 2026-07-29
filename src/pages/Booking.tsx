@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
 import SEO from "@/components/SEO";
+import KidsStickers from "@/components/KidsStickers";
 import {
   BOOKING_SERVICES,
   getIndiaDate,
@@ -199,7 +200,14 @@ const Booking = () => {
       <div className="min-h-screen bg-background">
         <SEO title="Booking Confirmed | KidSalonia" description="Your KidSalonia appointment has been confirmed." canonical="https://www.kidsalonia.com/book" noIndex />
         <Header />
-        <main className="mx-auto max-w-3xl px-4 py-16 text-center" aria-live="polite">
+        <main className="relative isolate mx-auto max-w-3xl overflow-hidden px-4 py-16 text-center" aria-live="polite">
+          <KidsStickers items={[
+            { id: "confirmation-teddy", icon: "teddy", size: 72, animation: "bounce", delay: -1, position: { left: "3%", top: "12%" }, className: "hidden sm:block" },
+            { id: "confirmation-balloons", icon: "balloons", size: 76, animation: "float", delay: -2, position: { right: "3%", top: "10%" }, className: "hidden sm:block" },
+            { id: "confirmation-confetti-left", icon: "confetti", size: 52, animation: "rotate", delay: -3, position: { left: "4%", bottom: "16%" }, opacity: 0.78 },
+            { id: "confirmation-confetti-right", icon: "confetti", size: 48, animation: "rotate", delay: -1.5, position: { right: "5%", bottom: "14%" }, opacity: 0.72 },
+          ]} />
+          <div className="relative z-10">
           <CheckCircle2 className="mx-auto h-20 w-20 text-emerald-500" aria-hidden="true" />
           <h1 className="mt-6 text-4xl font-extrabold">Your appointment is booked!</h1>
           <p className="mt-4 text-lg text-muted-foreground">We look forward to welcoming {form.childName} to KidSalonia.</p>
@@ -214,6 +222,7 @@ const Booking = () => {
             <a href={`https://wa.me/${WHATSAPP}?text=${whatsappText}`} target="_blank" rel="noreferrer" className="rounded-full bg-emerald-500 px-6 py-3 font-bold text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">WhatsApp confirmation</a>
             <a href="https://maps.google.com/?q=KidSalonia+JMD+Suburbio+2+Gurugram" target="_blank" rel="noreferrer" className="rounded-full border px-6 py-3 font-bold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">Get directions</a>
           </div>
+          </div>
         </main>
         <Footer />
       </div>
@@ -225,14 +234,18 @@ const Booking = () => {
       <SEO title="Book a Kids Salon Appointment in Gurgaon | KidSalonia" description="Book kids haircuts, baby first haircuts, mundan, nail art and grooming appointments with live slot availability at KidSalonia Gurgaon." canonical="https://www.kidsalonia.com/book" />
       <Header />
       <SocialSidebar />
-      <main className="mx-auto max-w-6xl px-4 py-12 md:py-20">
-        <div className="text-center">
+      <main className="relative isolate mx-auto max-w-6xl overflow-hidden px-4 py-12 md:py-20">
+        <KidsStickers items={[
+          { id: "booking-teddy", icon: "teddy", size: 68, animation: "bounce", delay: -1, position: { left: "1%", top: "3%" }, className: "hidden lg:block" },
+          { id: "booking-balloons", icon: "balloons", size: 72, animation: "float", delay: -2.5, position: { right: "1%", top: "3%" }, className: "hidden md:block", opacity: 0.8 },
+        ]} />
+        <div className="relative z-10 text-center">
           <p className="font-bold uppercase tracking-widest text-primary">Fast online booking</p>
           <h1 className="mt-3 text-4xl font-extrabold md:text-6xl">Book your child&apos;s salon visit</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">Choose a service, share a few details and reserve a live appointment slot in minutes.</p>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="relative z-10 mx-auto mt-10 grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
           <section className="min-w-0 rounded-3xl border bg-white p-5 shadow-xl md:p-8" aria-labelledby="booking-step-title">
             <ol className="mb-8 grid grid-cols-4 gap-2" aria-label="Booking progress">
               {["Service", "Details", "Slot", "Review"].map((label, index) => (

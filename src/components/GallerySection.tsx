@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import TiltCard from "@/components/TiltCard";
+import KidsStickers from "@/components/KidsStickers";
 import gallery11 from "@/assets/gallery/gallery-11.png";
 import gallery12 from "@/assets/gallery/gallery-12.png";
 import gallery13 from "@/assets/gallery/gallery-13.png";
@@ -57,8 +59,13 @@ const GallerySection = () => {
       : galleryImages.filter((img) => img.category === activeCategory);
 
   return (
-    <section id="gallery" className="bg-background py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="relative isolate overflow-hidden bg-background py-16">
+      <KidsStickers items={[
+        { id: "gallery-camera", icon: "camera", size: 58, animation: "rotate", delay: -1, position: { left: "3%", top: "8%" }, className: "hidden md:block" },
+        { id: "gallery-stars", icon: "stars", size: 42, animation: "float", delay: -2, position: { right: "3%", top: "12%" }, opacity: 0.75 },
+        { id: "gallery-bubbles", icon: "bubbles", size: 52, animation: "bounce", delay: -3, position: { right: "2%", bottom: "5%" }, className: "hidden lg:block", opacity: 0.6 },
+      ]} />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
           Our Gallery
         </h2>
@@ -72,7 +79,7 @@ const GallerySection = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+              className={`ks-button-3d rounded-full px-6 py-2.5 text-sm font-semibold ${
                 activeCategory === cat
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -86,9 +93,10 @@ const GallerySection = () => {
         {/* Image Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
           {filteredImages.map((img, i) => (
-            <div
+            <TiltCard
               key={`${img.alt}-${i}`}
-              className="aspect-square overflow-hidden"
+              maxTilt={2.5}
+              className="ks-image-frame aspect-square overflow-hidden rounded-2xl"
             >
               <img
                 src={img.src}
@@ -96,7 +104,7 @@ const GallerySection = () => {
                 loading="lazy"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

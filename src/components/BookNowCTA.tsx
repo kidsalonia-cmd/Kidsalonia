@@ -18,13 +18,13 @@ const BookNowCTA = ({
   const bookingUrl = service ? `/book?service=${encodeURIComponent(service)}` : "/book";
 
   return (
-    <section className={`rounded-3xl bg-primary/10 p-6 md:p-8 text-center ${className}`}>
+    <section className={`ks-depth-surface ks-shine rounded-3xl bg-primary/10 p-6 text-center md:p-8 ${className}`}>
       <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{title}</h2>
       <p className="max-w-2xl mx-auto text-sm md:text-base text-foreground/70 mb-6">{description}</p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <Link
           to={bookingUrl}
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground transition hover:opacity-90"
+          className="ks-button-3d inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground hover:opacity-90 sm:w-auto"
         >
           <Calendar size={18} /> Book Now
         </Link>
@@ -32,13 +32,13 @@ const BookNowCTA = ({
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-[#25D366] bg-white px-7 py-3 text-sm font-bold text-[#25D366] transition hover:bg-[#25D366] hover:text-white"
+          className="ks-button-3d inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#25D366] bg-white px-7 py-3 text-sm font-bold text-[#25D366] hover:bg-[#25D366] hover:text-white sm:w-auto"
         >
           <MessageCircle size={18} /> WhatsApp
         </a>
         <a
           href={`tel:${PHONE_NUMBER}`}
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-primary bg-white px-7 py-3 text-sm font-bold text-primary transition hover:bg-primary hover:text-primary-foreground"
+          className="ks-button-3d inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary bg-white px-7 py-3 text-sm font-bold text-primary hover:bg-primary hover:text-primary-foreground sm:w-auto"
         >
           <Phone size={18} /> Call Now
         </a>

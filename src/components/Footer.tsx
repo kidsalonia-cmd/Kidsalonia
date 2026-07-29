@@ -4,6 +4,7 @@ import logo from "@/assets/Logo2.webp";
 import { Instagram, Facebook, MessageCircle, Calendar, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import KidsStickers from "@/components/KidsStickers";
 
 const WHATSAPP_URL = "https://wa.me/918130307036?text=Hi%20KidSalonia%2C%20I%20want%20to%20book%20an%20appointment";
 const PHONE_URL = "tel:+918130307036";
@@ -45,11 +46,11 @@ const Footer = () => {
   return (
     <>
       {/* Subscribe Section */}
-      <section className="bg-white py-16 text-center px-6">
+      <section className="ks-section-panel bg-white px-6 py-16 text-center">
         <h2 className="text-xl md:text-2xl font-bold text-black tracking-wide mb-8 uppercase">
           Let Your Hair Shine With Special Offers And Deals! Subscribe!
         </h2>
-        <form onSubmit={handleSubscribe} className="flex items-center justify-center gap-3 max-w-lg mx-auto mb-6">
+        <form onSubmit={handleSubscribe} className="mx-auto mb-6 flex max-w-lg flex-col items-center justify-center gap-3 sm:flex-row">
           <div className="hidden" aria-hidden="true">
             <label htmlFor="footer-website">Website</label>
             <input
@@ -72,12 +73,12 @@ const Footer = () => {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 border border-black/20 rounded-md px-4 py-3 text-sm outline-none focus:border-black/40"
+            className="w-full min-w-0 flex-1 rounded-md border border-black/20 px-4 py-3 text-sm outline-none focus:border-black/40"
           />
           <button
             type="submit"
             disabled={submitting}
-            className="bg-[#EE2852] hover:bg-[#d5214a] text-white font-semibold px-6 py-3 rounded-md text-sm transition disabled:opacity-60"
+            className="ks-button-3d w-full rounded-md bg-[#EE2852] px-6 py-3 text-sm font-semibold text-white hover:bg-[#d5214a] disabled:opacity-60 sm:w-auto"
           >
             {submitting ? "Subscribing..." : "Subscribe"}
           </button>
@@ -91,8 +92,13 @@ const Footer = () => {
       </section>
 
       {/* Main Footer */}
-      <footer className="bg-white border-t border-black/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <footer className="kids-rainbow-border ks-footer-depth relative isolate overflow-hidden bg-white border-t border-black/10">
+        <KidsStickers items={[
+          { id: "footer-cloud-left", icon: "cloud", size: 70, animation: "float", delay: -1, position: { left: "1%", top: "4%" }, className: "hidden lg:block", opacity: 0.7 },
+          { id: "footer-cloud-right", icon: "cloud", size: 58, animation: "float", delay: -3, position: { right: "2%", top: "8%" }, className: "hidden md:block", opacity: 0.65 },
+          { id: "footer-stars", icon: "stars", size: 35, animation: "rotate", delay: -2, position: { right: "3%", bottom: "17%" }, opacity: 0.62 },
+        ]} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
             <img src={logo} alt="KidSalonia" className="h-20" />
@@ -102,27 +108,27 @@ const Footer = () => {
             <div className="flex gap-3 pt-1">
               <a
                 href="https://www.instagram.com/kidsalonia"
-                
-                
-                className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#EE2852] hover:text-white hover:border-[#EE2852] transition"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ks-raised-icon w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#EE2852] hover:text-white hover:border-[#EE2852]"
                 aria-label="Follow KidSalonia on Instagram"
               >
                 <Instagram size={16} />
               </a>
               <a
                 href="https://www.facebook.com/766831683190165"
-                
-                
-                className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#EE2852] hover:text-white hover:border-[#EE2852] transition"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ks-raised-icon w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#EE2852] hover:text-white hover:border-[#EE2852]"
                 aria-label="Follow KidSalonia on Facebook"
               >
                 <Facebook size={16} />
               </a>
               <a
                 href={WHATSAPP_URL}
-                
-                
-                className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ks-raised-icon w-9 h-9 rounded-full border border-black/10 flex items-center justify-center text-black/70 hover:bg-[#25D366] hover:text-white hover:border-[#25D366]"
                 aria-label="Chat with KidSalonia on WhatsApp"
               >
                 <MessageCircle size={16} />
@@ -152,8 +158,8 @@ const Footer = () => {
                 <MapPin size={15} className="mt-0.5 text-[#EE2852] shrink-0" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=Ground+floor%2C+KidSalonia%2C+A-19+JMD+Suburbio+2%2C+Gurugram%2C+Haryana+122101"
-                  
-                  
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-[#EE2852] transition"
                 >
                   Ground floor, KidSalonia, A-19 JMD Suburbio 2,<br />Gurugram, Haryana 122101
@@ -189,13 +195,13 @@ const Footer = () => {
             <div className="space-y-3">
               <Link
                 to="/book"
-                className="flex items-center justify-center gap-2 bg-[#EE2852] text-white hover:bg-[#d5214a] font-semibold px-5 py-3 rounded-full text-sm transition"
+                className="ks-button-3d flex items-center justify-center gap-2 bg-[#EE2852] text-white hover:bg-[#d5214a] font-semibold px-5 py-3 rounded-full text-sm"
               >
                 <Calendar size={16} /> Book Appointment
               </Link>
               <a
                 href={PHONE_URL}
-                className="flex items-center justify-center gap-2 bg-white border-2 border-[#EE2852] text-[#EE2852] hover:bg-[#EE2852] hover:text-white font-semibold px-5 py-3 rounded-full text-sm transition"
+                className="ks-button-3d flex items-center justify-center gap-2 bg-white border-2 border-[#EE2852] text-[#EE2852] hover:bg-[#EE2852] hover:text-white font-semibold px-5 py-3 rounded-full text-sm"
               >
                 <Phone size={16} /> Call Now
               </a>
@@ -203,7 +209,7 @@ const Footer = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-white border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-semibold px-5 py-3 rounded-full text-sm transition"
+                className="ks-button-3d flex items-center justify-center gap-2 bg-white border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-semibold px-5 py-3 rounded-full text-sm"
               >
                 <MessageCircle size={16} /> Chat on WhatsApp
               </a>
@@ -212,7 +218,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
+        <div className="relative z-10 bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
           © {new Date().getFullYear()} KidSalonia. Designed and Developed by{" "}
           <a href="/" className="underline hover:text-white/80 transition">
             Kidsalonia

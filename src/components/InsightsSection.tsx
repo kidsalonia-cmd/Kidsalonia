@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { blogs } from "@/data/blogs";
+import TiltCard from "@/components/TiltCard";
 
 const sortByDateDesc = (a: typeof blogs[0], b: typeof blogs[0]) =>
   new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -23,12 +24,9 @@ const InsightsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {displayBlogs.map((blog) => (
-            <Link
-              key={blog.slug}
-              to={`/insights/${blog.slug}`}
-              className="group block"
-            >
-              <div className="overflow-hidden rounded-lg mb-4">
+            <TiltCard key={blog.slug} maxTilt={3} className="ks-depth-surface ks-shine h-full p-4">
+              <Link to={`/insights/${blog.slug}`} className="group block h-full rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <div className="ks-image-frame overflow-hidden rounded-lg mb-4">
                 <img
                   src={blog.image}
                   alt={blog.title}
@@ -43,14 +41,15 @@ const InsightsSection = () => {
               <p className="text-xs text-muted-foreground">
                 By {blog.author} · Category: {blog.category} · {blog.readTime}
               </p>
-            </Link>
+              </Link>
+            </TiltCard>
           ))}
         </div>
 
         <div className="text-center mt-10">
           <Link
             to="/insights"
-            className="inline-block rounded-md bg-primary px-8 py-3 text-primary-foreground font-semibold hover:opacity-90 transition"
+            className="ks-button-3d inline-block rounded-md bg-primary px-8 py-3 text-primary-foreground font-semibold hover:opacity-90"
           >
             View All Insights →
           </Link>

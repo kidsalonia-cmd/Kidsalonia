@@ -105,7 +105,7 @@ const WeeklyBanner = () => {
       aria-label="KidSalonia weekly special"
       className="bg-background px-4 py-6 sm:px-6 lg:px-16"
     >
-      <div className="relative mx-auto min-h-[360px] max-w-7xl overflow-hidden rounded-[2rem] shadow-xl sm:min-h-[430px]">
+      <div className="ks-depth-surface ks-shine relative mx-auto min-h-[360px] max-w-7xl overflow-hidden rounded-[2rem] sm:min-h-[430px]">
         <img
           src={banner.image}
           alt={banner.alt}
@@ -116,7 +116,7 @@ const WeeklyBanner = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/15" />
 
         {isWeekday && (
-          <div className="absolute right-4 top-4 z-20 rounded-2xl bg-yellow-400 px-5 py-3 text-center text-slate-950 shadow-xl sm:right-8 sm:top-8 sm:px-7 sm:py-4">
+          <div className="ks-stat-card absolute right-4 top-4 z-20 rounded-2xl bg-yellow-400 px-5 py-3 text-center text-slate-950 sm:right-8 sm:top-8 sm:px-7 sm:py-4">
             <p className="text-xs font-extrabold uppercase tracking-widest">
               Monday–Friday
             </p>
@@ -160,7 +160,7 @@ const WeeklyBanner = () => {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               to={banner.link}
-              className="rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-primary-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90"
+              className="ks-button-3d rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-primary-foreground hover:opacity-90"
             >
               {isWeekday ? "Claim 15% Off" : banner.buttonText}
             </Link>
@@ -171,7 +171,7 @@ const WeeklyBanner = () => {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/70 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white hover:text-foreground"
+              className="ks-button-3d rounded-full border border-white/70 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm hover:bg-white hover:text-foreground"
             >
               WhatsApp Us
             </a>
