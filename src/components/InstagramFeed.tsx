@@ -8,6 +8,7 @@ const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/kidsalonia";
 const INSTAGRAM_EMBED_SCRIPT_SRC = "https://www.instagram.com/embed.js";
 const INSTAGRAM_EMBED_SCRIPT_ID = "instagram-embed-script";
 const EMBED_TIMEOUT_MS = 10_000;
+const EMBED_PROCESS_RETRY_DELAYS_MS = [500, 1_500] as const;
 const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
   "Hi KidSalonia! I saw your Instagram feed and would like help booking a salon visit for my child.",
 )}`;
@@ -111,7 +112,9 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
   useEffect(() => {
     let active = true;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const retryIds: ReturnType<typeof setTimeout>[] = [];
     let observer: MutationObserver | undefined;
+    let visibilityObserver: IntersectionObserver | undefined;
 
     const hasRenderedEmbed = () => {
       const iframe = containerRef.current?.querySelector("iframe");
@@ -123,13 +126,27 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
     const markRendered = () => {
       if (!hasRenderedEmbed()) return;
       if (timeoutId) clearTimeout(timeoutId);
+      retryIds.forEach(clearTimeout);
       observer?.disconnect();
+      visibilityObserver?.disconnect();
+    };
+    const processEmbed = () => {
+      if (!active || hasRenderedEmbed()) return;
+      try {
+        window.instgrm?.Embeds.process();
+        markRendered();
+      } catch {
+        // A later bounded retry can recover if Instagram is still initializing.
+      }
     };
 
     loadInstagramEmbedScript()
       .then(() => {
         if (!active) return;
-        window.instgrm?.Embeds.process();
+        processEmbed();
+        EMBED_PROCESS_RETRY_DELAYS_MS.forEach((delay) => {
+          retryIds.push(setTimeout(processEmbed, delay));
+        });
 
         if (hasRenderedEmbed()) return;
         observer = new MutationObserver(markRendered);
@@ -140,6 +157,12 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
             childList: true,
             subtree: true,
           });
+        }
+        if ("IntersectionObserver" in window && containerRef.current) {
+          visibilityObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) processEmbed();
+          });
+          visibilityObserver.observe(containerRef.current);
         }
         timeoutId = setTimeout(() => {
           if (active && !hasRenderedEmbed()) setEmbedFailed(true);
@@ -152,7 +175,9 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
     return () => {
       active = false;
       if (timeoutId) clearTimeout(timeoutId);
+      retryIds.forEach(clearTimeout);
       observer?.disconnect();
+      visibilityObserver?.disconnect();
     };
   }, [post.postUrl]);
 
@@ -180,7 +205,7 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
             className="flex min-h-[720px] flex-col items-center justify-center gap-4 px-8 text-center text-primary focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 sm:min-h-[780px]"
           >
             <Instagram className="h-12 w-12" aria-hidden="true" />
-            <span className="font-bold">Loading featured Reel from @kidsalonia</span>
+            <span className="font-bold" role="status" aria-live="polite">Loading Instagram Reel&hellip;</span>
             <span className="text-sm underline">Watch on Instagram</span>
           </a>
         </blockquote>

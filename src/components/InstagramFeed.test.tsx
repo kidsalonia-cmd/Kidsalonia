@@ -32,11 +32,11 @@ describe("InstagramFeed", () => {
     expect(featuredReels).toHaveLength(2);
     expect(featuredReels[0].querySelector("blockquote")).toHaveAttribute(
       "data-instgrm-permalink",
-      "https://www.instagram.com/kidsalonia/reel/DZqBpuszGsg/",
+      "https://www.instagram.com/reel/DZqBpuszGsg/",
     );
     expect(featuredReels[1].querySelector("blockquote")).toHaveAttribute(
       "data-instgrm-permalink",
-      "https://www.instagram.com/kidsalonia/reel/DYFKuxIpJhF/",
+      "https://www.instagram.com/reel/DYFKuxIpJhF/",
     );
     expect(screen.getAllByTestId("instagram-post-card")).toHaveLength(6);
   });
@@ -69,6 +69,27 @@ describe("InstagramFeed", () => {
     renderFeed();
 
     expect(document.querySelectorAll('script[src="https://www.instagram.com/embed.js"]')).toHaveLength(1);
+  });
+
+  it("retries processing when Instagram initializes after the script load event", async () => {
+    vi.useFakeTimers();
+    renderFeed();
+
+    const script = document.querySelector<HTMLScriptElement>(
+      'script[src="https://www.instagram.com/embed.js"]',
+    );
+    fireEvent.load(script!);
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    const process = vi.fn();
+    window.instgrm = { Embeds: { process } };
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(500);
+    });
+
+    expect(process).toHaveBeenCalled();
   });
 
   it("falls back when Instagram creates an iframe that never becomes visible", async () => {

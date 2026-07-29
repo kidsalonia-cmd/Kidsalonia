@@ -102,7 +102,16 @@ const Index = () => {
       <InsightsSection />
       <TestimonialsSection />
       <GallerySection />
-      <Suspense fallback={<div className="min-h-96 bg-gradient-to-b from-white via-pink-50/70 to-orange-50" aria-hidden="true" />}>
+      <Suspense
+        fallback={
+          <div
+            className="flex min-h-96 items-center justify-center bg-gradient-to-b from-white via-pink-50/70 to-orange-50 font-semibold text-primary"
+            role="status"
+          >
+            Loading Instagram&hellip;
+          </div>
+        }
+      >
         <InstagramFeed />
       </Suspense>
       <SocialProofWidget />
