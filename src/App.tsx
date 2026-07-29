@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Index from "./pages/Index";
 import ContactUs from "./pages/ContactUs";
+import Booking from "./pages/Booking";
 import Insights from "./pages/Insights";
 import BlogPost from "./pages/BlogPost";
 import Hair from "./pages/Hair";
@@ -49,6 +50,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
 
+          <Route path="/book" element={<Booking />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/offers" element={<Offers />} />
