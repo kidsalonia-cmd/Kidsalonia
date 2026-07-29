@@ -115,6 +115,27 @@ const getLocationContext = (location: string) => {
   )} and nearby communities. Advance booking helps customers confirm the service, preferred time and expected visit duration before travelling.`;
 };
 
+const getVisitPlanningContent = (location: string) => {
+  if (/^Sector\s+\d+/i.test(location)) {
+    return {
+      heading: `Planning a visit from ${formatLocationName(location)}`,
+      text: "Families travelling from Gurgaon sectors can plan their appointment around school, activity and meal timings. Calling ahead helps confirm the preferred stylist, expected service duration and the most convenient appointment window.",
+    };
+  }
+
+  if (/Manesar|Sohna|Faridabad|Noida|Ghaziabad|Delhi|Dwarka/i.test(location)) {
+    return {
+      heading: `Travelling from ${formatLocationName(location)}`,
+      text: "For customers travelling from outside central Gurugram, advance booking is recommended. Our team can confirm availability, explain the service duration and help families plan the visit before they begin their journey.",
+    };
+  }
+
+  return {
+    heading: `Appointment planning for ${formatLocationName(location)}`,
+    text: "Book before travelling so the team can confirm availability, service duration and any preparation needed for your child's appointment.",
+  };
+};
+
 const LocationServicePage = () => {
   const { slug = "" } = useParams();
   const matchedService = getMatchedService(slug);
@@ -155,6 +176,7 @@ const LocationServicePage = () => {
   const pageTitle = `${matchedService.serviceName} in ${locationName}`;
   const pageUrl = `${BASE_URL}/${slug}`;
   const nearbyLocations = getNearbyLocations(matchedLocation);
+  const visitPlanning = getVisitPlanningContent(matchedLocation);
   const relatedServices = seoServices
     .filter((service) => service.slug !== matchedService.slug)
     .sort((a, b) => {
@@ -186,6 +208,7 @@ const LocationServicePage = () => {
     description: `${matchedService.intro} KidSalonia welcomes customers from ${locationName} and nearby areas.`,
     url: pageUrl,
     serviceType: matchedService.serviceType,
+    areaServedName: locationName,
   });
 
   const breadcrumbSchema = createBreadcrumbSchema([
@@ -278,6 +301,13 @@ const LocationServicePage = () => {
                 <p>
                   Our salon is at {SALON_ADDRESS}. Customers from {locationName}
                   should confirm their appointment before travelling.
+                </p>
+              </div>
+
+              <div className="mt-10 rounded-3xl border bg-muted/30 p-7">
+                <h2 className="text-2xl font-bold">{visitPlanning.heading}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">
+                  {visitPlanning.text}
                 </p>
               </div>
 
