@@ -35,9 +35,9 @@ const adultNailServices = [
 
 const NailsSection = () => {
   return (
-    <section id="nails" className="bg-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex justify-center">
+    <section id="nails" className="bg-background py-4 sm:py-8">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
+        <div className="ks-section-panel flex justify-center rounded-[2rem]">
           <div className="w-full py-12 max-w-2xl px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-primary leading-tight">
               A Little Magic For{" "}
@@ -50,7 +50,7 @@ const NailsSection = () => {
               From cute cuts to party-ready glam, we offer gentle, safe, and stylish services designed especially for kids.
             </p>
             <Link to="/book?service=nail-art">
-              <span className="mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
+              <span className="ks-button-3d mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90">
                 Book
               </span>
             </Link>
@@ -77,7 +77,7 @@ const NailsSection = () => {
           </div>
         </div>
 
-        <div className="relative min-h-[800px] lg:min-h-full w-full">
+        <div className="ks-image-frame relative min-h-[800px] w-full lg:min-h-full">
           <img
             alt="Nail Art"
             className="object-cover absolute inset-0 w-full h-full"

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import heroBanner from "@/assets/navratri-banner-desktop.jpg";
+import TiltCard from "@/components/TiltCard";
 
 const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
   "Hi KidSalonia! I would like to book a salon appointment for my child. Please share the available timings.",
@@ -16,11 +17,11 @@ const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
 
 const HeroBanner = () => {
   return (
-    <section className="relative isolate overflow-hidden bg-slate-950">
+    <section className="ks-perspective ks-shine relative isolate overflow-hidden bg-slate-950">
       <img
         src={heroBanner}
         alt="KidSalonia kids salon services in Gurgaon"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full scale-[1.02] object-cover object-center"
         loading="eager"
         fetchPriority="high"
       />
@@ -38,7 +39,7 @@ const HeroBanner = () => {
 
       <div className="relative mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12 lg:py-20">
         <div className="max-w-3xl text-white">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] backdrop-blur-md sm:text-sm">
+          <div className="ks-glass-panel mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] sm:text-sm">
             <Sparkles size={16} className="text-yellow-300" />
             Gurgaon&apos;s Favourite Kids Salon
           </div>
@@ -52,13 +53,13 @@ const HeroBanner = () => {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold text-white/95">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
+            <span className="ks-glass-panel inline-flex items-center gap-2 rounded-full px-4 py-2">
               <CheckCircle2 size={16} className="text-emerald-300" /> 1500+ Happy Kids
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
+            <span className="ks-glass-panel inline-flex items-center gap-2 rounded-full px-4 py-2">
               <ShieldCheck size={16} className="text-sky-300" /> Safe &amp; Hygienic
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
+            <span className="ks-glass-panel inline-flex items-center gap-2 rounded-full px-4 py-2">
               <Star size={16} className="text-yellow-300" fill="currentColor" /> Kids Specialists
             </span>
           </div>
@@ -68,14 +69,14 @@ const HeroBanner = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-base font-extrabold text-white shadow-xl transition hover:-translate-y-1 hover:bg-[#20bd5a]"
+              className="ks-button-3d inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-base font-extrabold text-white hover:bg-[#20bd5a]"
             >
               <MessageCircle size={21} /> Book on WhatsApp
             </a>
 
             <Link
               to="/book"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-extrabold text-primary-foreground shadow-xl transition hover:-translate-y-1 hover:opacity-90"
+              className="ks-button-3d inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-extrabold text-primary-foreground hover:opacity-90"
             >
               <CalendarDays size={21} /> Book Appointment
             </Link>
@@ -87,13 +88,13 @@ const HeroBanner = () => {
         </div>
 
         <div className="hidden justify-self-end lg:block">
-          <div className="w-full max-w-sm rounded-[2rem] border border-white/25 bg-white/15 p-6 text-white shadow-2xl backdrop-blur-xl">
+          <TiltCard maxTilt={3} className="ks-glass-panel ks-shine w-full max-w-sm rounded-[2rem] p-6 text-white">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-yellow-300">
               Why Parents Choose KidSalonia
             </p>
 
             <div className="mt-5 space-y-4">
-              <div className="flex items-start gap-3 rounded-2xl bg-white/10 p-4">
+              <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-inner">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-400/20">
                   <CheckCircle2 size={20} className="text-emerald-300" />
                 </div>
@@ -105,7 +106,7 @@ const HeroBanner = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-2xl bg-white/10 p-4">
+              <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-inner">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20">
                   <ShieldCheck size={20} className="text-sky-300" />
                 </div>
@@ -117,7 +118,7 @@ const HeroBanner = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-2xl bg-white/10 p-4">
+              <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-inner">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-400/20">
                   <Star size={20} className="text-yellow-300" fill="currentColor" />
                 </div>
@@ -132,11 +133,11 @@ const HeroBanner = () => {
 
             <Link
               to="/book"
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3.5 font-extrabold text-slate-950 transition hover:-translate-y-0.5"
+              className="ks-button-3d mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3.5 font-extrabold text-slate-950"
             >
               <CalendarDays size={19} className="text-primary" /> Reserve Your Child&apos;s Slot
             </Link>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>

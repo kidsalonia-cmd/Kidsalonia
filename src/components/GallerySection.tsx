@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import TiltCard from "@/components/TiltCard";
 import gallery11 from "@/assets/gallery/gallery-11.png";
 import gallery12 from "@/assets/gallery/gallery-12.png";
 import gallery13 from "@/assets/gallery/gallery-13.png";
@@ -72,7 +73,7 @@ const GallerySection = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+              className={`ks-button-3d rounded-full px-6 py-2.5 text-sm font-semibold ${
                 activeCategory === cat
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -86,9 +87,10 @@ const GallerySection = () => {
         {/* Image Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
           {filteredImages.map((img, i) => (
-            <div
+            <TiltCard
               key={`${img.alt}-${i}`}
-              className="aspect-square overflow-hidden"
+              maxTilt={2.5}
+              className="ks-image-frame aspect-square overflow-hidden rounded-2xl"
             >
               <img
                 src={img.src}
@@ -96,7 +98,7 @@ const GallerySection = () => {
                 loading="lazy"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

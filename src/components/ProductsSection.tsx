@@ -17,7 +17,7 @@ const ProductsSection = () => {
       {/* Products Content */}
       <div className="bg-background py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center">
+          <div className="ks-depth-surface ks-shine flex justify-center p-8">
             <img
               src={strawberryImg}
               alt="Kids Shampoo Products"
@@ -48,7 +48,7 @@ const ProductsSection = () => {
 
       {/* Brand Logos Bar */}
       <div className="bg-[hsl(40,100%,55%)] py-10">
-        <div className="max-w-5xl mx-auto px-6 flex items-center justify-around">
+        <div className="ks-inset-panel max-w-5xl mx-auto flex items-center justify-around rounded-3xl px-6 py-5">
           <img
             src={yellowNaturalsLogo}
             alt="Yellow Naturals"

@@ -11,16 +11,16 @@ const skinServices = [
 
 const SkinSection = () => {
   return (
-    <section id="skin" className="bg-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="relative min-h-[350px] lg:min-h-full w-full">
+    <section id="skin" className="bg-background py-4 sm:py-8">
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
+        <div className="ks-image-frame relative min-h-[350px] w-full lg:min-h-full">
           <img
             src={softcareImg}
             alt="Kids facial care"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="relative flex justify-center">
+        <div className="ks-section-panel relative flex justify-center rounded-[2rem]">
           <div className="w-full max-w-2xl px-6 py-12">
             <div className="relative flex items-start justify-between">
               <h2 className="text-4xl text-primary font-bold leading-tight mb-2">

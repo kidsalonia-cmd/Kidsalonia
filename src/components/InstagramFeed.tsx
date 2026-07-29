@@ -66,7 +66,7 @@ const FeaturedReelFallback = ({ post }: { post: InstagramPost }) => {
 
   return (
     <article
-      className="mx-auto w-full max-w-lg overflow-hidden rounded-3xl border border-pink-100 bg-white shadow-lg"
+      className="ks-depth-surface ks-shine mx-auto w-full max-w-lg overflow-hidden rounded-3xl bg-white"
       data-testid="instagram-embed-fallback"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-fuchsia-100 via-pink-50 to-orange-100">
@@ -94,7 +94,7 @@ const FeaturedReelFallback = ({ post }: { post: InstagramPost }) => {
           target="_blank"
           rel="noopener noreferrer"
           data-analytics-event="instagram_post_click"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-600 to-pink-500 px-5 py-3 font-bold text-white transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-300"
+          className="ks-button-3d inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-600 to-pink-500 px-5 py-3 font-bold text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-300"
         >
           <Play size={18} fill="currentColor" aria-hidden="true" />
           Watch on Instagram
@@ -162,7 +162,7 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
 
   return (
     <article
-      className="mx-auto min-h-[720px] w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-lg sm:min-h-[780px]"
+      className="ks-depth-surface mx-auto min-h-[720px] w-full max-w-lg overflow-hidden rounded-3xl bg-white sm:min-h-[780px]"
       data-testid="instagram-featured-reel"
     >
       <div ref={containerRef} className="flex min-h-[720px] items-start justify-center sm:min-h-[780px]">
@@ -197,7 +197,7 @@ const InstagramCard = ({ post, index }: { post: InstagramPost; index: number }) 
 
   return (
     <article
-      className="group overflow-hidden rounded-3xl border border-pink-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="ks-depth-surface ks-shine group overflow-hidden rounded-3xl bg-white"
       data-testid="instagram-post-card"
     >
       <a
@@ -226,7 +226,7 @@ const InstagramCard = ({ post, index }: { post: InstagramPost; index: number }) 
               className="relative h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
           )}
-          <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-black/75 px-3 py-1.5 text-xs font-bold text-white">
+          <span className="ks-reel-badge absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-black/75 px-3 py-1.5 text-xs font-bold text-white">
             {isReel ? <Play size={13} fill="currentColor" aria-hidden="true" /> : post.mediaType === "carousel" ? <Layers3 size={13} aria-hidden="true" /> : <Instagram size={13} aria-hidden="true" />}
             {mediaLabel}
           </span>
@@ -241,7 +241,7 @@ const InstagramCard = ({ post, index }: { post: InstagramPost; index: number }) 
           to={bookingPath}
           data-analytics-event="instagram_book_click"
           data-instagram-service={post.service ?? "generic"}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary/10 px-4 py-2.5 text-sm font-bold text-primary transition hover:bg-primary hover:text-primary-foreground focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+          className="ks-button-3d inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary/10 px-4 py-2.5 text-sm font-bold text-primary hover:bg-primary hover:text-primary-foreground focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
         >
           <CalendarDays size={16} aria-hidden="true" />
           {post.service ? "Book this service" : "Book a salon visit"}
@@ -278,7 +278,7 @@ const InstagramFeed = ({ posts = instagramPosts }: InstagramFeedProps) => {
               target="_blank"
               rel="noopener noreferrer"
               data-analytics-event="instagram_profile_click"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-600 to-pink-500 px-6 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-300"
+              className="ks-button-3d inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-fuchsia-600 to-pink-500 px-6 py-3 font-bold text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-300"
             >
               <Instagram size={19} aria-hidden="true" /> Follow @kidsalonia
             </a>
@@ -286,7 +286,7 @@ const InstagramFeed = ({ posts = instagramPosts }: InstagramFeedProps) => {
               to="/book"
               data-analytics-event="instagram_book_click"
               data-instagram-service="generic"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-primary-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+              className="ks-button-3d inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-bold text-primary-foreground hover:opacity-90 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
             >
               <CalendarDays size={19} aria-hidden="true" /> Book Now
             </Link>
@@ -294,7 +294,7 @@ const InstagramFeed = ({ posts = instagramPosts }: InstagramFeedProps) => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-emerald-500 bg-white px-6 py-3 font-bold text-emerald-700 transition hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-200"
+              className="ks-button-3d inline-flex items-center justify-center gap-2 rounded-full border-2 border-emerald-500 bg-white px-6 py-3 font-bold text-emerald-700 hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-200"
             >
               <MessageCircle size={19} aria-hidden="true" /> WhatsApp
             </a>
@@ -333,7 +333,7 @@ const InstagramFeed = ({ posts = instagramPosts }: InstagramFeedProps) => {
             </div>
           </div>
         ) : (
-          <div className="mx-auto mt-12 max-w-xl rounded-3xl border border-dashed border-pink-200 bg-white/80 p-8 text-center shadow-sm" role="status">
+          <div className="ks-depth-surface mx-auto mt-12 max-w-xl rounded-3xl border border-dashed border-pink-200 bg-white/80 p-8 text-center" role="status">
             <Instagram className="mx-auto h-10 w-10 text-primary" aria-hidden="true" />
             <h3 className="mt-4 text-xl font-bold">Fresh salon moments are on Instagram</h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">

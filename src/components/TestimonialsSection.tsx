@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import girlImg from "@/assets/girl-testimonial.png";
+import TiltCard from "@/components/TiltCard";
 
 const reviews = [
   {
@@ -45,7 +46,7 @@ const TestimonialsSection = () => {
     <section className="bg-[hsl(0,0%,97%)] py-16 lg:py-24">
       {/* Hero Image */}
       <div className="w-full px-6 lg:px-28 mb-12">
-        <div className="w-full aspect-[16/7] overflow-hidden rounded-2xl">
+        <div className="ks-image-frame w-full aspect-[16/7] overflow-hidden rounded-2xl">
           <img
             src={girlImg}
             alt="Happy kids at KidSalonia salon"
@@ -80,16 +81,18 @@ const TestimonialsSection = () => {
       {/* Review Cards */}
       <div className="px-6 lg:px-28 grid grid-cols-1 md:grid-cols-2 gap-6">
         {reviews.map((review, i) => (
-          <div
+          <TiltCard
             key={i}
-            className="bg-white rounded-xl p-6 lg:p-8 shadow-[0_1px_3px_hsl(0,0%,0%,0.06),0_4px_12px_hsl(0,0%,0%,0.04)] hover:shadow-[0_2px_6px_hsl(0,0%,0%,0.08),0_8px_24px_hsl(0,0%,0%,0.06)] transition-shadow duration-300"
+            maxTilt={3}
+            className="ks-depth-surface ks-shine rounded-xl bg-white p-6 lg:p-8"
           >
+            <span aria-hidden="true" className="absolute right-6 top-2 text-6xl font-black text-primary/10">&ldquo;</span>
             <StarRating rating={review.rating} />
             <p className="text-foreground text-base lg:text-lg leading-relaxed mt-4 mb-6">
               "{review.text}"
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold text-sm flex items-center justify-center">
+              <div className="ks-raised-icon w-10 h-10 rounded-full bg-primary/10 text-primary font-bold text-sm flex items-center justify-center">
                 {review.initials}
               </div>
               <div>
@@ -97,7 +100,7 @@ const TestimonialsSection = () => {
                 <p className="text-muted-foreground text-xs">Verified Parent</p>
               </div>
             </div>
-          </div>
+          </TiltCard>
         ))}
       </div>
     </section>

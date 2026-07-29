@@ -4,8 +4,8 @@ import hairImg from "@/assets/hair-intro.png";
 
 const IntroSection = () => {
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2">
-      <div className="relative flex flex-col justify-center bg-secondary px-6 py-4 lg:px-20">
+    <section className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 bg-background px-4 py-6 sm:px-6 lg:grid-cols-2">
+      <div className="ks-section-panel relative flex flex-col justify-center rounded-[2rem] bg-secondary px-6 py-4 lg:px-20">
         <h1 className="max-w-xl md:pt-4 pt-8 text-4xl font-extrabold leading-tight text-foreground lg:text-5xl">
           Best Kids Salon & Nail Art Studio in Gurgaon
         </h1>
@@ -13,7 +13,7 @@ const IntroSection = () => {
           KidSalonia is a trusted kids salon, hairdresser and nail studio in Gurugram for kids haircuts, baby first haircut, mundan, nail art, manicure, pedicure and family salon services near Airia Mall and JMD Suburbio 2.
         </p>
         <Link to="/book">
-          <span className="relative z-10 mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
+          <span className="ks-button-3d relative z-10 mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90">
             Book
           </span>
         </Link>
@@ -25,7 +25,7 @@ const IntroSection = () => {
           />
         </div>
       </div>
-      <div className="relative bg-background h-96 sm:h-80 md:h-96 lg:h-full w-full">
+      <div className="ks-image-frame relative h-96 w-full bg-background sm:h-80 md:h-96 lg:h-full">
         <img
           src={hairImg}
           alt="Child-friendly kids salon and hairdresser in Gurgaon"
