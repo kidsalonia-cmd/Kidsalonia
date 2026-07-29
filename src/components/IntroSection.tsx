@@ -12,11 +12,11 @@ const IntroSection = () => {
         <p className="mt-6 max-w-lg text-sm leading-relaxed text-muted-foreground">
           KidSalonia is a trusted kids salon, hairdresser and nail studio in Gurugram for kids haircuts, baby first haircut, mundan, nail art, manicure, pedicure and family salon services near Airia Mall and JMD Suburbio 2.
         </p>
-        <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" >
-          <button className="relative z-10 mt-6 rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
+        <Link to="/book">
+          <span className="relative z-10 mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
             Book
-          </button>
-        </a>
+          </span>
+        </Link>
         <div className="hidden lg:block absolute bottom-0 left-0 h-44 w-full px-4">
           <img
             src={beautyImg}

@@ -14,7 +14,7 @@ const weeklyBanners = [
     description:
       "Book a child-friendly haircut with trained kids stylists in a joyful and hygienic salon.",
     buttonText: "Reserve a Haircut",
-    link: "/contact-us",
+    link: "/book?service=kids-haircut",
     alt: "Happy child after a haircut at KidSalonia Gurgaon",
   },
   {
@@ -24,7 +24,7 @@ const weeklyBanners = [
     description:
       "Explore playful, age-appropriate nail designs created with care at KidSalonia.",
     buttonText: "Book Nail Art",
-    link: "/contact-us",
+    link: "/book?service=nail-art",
     alt: "Colourful kids nail art at KidSalonia Gurgaon",
   },
   {
@@ -34,7 +34,7 @@ const weeklyBanners = [
     description:
       "From stylish trims to cheerful makeovers, give your child a salon day to remember.",
     buttonText: "Book a Makeover",
-    link: "/contact-us",
+    link: "/book",
     alt: "Child haircut transformation at KidSalonia kids salon",
   },
   {
@@ -44,7 +44,7 @@ const weeklyBanners = [
     description:
       "Enjoy gentle hair wash and grooming services designed to keep children comfortable and smiling.",
     buttonText: "Reserve a Slot",
-    link: "/contact-us",
+    link: "/book",
     alt: "Kids shampoo and hair care service at KidSalonia Gurgaon",
   },
 ];

@@ -7,6 +7,7 @@ import SEO, { localBusinessSchema, createFAQSchema } from "@/components/SEO";
 import skinHeroBanner from "@/assets/gallery/skin-1.jpg";
 import skinPartyMakeup from "@/assets/skin-facial-real.png";
 import skinJellyManicure from "@/assets/gallery/skin-3.jpg";
+import { getBookingPath } from "@/lib/booking";
 
 const makeupServices = [
   { name: "Kids Party Makeup (Classic)", price: "₹499", description: "Light, playful makeup for birthdays and celebrations — soft colours, gentle products, kid-safe formulas." },
@@ -75,13 +76,13 @@ const skinServiceSchema = {
 };
 
 const ServiceCard = ({ name, price, description }: { name: string; price: string; description: string }) => (
-  <div className="flex items-start justify-between py-4 border-b border-border/40 gap-4">
+  <Link to={getBookingPath(name)} className="flex items-start justify-between py-4 border-b border-border/40 gap-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary">
     <div className="flex-1">
       <h3 className="font-bold text-foreground text-base">{name}</h3>
       <p className="text-sm text-muted-foreground mt-1">{description}</p>
     </div>
     <span className="text-primary font-bold text-lg whitespace-nowrap">{price}</span>
-  </div>
+  </Link>
 );
 
 const Skin = () => {
@@ -103,7 +104,7 @@ const Skin = () => {
           <p className="text-white/90 text-lg font-semibold mb-2">KidSalonia</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Kids Skin & Makeup</h1>
           <p className="text-white/80 text-base md:text-lg max-w-2xl">Gentle, kid-safe skin and makeup services designed for comfort, care, and those special moments</p>
-          <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" className="mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">Book Now</a>
+          <Link to="/book" className="mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">Book Now</Link>
         </div>
       </section>
 
@@ -122,7 +123,7 @@ const Skin = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Kids Makeup Services</h2>
             <p className="text-muted-foreground mb-6">Light, playful, and age-appropriate makeup for birthdays, weddings, school functions, and special occasions. Gentle on skin, easy to remove.</p>
             <div>{makeupServices.map((s) => <ServiceCard key={s.name} {...s} />)}</div>
-            <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">Book Makeup</a>
+            <Link to="/book?service=party-makeup" className="inline-block mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">Book Makeup</Link>
           </div>
           <div className="rounded-xl overflow-hidden">
             <img src={skinPartyMakeup} alt="Indian girl getting light party makeup at KidSalonia kids salon Gurugram" className="w-full h-[350px] object-cover" loading="lazy" />

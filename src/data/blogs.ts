@@ -133,7 +133,7 @@ Even in monsoon, UV rays come through clouds. We finish with a light, non greasy
 
 ## Book a Monsoon Facial at KidSalonia
 
-Give your child a refreshing reset this season. [Book a kids facial](/contact-us) at our Gurugram salon.
+Give your child a refreshing reset this season. [Book a kids facial](/book) at our Gurugram salon.
 
 Call **+91 8130307036** or explore our [kids skin care menu](/skin). We are located at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -197,7 +197,7 @@ You go home with a **memory envelope** containing the first lock of hair and a p
 
 ## Book a Gentle First Haircut at KidSalonia
 
-[Book your toddler's first haircut](/contact-us) with our patient team in Gurugram.
+[Book your toddler's first haircut](/book?service=toddler-haircut) with our patient team in Gurugram.
 
 Call **+91 8130307036** or browse our [kids haircut menu](/hair). Visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -256,7 +256,7 @@ Father's Day at KidSalonia is not only for boys. We offer:
 
 ## Book Your Father's Day Slot
 
-Slots fill quickly the week of Father's Day. [Reserve your father and child session](/contact-us) at KidSalonia Gurugram.
+Slots fill quickly the week of Father's Day. [Reserve your father and child session](/book) at KidSalonia Gurugram.
 
 Call **+91 8130307036** or visit JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -310,7 +310,7 @@ Orange to pink gradient that looks like a Gurugram sunset. Surprisingly easy to 
 
 ## Book a Summer Nail Art Session
 
-Treat your child to a vacation worthy manicure. [Book kids nail art](/contact-us) at KidSalonia Gurugram.
+Treat your child to a vacation worthy manicure. [Book kids nail art](/book?service=nail-art) at KidSalonia Gurugram.
 
 Call **+91 8130307036** or explore our full [kids nails menu](/nails). Find us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -368,7 +368,7 @@ Summer trims remove split ends and keep hair healthy. A quick visit to KidSaloni
 
 ## Book a Summer Hair Care Session
 
-Bring your child for a summer trim, oil massage or hair spa. [Book at KidSalonia Gurugram](/contact-us) today.
+Bring your child for a summer trim, oil massage or hair spa. [Book at KidSalonia Gurugram](/book) today.
 
 Call **+91 8130307036** or explore our [kids haircut menu](/hair). Located at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -448,7 +448,7 @@ Science says hair texture is genetic, not changed by shaving. But many parents d
 
 ## Book a Mundan Ceremony at KidSalonia
 
-Give your child a safe, peaceful and memorable first head shave. [Book a mundan ceremony](/contact-us) at our Gurugram salon.
+Give your child a safe, peaceful and memorable first head shave. [Book a mundan ceremony](/book?service=mundan) at our Gurugram salon.
 
 Call **+91 8130307036** or view our [kids hair service menu](/hair). KidSalonia is located at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram). We are open Mon and Wed to Sun.`,
   },
@@ -537,7 +537,7 @@ Every birthday party at KidSalonia follows strict hygiene protocols. Disposable 
 
 ## Book Your Child's Birthday Party at KidSalonia
 
-Give your child a birthday they'll talk about for years. [Reserve a birthday party slot](/contact-us) at our Gurugram salon today.
+Give your child a birthday they'll talk about for years. [Reserve a birthday party slot](/book) at our Gurugram salon today.
 
 📞 Call **+91 8130307036** or visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram). We're open Mon & Wed–Sun, 11:30 AM to 8:30 PM (Sat–Sun till 9:00 PM).`,
   },
@@ -623,7 +623,7 @@ Absolutely. We offer clear coats, single-colour designs in cool tones, and theme
 
 ## Book a Safe Nail Art Session at KidSalonia
 
-Give your child the joy of pretty nails without any compromise on safety. [Book a kids nail art session](/contact-us) at our Gurugram salon.
+Give your child the joy of pretty nails without any compromise on safety. [Book a kids nail art session](/book?service=nail-art) at our Gurugram salon.
 
 📞 Call **+91 8130307036** or explore our full [kids nails service menu](/nails). Located at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -723,7 +723,7 @@ A typical adult salon in Gurugram charges ₹400-600 for an "any age" haircut �
 
 ## Book Your Child's Haircut at KidSalonia
 
-Transparent prices, gentle hands, happy kids. [Book a haircut appointment](/contact-us) at KidSalonia, Gurugram today.
+Transparent prices, gentle hands, happy kids. [Book a haircut appointment](/book?service=kids-haircut) at KidSalonia, Gurugram today.
 
 📞 Call **+91 8130307036** or browse our full [kids hair services](/hair). We're at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram), open Mon & Wed–Sun, 11:30 AM to 8:30 PM (Sat–Sun till 9:00 PM).`,
   },
@@ -830,7 +830,7 @@ You will never be rushed and we never force a cut.
 
 ## Book Your Baby's First Haircut at KidSalonia
 
-A first haircut is a milestone worth celebrating with care. [Book your baby's first haircut or mundan](/contact-us) at KidSalonia, Gurugram.
+A first haircut is a milestone worth celebrating with care. [Book your baby's first haircut or mundan](/book?service=baby-first-haircut) at KidSalonia, Gurugram.
 
 📞 Call **+91 8130307036** or explore our [kids hair services](/hair). Find us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram), open Mon & Wed–Sun, 11:30 AM to 8:30 PM (Sat–Sun till 9:00 PM).`,
   },
@@ -925,7 +925,7 @@ Spend two minutes each weekend checking your child's feet for blisters, redness,
 
 ## Book Your Child's Foot Spa at KidSalonia
 
-Give your child's feet the care they deserve in a fun, safe environment designed just for them. [Book a foot spa and pedicure session](/contact-us) at our Gurgaon salon this week.
+Give your child's feet the care they deserve in a fun, safe environment designed just for them. [Book a foot spa and pedicure session](/book?service=pedicure) at our Gurgaon salon this week.
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1025,7 +1025,7 @@ A warm foot soak with a drop of lavender oil before bed relaxes the whole body t
 
 ## Book a Relaxation Session at KidSalonia
 
-Help your child discover the benefits of genuine relaxation in a space designed just for them. [Schedule a kids body massage](/contact-us) at our Gurgaon salon and watch the transformation in their mood, sleep, and energy.
+Help your child discover the benefits of genuine relaxation in a space designed just for them. [Schedule a kids body massage](/book) at our Gurgaon salon and watch the transformation in their mood, sleep, and energy.
 
 📞 Call +91 8130307036 or visit JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1127,7 +1127,7 @@ Cradle cap usually resolves on its own by 6-12 months. Professional treatment ac
 
 ## Book Your Baby's Cradle Cap Treatment
 
-Give your little one the gentlest possible start. [Schedule a baby scalp care session](/contact-us) at KidSalonia and let our specialists handle this common concern with expertise and care.
+Give your little one the gentlest possible start. [Schedule a baby scalp care session](/book) at KidSalonia and let our specialists handle this common concern with expertise and care.
 
 📞 Call +91 8130307036 or visit JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1235,7 +1235,7 @@ In Gurgaon's heat, sweat sitting on the scalp creates ideal conditions for funga
 
 ## Book Your Child's Anti-Dandruff Treatment
 
-Don't let dandruff affect your child's confidence or comfort. [Schedule an anti-dandruff scalp treatment](/contact-us) at KidSalonia and give them a clean, healthy scalp they can feel good about.
+Don't let dandruff affect your child's confidence or comfort. [Schedule an anti-dandruff scalp treatment](/book) at KidSalonia and give them a clean, healthy scalp they can feel good about.
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1326,7 +1326,7 @@ For long hair, braid loosely before bed using a silk or satin scrunchie. This pr
 
 ## Booking Your Child's Summer Hair Spa
 
-Don't wait for visible damage. Preventive care is always more effective — and affordable — than repair. [Book a hair spa appointment](/contact-us) for your child this week and give their hair the deep nourishment it deserves.
+Don't wait for visible damage. Preventive care is always more effective — and affordable — than repair. [Book a hair spa appointment](/book) for your child this week and give their hair the deep nourishment it deserves.
 
 📞 Call +91 8130307036 or WhatsApp us to schedule your preferred slot.`,
   },
@@ -1416,7 +1416,7 @@ Children as young as 7 can learn to make a basic ponytail or clip back their fri
 
 ## Book a Back-to-School Styling Session
 
-Start the week with a professional style that lasts. [Contact KidSalonia](/contact-us) to book a quick school hairstyle session — we'll even teach you the techniques to recreate them at home.
+Start the week with a professional style that lasts. [Book with KidSalonia](/book?service=kids-hair-styling) for a quick school hairstyle session — we'll even teach you the techniques to recreate them at home.
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1516,7 +1516,7 @@ Many parents turn ear piercing into a celebration. We encourage you to:
 
 ## Book Your Child's Ear Piercing at KidSalonia
 
-Our piercing specialist is available by appointment to ensure unrushed, personalised attention. [Schedule your session](/contact-us) and give your child a safe, beautiful start to wearing earrings.
+Our piercing specialist is available by appointment to ensure unrushed, personalised attention. [Schedule your session](/book) and give your child a safe, beautiful start to wearing earrings.
 
 📞 Call +91 8130307036 or visit JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1621,7 +1621,7 @@ Our process is designed to be as fun as the result:
 
 ## Book a Temporary Colour Session
 
-Make your child's next celebration even more memorable. [Contact KidSalonia](/contact-us) to book a temporary hair colour appointment — available every day, including weekends.
+Make your child's next celebration even more memorable. [Book with KidSalonia](/book) for a temporary hair colour appointment — available every day, including weekends.
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1746,7 +1746,7 @@ Transform weekly oiling from a chore into cherished time:
 
 ## Book a Champi Consultation at KidSalonia
 
-Not sure which oil suits your child's hair? Our specialists can analyse their scalp and hair type, then recommend the perfect blend and technique. [Schedule a consultation](/contact-us) this week.
+Not sure which oil suits your child's hair? Our specialists can analyse their scalp and hair type, then recommend the perfect blend and technique. [Schedule a consultation](/book) this week.
 
 📞 Call +91 8130307036 or visit JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1844,7 +1844,7 @@ Book a session if you notice:
 
 ## Book a Summer Hair Reset
 
-Keep your child's hair healthy through swim season. [Contact us](/contact-us) to book a chlorine removal cleanse, hair spa, or trim — or walk in any day except Tuesday.
+Keep your child's hair healthy through swim season. [Book online](/book) for a chlorine removal cleanse, hair spa, or trim — or walk in any day except Tuesday.
 
 📞 Call +91 8130307036 or visit JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram).`,
   },
@@ -1892,7 +1892,7 @@ Our esthetician uses **paraben-free, child-safe products** for a quick 15-minute
 - Bright, cheerful salon designed for kids
 - Convenient locations across Gurugram
 
-**Book your child's party grooming session today** at [KidSalonia](/) — call us or [send us a message](/contact-us) and we'll reserve the perfect slot before your big day.`,
+**Book your child's party grooming session today** at [KidSalonia](/) — [reserve online](/book) or call or WhatsApp us as a fallback before your big day.`,
   },
   {
     slug: "toddler-first-haircut-gurgaon-may-7",
@@ -1935,7 +1935,7 @@ Most pediatric experts suggest the first haircut between **12 and 24 months**, d
 
 We offer a dedicated **Mundan service** in a hygienic, child-friendly setup with traditional rituals respected. Parents can bring priests or follow simple home customs in our private room.
 
-Book your child's first haircut at [KidSalonia](/) today and create a memory the whole family will cherish. [Contact us](/contact-us) to reserve your slot.`,
+Book your child's first haircut at [KidSalonia](/) today and create a memory the whole family will cherish. [Reserve your slot](/book?service=baby-first-haircut).`,
   },
   {
     slug: "mother-daughter-pedicure-bonding-gurgaon-may-6",
@@ -1980,7 +1980,7 @@ At **KidSalonia**, we've designed our pedicure stations so mothers and daughters
 
 Our **Mom & Mini Pedicure Combo** is one of our most popular offerings. Ask about our seasonal May discount when you book.
 
-Make this weekend memorable. Book your mother-daughter pedicure at [KidSalonia](/) today or [send us a message](/contact-us) — we'll save you a peaceful corner.`,
+Make this weekend memorable. [Book your mother-daughter pedicure](/book?service=pedicure) at KidSalonia today.`,
   },
   {
     slug: "kids-gentle-facial-summer-skin-may-5",
@@ -2026,7 +2026,7 @@ We recommend our **basic kids facial from age 6+**, and a slightly more targeted
 4. Avoid touching the face after outdoor play
 5. Use only kid-formulated skincare products
 
-Book your child's gentle summer facial at [KidSalonia](/) today. [Contact us](/contact-us) and our skin expert will recommend the right facial for your child's age and skin type.`,
+Book your child's gentle summer facial at [KidSalonia](/) today. [Reserve online](/book) and our skin expert will recommend the right facial for your child's age and skin type.`,
   },
   {
     slug: "kids-nail-art-salon-gurgaon-may-4",
@@ -2081,7 +2081,7 @@ For older kids (10+), we also offer **gentle press-on nail extensions** — no a
 - Bright, child-friendly nail studio in Gurugram
 - Patient stylists who let kids choose colours themselves
 
-Ready to book? Visit [KidSalonia](/) — Gurgaon's most loved kids nail art salon — or [contact us](/contact-us) to reserve a weekend slot.`,
+Ready to book? Visit [KidSalonia](/) — Gurgaon's most loved kids nail art salon — or [reserve a weekend slot](/book?service=nail-art).`,
   },
   {
     slug: "kids-modern-haircut-gurgaon-may-3",
@@ -2140,7 +2140,7 @@ Trending hard with tweens — choppy, voluminous, and full of personality.
 
 Our salon stays busy on weekends — book your slot in advance to avoid the wait. We're open **Mon, Mon & Wed–Sun, 11:30 AM to 8:30 PM (Sat–Sun till 9:00 PM)** (Closed Tuesdays).
 
-Visit [KidSalonia](/) or [contact us](/contact-us) to book Gurgaon's most stylish kids haircut today.`,
+Visit [KidSalonia](/) or [book a kids haircut](/book?service=kids-haircut) today.`,
   },
   {
     slug: "kids-summer-haircut-styles-gurgaon-may",
@@ -2213,7 +2213,7 @@ A great cut lasts longer with the right care at home.
 
 ## Book Your Child's May Haircut
 
-Weekend slots fill quickly during summer break. Visit our [Hair services page](/hair) to explore the full menu, or head to our [Contact page](/contact) to book your child's appointment at KidSalonia, Gurugram's premium kids salon.
+Weekend slots fill quickly during summer break. Visit our [Hair services page](/hair) to explore the full menu, or [book your child's appointment](/book?service=kids-haircut) at KidSalonia, Gurugram's premium kids salon.
 
 Whether it's a first haircut, a bold new look, or a quick trim before school resumes, we'll make sure your child walks out cool, confident, and smiling.`,
   },
@@ -2274,7 +2274,7 @@ Many of our regular families have turned the mother-daughter pedicure into a mon
 
 Slots fill quickly during weekends and school breaks. Book your shared pedicure at KidSalonia, Gurugram's premium kids and family salon, and start a tradition your daughter will remember for years.
 
-Visit our [Contact page](/contact) to reserve your seats, or explore our full [nail services menu](/nails) for more options including nail art and gentle manicures.`,
+Use our [booking page](/book?service=nail-art) to reserve your seats, or explore our full [nail services menu](/nails) for more options including nail art and gentle manicures.`,
   },
   {
     slug: "kids-summer-facial-skincare-april",
@@ -2344,7 +2344,7 @@ A salon facial works best when supported by daily care. Keep it simple — kids 
 
 ## Book a Summer Skin Check at KidSalonia
 
-If you've noticed changes in your child's skin this summer, a quick consultation with our trained kids skincare specialists can help. Visit our [Skin services page](/skin) to learn more, or [book an appointment](/contact) for a gentle kids facial designed for safe, glowing summer skin.`,
+If you've noticed changes in your child's skin this summer, a quick consultation with our trained kids skincare specialists can help. Visit our [Skin services page](/skin) to learn more, or [book an appointment](/book) for a gentle kids facial designed for safe, glowing summer skin.`,
   },
   {
     slug: "kids-summer-haircut-gurgaon-april",
@@ -2423,7 +2423,7 @@ A great cut lasts longer with the right care.
 
 ## Book Your Child's Summer Cut
 
-Weekend slots fill up fast in summer. Book early at KidSalonia, conveniently located for families across DLF Phase 1–5, Sector 67, Sohna Road, and surrounding Gurugram areas. Explore our full [hair services menu](/hair) or [book an appointment](/contact) today.`,
+Weekend slots fill up fast in summer. Book early at KidSalonia, conveniently located for families across DLF Phase 1–5, Sector 67, Sohna Road, and surrounding Gurugram areas. Explore our full [hair services menu](/hair) or [book an appointment](/book?service=kids-haircut) today.`,
   },
   {
     slug: "kids-nail-salon-gurgaon-nail-art-extensions",
@@ -2487,7 +2487,7 @@ When parents search for a **kids nail salon in Gurgaon**, they're looking for mo
 
 ## Booking Your Visit
 
-Our nail studio is open Monday and Wednesday–Friday from 11:30 AM to 8:30 PM, and Saturday–Sunday from 10:30 AM to 9:00 PM. We're closed on Tuesdays. Walk-ins are welcome, but we recommend [booking in advance](/contact-us) for weekends and special occasions to avoid waiting.
+Our nail studio is open Monday and Wednesday–Friday from 11:30 AM to 8:30 PM, and Saturday–Sunday from 10:30 AM to 9:00 PM. We're closed on Tuesdays. Walk-ins are welcome, but we recommend [booking in advance](/book?service=nail-art) for weekends and special occasions to avoid waiting.
 
 For first-time visitors, we offer a complimentary consultation where parents and children can tour the salon, meet the technicians, and choose services together. This helps reduce anxiety and ensures your child feels at home before any service begins.
 
@@ -2502,7 +2502,7 @@ For first-time visitors, we offer a complimentary consultation where parents and
 
 Choosing the right **kids nail salon in Gurgaon** is about more than aesthetics — it's about safety, comfort, and creating positive memories. Whether your little one wants a simple manicure, vibrant nail art, or a special-occasion extension, KidSalonia is committed to delivering an experience that's gentle, joyful, and entirely kid-first.
 
-Visit us in Gurugram or [get in touch](/contact-us) to plan your child's next nail appointment. Their tiny hands deserve the very best.`,
+Visit us in Gurugram or [book online](/book?service=nail-art) to plan your child's next nail appointment. Their tiny hands deserve the very best.`,
   },
   {
     slug: "kids-summer-nail-art-trends-2026",
@@ -2785,7 +2785,7 @@ The best kids salon becomes more than a service provider — it becomes a famili
 
 At KidSalonia, every detail is designed with children in mind — from our hygienic stations and gentle tools to our specially trained stylists who turn every visit into a happy memory. We use safe, child-friendly products and offer a wide range of accessories for both everyday looks and special occasions.
 
-[Visit KidSalonia](/contact-us) and discover why parents across Gurugram trust us with their little ones' grooming needs. Your child deserves a salon experience that's safe, fun, and memorable — every single time.`,
+[Book KidSalonia](/book) and discover why parents across Gurugram trust us with their little ones' grooming needs. Your child deserves a salon experience that's safe, fun, and memorable — every single time.`,
   },
   {
     slug: "kids-shampoo-salon-experience-benefits",
@@ -2909,7 +2909,7 @@ The whole process usually takes 10 to 15 minutes and feels like a relaxing treat
 
 Our shampoo experience is specially designed to make kids feel safe, comfortable, and pampered. We use only gentle, tear-free products formulated for children's sensitive scalps. Our stylists are trained to handle even the most hesitant little ones with patience and warmth.
 
-[Book a salon visit at KidSalonia](/contact-us) and let your child enjoy the difference a professional shampoo can make. From the first warm splash of water to the final gentle towel pat, every moment is designed with your child's comfort in mind.`,
+[Book a salon visit at KidSalonia](/book) and let your child enjoy the difference a professional shampoo can make. From the first warm splash of water to the final gentle towel pat, every moment is designed with your child's comfort in mind.`,
   },
   {
     slug: "kids-party-grooming-special-occasions",
@@ -3183,7 +3183,7 @@ We use child-safe, hypoallergenic products specifically formulated for young, se
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, Sector 67, Gurugram to book a consultation. Let us help your child develop healthy summer skin habits in a safe, welcoming environment.
 
-Explore our [Skin Services](/skin) or [Contact us](/contact-us) to learn more about our child-focused grooming and skincare options.`
+Explore our [Skin Services](/skin) or [book online](/book) to plan a child-focused grooming and skincare appointment.`
   },
   {
     slug: "healthy-nail-care-habits-for-kids",
@@ -3330,7 +3330,7 @@ Whether it is your child's first professional manicure, a special occasion prep,
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, Sector 67, Gurugram to book a kids manicure or pedicure. Let us help your child develop healthy nail care habits in a safe, welcoming environment.
 
-Explore our [Nail Services](/nails) or [Contact us](/contact-us) to learn more about our child-focused grooming options.`,
+Explore our [Nail Services](/nails) or [book online](/book?service=nail-art) to plan a child-focused grooming appointment.`,
   },
   {
     slug: "weekly-hair-care-routine-indian-kids",
@@ -3393,7 +3393,7 @@ No external routine works without internal nourishment. Make sure your child eat
 
 If your child has persistent dandruff, severe hair fall, scalp irritation, or stubborn tangles, it is time for a professional consultation. A trained kids stylist can assess the scalp, recommend the right products, and provide gentle treatments that home care cannot match.
 
-At [KidSalonia](/), our trained stylists specialize in kids hair and scalp care. From gentle washes to nourishing hair spas, we make every visit a happy experience. Book a consultation through our [Contact page](/contact-us) or explore our [Hair Services](/hair) for haircuts, styling, and treatments designed exclusively for children.
+At [KidSalonia](/), our trained stylists specialize in kids hair and scalp care. From gentle washes to nourishing hair spas, we make every visit a happy experience. Book a consultation through our [booking page](/book) or explore our [Hair Services](/hair) for haircuts, styling, and treatments designed exclusively for children.
 
 ## Final Thoughts
 
@@ -7283,7 +7283,7 @@ The perfect hairstyle for your child is one that:
 
 At [KidSalonia](/), our trained stylists specialise in children's hair and understand the unique characteristics of Indian hair types. We take time to consult with both parents and children, ensuring everyone leaves happy with a style that works.
 
-[Book an appointment](/contact-us) today and let us help you find the perfect hairstyle for your child. Whether it's a simple trim, a complete restyle, or just advice on managing their natural texture, we're here to help your child look and feel their best.
+[Book an appointment](/book?service=kids-hair-styling) today and let us help you find the perfect hairstyle for your child. Whether it's a simple trim, a complete restyle, or just advice on managing their natural texture, we're here to help your child look and feel their best.
 
 📞 Call +91 8130307036 or visit us at JMD Suburbio 2, [Sector 67, Gurugram](/kids-salon-sector-67-gurugram) for a personalised consultation.`,
   },

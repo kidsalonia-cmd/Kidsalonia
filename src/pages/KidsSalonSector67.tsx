@@ -169,7 +169,7 @@ const KidsSalonSector67 = () => {
 
             <div className="flex flex-wrap gap-4 mt-8">
               <Link
-                to="/contact-us"
+                to="/book?service=kids-haircut"
                 className="bg-primary text-primary-foreground font-bold px-8 py-4 rounded-full text-lg hover:opacity-90 transition shadow-lg"
               >
                 Book Appointment
@@ -468,7 +468,7 @@ const KidsSalonSector67 = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              to="/contact-us"
+              to="/book?service=kids-haircut"
               className="bg-primary text-primary-foreground font-bold px-10 py-4 rounded-full text-lg hover:opacity-90 transition shadow-lg"
             >
               Book Now
@@ -490,7 +490,7 @@ const KidsSalonSector67 = () => {
       {/* STICKY MOBILE CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border p-3 flex gap-3 lg:hidden">
         <Link
-          to="/contact-us"
+          to="/book?service=kids-haircut"
           className="flex-1 bg-primary text-primary-foreground font-bold py-3 rounded-full text-center text-sm shadow-lg"
         >
           Book Now

@@ -188,7 +188,7 @@ const Footer = () => {
             </p>
             <div className="space-y-3">
               <Link
-                to="/contact-us"
+                to="/book"
                 className="flex items-center justify-center gap-2 bg-[#EE2852] text-white hover:bg-[#d5214a] font-semibold px-5 py-3 rounded-full text-sm transition"
               >
                 <Calendar size={16} /> Book Appointment

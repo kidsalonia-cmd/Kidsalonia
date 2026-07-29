@@ -8,6 +8,7 @@ import hairHeroBanner from "@/assets/hair-hero-banner.jpg";
 import hairGirlsStyling from "@/assets/hair-girls-styling.jpg";
 import hairMundan from "@/assets/hair-mundan.jpg";
 import hairPartyStyling from "@/assets/gallery/gallery-21.jpeg";
+import { getBookingPath } from "@/lib/booking";
 
 const boysHairServices = [
   { name: "Boys Haircut", price: "₹299", description: "Clean, comfortable, and stylish haircuts for boys of all ages — from toddlers to teens." },
@@ -103,13 +104,13 @@ const hairServiceSchema = {
 };
 
 const ServiceCard = ({ name, price, description }: { name: string; price: string; description: string }) => (
-  <div className="flex items-start justify-between py-4 border-b border-border/40 gap-4">
+  <Link to={getBookingPath(name)} className="flex items-start justify-between py-4 border-b border-border/40 gap-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary">
     <div className="flex-1">
       <h3 className="font-bold text-foreground text-base">{name}</h3>
       <p className="text-sm text-muted-foreground mt-1">{description}</p>
     </div>
     <span className="text-primary font-bold text-lg whitespace-nowrap">{price}</span>
-  </div>
+  </Link>
 );
 
 const Hair = () => {
@@ -140,9 +141,9 @@ const Hair = () => {
           <p className="text-white/80 text-base md:text-lg max-w-2xl">
             Gentle haircuts, fun styling, and safe treatments — designed to keep kids comfortable, smiling, and looking their best
           </p>
-          <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" className="mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">
+          <Link to="/book?service=kids-haircut" className="mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">
             Book Now
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -275,9 +276,9 @@ const Hair = () => {
                 <ServiceCard key={s.name} {...s} />
               ))}
             </div>
-            <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" className="inline-block mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">
+            <Link to="/book?service=mundan" className="inline-block mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">
               Book Mundan Appointment
-            </a>
+            </Link>
           </div>
           <div className="rounded-xl overflow-hidden">
             <img

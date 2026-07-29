@@ -74,7 +74,7 @@ const HeroBanner = () => {
             </a>
 
             <Link
-              to="/contact-us"
+              to="/book"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-extrabold text-primary-foreground shadow-xl transition hover:-translate-y-1 hover:opacity-90"
             >
               <CalendarDays size={21} /> Book Appointment
@@ -130,14 +130,12 @@ const HeroBanner = () => {
               </div>
             </div>
 
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/book"
               className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3.5 font-extrabold text-slate-950 transition hover:-translate-y-0.5"
             >
-              <MessageCircle size={19} className="text-[#25D366]" /> Reserve Your Child&apos;s Slot
-            </a>
+              <CalendarDays size={19} className="text-primary" /> Reserve Your Child&apos;s Slot
+            </Link>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import SEO, { localBusinessSchema, createFAQSchema } from "@/components/SEO";
 import nailsHeroBanner from "@/assets/nails-hero-premium.jpg";
 import kidsNailsImg from "@/assets/nails-kids-realistic.jpg";
 import adultNailsImg from "@/assets/nails-adult-realistic.jpg";
+import { getBookingPath } from "@/lib/booking";
 
 
 
@@ -96,13 +97,13 @@ const nailsServiceSchema = {
 };
 
 const ServiceCard = ({ name, price, description }: { name: string; price: string; description: string }) => (
-  <div className="flex items-start justify-between py-4 border-b border-border/40 gap-4">
+  <Link to={getBookingPath(name)} className="flex items-start justify-between py-4 border-b border-border/40 gap-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-primary">
     <div className="flex-1">
       <h3 className="font-bold text-foreground text-base">{name}</h3>
       <p className="text-sm text-muted-foreground mt-1">{description}</p>
     </div>
     <span className="text-primary font-bold text-lg whitespace-nowrap">{price}</span>
-  </div>
+  </Link>
 );
 
 const Nails = () => {
@@ -124,7 +125,7 @@ const Nails = () => {
           <p className="text-white/90 text-lg font-semibold mb-2">KidSalonia</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">Acrylic Nail Extensions & Nail Art Near Me</h1>
           <p className="text-white/80 text-base md:text-lg max-w-2xl">Looking for <strong>acrylic nail extensions</strong> or <strong>nail extensions near me</strong>? KidSalonia offers premium acrylic nails, gel nail extensions, trendy nail art designs for women — plus safe, colourful nail art for kids in Gurugram.</p>
-          <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" className="mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">Book Now</a>
+          <Link to="/book?service=nail-art" className="mt-6 bg-primary text-primary-foreground font-bold px-8 py-3 rounded-full text-base hover:opacity-90 transition">Book Now</Link>
         </div>
       </section>
 

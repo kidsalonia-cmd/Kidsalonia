@@ -54,11 +54,11 @@ const HairSection = () => {
             <p className="mt-3 text-muted-foreground text-sm">
               KidSalonia is a trusted kids and adult salon in Gurugram offering grooming, nail care and styling services for children, women and families.
             </p>
-            <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" >
-              <button className="mt-6 rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
+            <Link to="/book?service=kids-haircut">
+              <span className="mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
                 Book
-              </button>
-            </a>
+              </span>
+            </Link>
             <div className="mt-10 divide-y border-t">
               {hairServices.map((service) => (
                 <ServiceItem key={service.name} {...service} />

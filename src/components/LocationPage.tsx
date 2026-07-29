@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SEO, { localBusinessSchema, createFAQSchema } from "@/components/SEO";
 import SocialProofWidget from "@/components/SocialProofWidget";
 import heroImg from "@/assets/geo-kids-salon-dlf.jpg";
+import { Link } from "react-router-dom";
 
 export interface LocationPageProps {
   metaTitle: string;
@@ -84,9 +85,9 @@ const LocationPage = ({
             <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 max-w-3xl">{h1}</h1>
             <p className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl">{heroSubheading}</p>
             <div className="flex flex-wrap gap-3">
-              <a href="tel:+918130307036" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-lg hover:opacity-90 transition">
-                <Phone className="w-5 h-5" /> Book Appointment
-              </a>
+              <Link to="/book?service=kids-haircut" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-lg hover:opacity-90 transition">
+                <Scissors className="w-5 h-5" /> Book Appointment
+              </Link>
               <a href="https://maps.google.com/?q=28.5035,77.0386" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/20 text-white border border-white/30 px-6 py-3 rounded-full font-bold text-lg hover:bg-white/30 transition">
                 <MapPin className="w-5 h-5" /> Get Directions
               </a>
@@ -205,15 +206,15 @@ const LocationPage = ({
             Book Your Child's Appointment from {area} Today
           </h2>
           <p className="text-muted-foreground mb-6">Limited weekend slots, book early to avoid disappointment.</p>
-          <a href="tel:+918130307036" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
-            <Phone className="w-5 h-5" /> Book Now
-          </a>
+          <Link to="/book?service=kids-haircut" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
+            <Scissors className="w-5 h-5" /> Book Now
+          </Link>
         </div>
       </section>
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-primary p-3 flex gap-2 shadow-lg">
         <a href="tel:+918130307036" className="flex-1 text-center text-primary-foreground font-bold py-2 rounded-lg bg-primary-foreground/20">Call Now</a>
-        <a href="tel:+918130307036" className="flex-1 text-center text-primary-foreground font-bold py-2 rounded-lg bg-primary-foreground/20">Book Now</a>
+        <Link to="/book?service=kids-haircut" className="flex-1 text-center text-primary-foreground font-bold py-2 rounded-lg bg-primary-foreground/20">Book Now</Link>
       </div>
 
       <Footer />

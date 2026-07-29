@@ -49,11 +49,11 @@ const NailsSection = () => {
             <p className="mt-4 text-muted-foreground">
               From cute cuts to party-ready glam, we offer gentle, safe, and stylish services designed especially for kids.
             </p>
-            <a href="https://wa.me/918130307036" target="_blank" rel="noopener noreferrer" >
-              <button className="mt-6 rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
+            <Link to="/book?service=nail-art">
+              <span className="mt-6 inline-block rounded-md bg-primary px-6 py-3 text-primary-foreground font-semibold hover:opacity-90 transition">
                 Book
-              </button>
-            </a>
+              </span>
+            </Link>
 
             {/* Kids Nails */}
             <div className="mt-12">

@@ -148,7 +148,7 @@ const Offers = () => {
               Reserve a convenient weekday slot and mention coupon {COUPON_CODE} while confirming your appointment.
             </p>
             <Link
-              to="/contact-us"
+              to="/book"
               className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 font-black text-primary-foreground shadow-lg transition hover:-translate-y-1"
             >
               <CalendarDays size={20} /> Book Appointment

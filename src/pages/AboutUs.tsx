@@ -236,7 +236,7 @@ const AboutUs = () => {
               to the KidSalonia family. 💛
             </p>
             <Link
-              to="/contact-us"
+              to="/book"
               className="inline-block bg-primary text-primary-foreground font-bold px-10 py-3.5 rounded-full text-lg hover:opacity-90 transition"
             >
               Book Now

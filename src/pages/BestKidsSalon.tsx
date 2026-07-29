@@ -156,7 +156,7 @@ const BestKidsSalon = () => {
 
             <div className="flex flex-wrap gap-4 mt-8">
               <Link
-                to="/contact-us"
+                to="/book?service=kids-haircut"
                 className="bg-primary text-primary-foreground font-bold px-8 py-4 rounded-full text-lg hover:opacity-90 transition shadow-lg"
               >
                 Book Appointment
@@ -438,7 +438,7 @@ const BestKidsSalon = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              to="/contact-us"
+              to="/book?service=kids-haircut"
               className="bg-background text-primary font-bold px-10 py-4 rounded-full text-lg hover:shadow-xl transition"
             >
               Book Now
@@ -457,7 +457,7 @@ const BestKidsSalon = () => {
       <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-background/95 backdrop-blur-md border-t border-border px-4 py-3">
         <div className="flex gap-3">
           <Link
-            to="/contact-us"
+            to="/book?service=kids-haircut"
             className="flex-1 bg-primary text-primary-foreground font-bold py-3 rounded-full text-center text-sm"
           >
             Book Now

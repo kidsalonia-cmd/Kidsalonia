@@ -13,6 +13,7 @@ import SEO, {
 } from "@/components/SEO";
 import { seoServices } from "@/data/services";
 import { seoLocations } from "@/data/locations";
+import { getBookingPath } from "@/lib/booking";
 
 const PRIMARY_PHONE = "+918130307036";
 const SECONDARY_PHONE = "+919773864949";
@@ -334,7 +335,7 @@ const LocationServicePage = () => {
                   <div><dt className="text-sm font-semibold text-muted-foreground">Salon address</dt><dd className="mt-1 leading-6">{SALON_ADDRESS}</dd></div>
                   <div><dt className="text-sm font-semibold text-muted-foreground">Phone</dt><dd className="mt-1"><a href={`tel:${PRIMARY_PHONE}`} className="font-bold text-primary">+91 81303 07036</a><br /><a href={`tel:${SECONDARY_PHONE}`} className="font-bold text-primary">+91 97738 64949</a></dd></div>
                 </dl>
-                <Link to="/contact-us" className="mt-7 inline-flex w-full justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground">
+                <Link to={getBookingPath(matchedService.serviceType)} className="mt-7 inline-flex w-full justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground">
                   Book an appointment
                 </Link>
               </div>

@@ -11,6 +11,7 @@ import SEO, {
   websiteSchema,
 } from "@/components/SEO";
 import { seoServices } from "@/data/services";
+import { getBookingPath } from "@/lib/booking";
 
 const PHONE = "+918130307036";
 
@@ -436,7 +437,7 @@ const AuthorityHubPage = () => {
             <p className="mt-6 max-w-4xl text-lg leading-8 text-muted-foreground md:text-xl">{config.intro}</p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href={`tel:${PHONE}`} className="rounded-full bg-primary px-7 py-3 font-semibold text-primary-foreground">Call 81303 07036</a>
-              <Link to="/contact-us" className="rounded-full border bg-background px-7 py-3 font-semibold">Book an appointment</Link>
+              <Link to={getBookingPath(config.serviceSlugs[0])} className="rounded-full border bg-background px-7 py-3 font-semibold">Book an appointment</Link>
             </div>
           </div>
         </section>
