@@ -6,20 +6,24 @@ type BookNowCTAProps = {
   title?: string;
   description?: string;
   className?: string;
+  service?: string;
 };
 
 const BookNowCTA = ({
   title = "Ready to book your child's salon visit?",
   description = "Choose online booking, WhatsApp, or a quick call — our team will help you reserve the best slot.",
   className = "",
+  service,
 }: BookNowCTAProps) => {
+  const bookingUrl = service ? `/book?service=${encodeURIComponent(service)}` : "/book";
+
   return (
     <section className={`rounded-3xl bg-primary/10 p-6 md:p-8 text-center ${className}`}>
       <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">{title}</h2>
       <p className="max-w-2xl mx-auto text-sm md:text-base text-foreground/70 mb-6">{description}</p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <Link
-          to="/contact-us"
+          to={bookingUrl}
           className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-bold text-primary-foreground transition hover:opacity-90"
         >
           <Calendar size={18} /> Book Now
