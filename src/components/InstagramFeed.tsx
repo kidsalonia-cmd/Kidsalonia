@@ -113,7 +113,13 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
     let observer: MutationObserver | undefined;
 
-    const hasRenderedEmbed = () => Boolean(containerRef.current?.querySelector("iframe"));
+    const hasRenderedEmbed = () => {
+      const iframe = containerRef.current?.querySelector("iframe");
+      if (!iframe) return false;
+
+      const declaredHeight = Number(iframe.getAttribute("height") ?? 0);
+      return declaredHeight >= 200 || iframe.getBoundingClientRect().height >= 200;
+    };
     const markRendered = () => {
       if (!hasRenderedEmbed()) return;
       if (timeoutId) clearTimeout(timeoutId);
@@ -128,7 +134,12 @@ const FeaturedReelEmbed = ({ post }: { post: InstagramPost }) => {
         if (hasRenderedEmbed()) return;
         observer = new MutationObserver(markRendered);
         if (containerRef.current) {
-          observer.observe(containerRef.current, { childList: true, subtree: true });
+          observer.observe(containerRef.current, {
+            attributes: true,
+            attributeFilter: ["height", "style"],
+            childList: true,
+            subtree: true,
+          });
         }
         timeoutId = setTimeout(() => {
           if (active && !hasRenderedEmbed()) setEmbedFailed(true);

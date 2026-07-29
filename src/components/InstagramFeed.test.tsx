@@ -1,6 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import InstagramFeed from "./InstagramFeed";
 import type { InstagramPost } from "@/data/instagram-posts";
 
@@ -13,6 +13,8 @@ const renderFeed = (posts?: InstagramPost[]) =>
 
 describe("InstagramFeed", () => {
   afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
     document.querySelectorAll('script[src="https://www.instagram.com/embed.js"]').forEach((script) => script.remove());
     delete window.instgrm;
   });
@@ -67,6 +69,37 @@ describe("InstagramFeed", () => {
     renderFeed();
 
     expect(document.querySelectorAll('script[src="https://www.instagram.com/embed.js"]')).toHaveLength(1);
+  });
+
+  it("falls back when Instagram creates an iframe that never becomes visible", async () => {
+    vi.useFakeTimers();
+    const featuredPost: InstagramPost = {
+      postUrl: "https://www.instagram.com/kidsalonia/reel/blocked-featured/",
+      thumbnailUrl: "https://example.com/blocked.jpg",
+      caption: "Privacy-blocked featured Reel",
+      mediaType: "reel",
+      featured: true,
+    };
+    window.instgrm = {
+      Embeds: {
+        process: vi.fn(() => {
+          const blockquote = document.querySelector("blockquote.instagram-media");
+          const iframe = document.createElement("iframe");
+          iframe.setAttribute("height", "0");
+          blockquote?.replaceWith(iframe);
+        }),
+      },
+    };
+
+    renderFeed([featuredPost]);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(10_000);
+    });
+
+    expect(screen.getByTestId("instagram-embed-fallback")).toBeInTheDocument();
   });
 
   it("renders a secure Instagram profile CTA", () => {
