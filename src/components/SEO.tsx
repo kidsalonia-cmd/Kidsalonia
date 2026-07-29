@@ -18,6 +18,39 @@ export const BUSINESS_ADDRESS =
   "Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101";
 
 const DEFAULT_OG_IMAGE = `${BASE_URL}/image/kidsaloniaNEWbanner.jpeg`;
+const LOCAL_BUSINESS_ID = `${BASE_URL}/#localbusiness`;
+const ORGANIZATION_ID = `${BASE_URL}/#organization`;
+
+const coreServiceNames = [
+  "Kids Haircut",
+  "Baby First Haircut",
+  "Mundan Ceremony",
+  "Children's Hair Styling",
+  "Nail Art",
+  "Nail Extensions",
+  "Manicure",
+  "Pedicure",
+  "Birthday Grooming",
+  "Family Salon Services",
+];
+
+const serviceAreaNames = [
+  "Gurugram",
+  "Gurgaon",
+  "Sohna Road",
+  "Golf Course Extension Road",
+  "New Gurgaon",
+  "DLF Gurugram",
+  "Manesar",
+  "Sohna",
+  "Faridabad",
+  "South Delhi",
+  "Dwarka",
+  "Noida",
+  "Greater Noida",
+  "Ghaziabad",
+  "Delhi NCR",
+];
 
 const SEO = ({
   title,
@@ -38,10 +71,6 @@ const SEO = ({
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta
-        name="keywords"
-        content="kids salon Gurgaon, kids haircut Gurgaon, baby haircut Gurgaon, mundan Gurgaon, nail art Gurgaon, manicure Gurgaon, pedicure Gurgaon, hairdresser Gurgaon, family salon Gurgaon, kids salon near Airia Mall"
-      />
 
       <link rel="canonical" href={canonicalUrl} />
       <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
@@ -97,10 +126,14 @@ export default SEO;
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": `${BASE_URL}/#organization`,
+  "@id": ORGANIZATION_ID,
   name: BUSINESS_NAME,
   url: BASE_URL,
-  logo: `${BASE_URL}/favicon.webp`,
+  logo: {
+    "@type": "ImageObject",
+    "@id": `${BASE_URL}/#logo`,
+    url: `${BASE_URL}/favicon.webp`,
+  },
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -129,15 +162,19 @@ export const websiteSchema = {
   "@id": `${BASE_URL}/#website`,
   name: BUSINESS_NAME,
   url: BASE_URL,
-  publisher: {
-    "@id": `${BASE_URL}/#organization`,
-  },
+  publisher: { "@id": ORGANIZATION_ID },
+  inLanguage: "en-IN",
 };
+
+const structuredServiceAreas = serviceAreaNames.map((name) => ({
+  "@type": name === "Delhi NCR" ? "AdministrativeArea" : "Place",
+  name,
+}));
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["HairSalon", "BeautySalon", "NailSalon", "LocalBusiness"],
-  "@id": `${BASE_URL}/#localbusiness`,
+  "@id": LOCAL_BUSINESS_ID,
   name: BUSINESS_NAME,
   alternateName: "KidSalonia Kids Salon & Nail Studio",
   description:
@@ -153,16 +190,7 @@ export const localBusinessSchema = {
     postalCode: "122101",
     addressCountry: "IN",
   },
-  areaServed: [
-    "Gurugram",
-    "Sector 57 Gurugram",
-    "Sector 67 Gurugram",
-    "Airia Mall",
-    "Sohna Road",
-    "Golf Course Extension Road",
-    "DLF Gurugram",
-    "Delhi NCR",
-  ],
+  areaServed: structuredServiceAreas,
   geo: {
     "@type": "GeoCoordinates",
     latitude: 28.5035,
@@ -171,6 +199,7 @@ export const localBusinessSchema = {
   hasMap:
     "https://maps.google.com/?q=KidSalonia%20A-19%20JMD%20Suburbio%202%20Gurugram",
   paymentAccepted: ["Cash", "UPI", "Credit Card", "Debit Card"],
+  currenciesAccepted: "INR",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -186,8 +215,12 @@ export const localBusinessSchema = {
     },
   ],
   priceRange: "₹₹",
-  image: `${BASE_URL}/image/kidsaloniaNEWbanner.jpeg`,
-  logo: `${BASE_URL}/favicon.webp`,
+  image: {
+    "@type": "ImageObject",
+    "@id": `${BASE_URL}/#primaryimage`,
+    url: DEFAULT_OG_IMAGE,
+  },
+  logo: { "@id": `${BASE_URL}/#logo` },
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -204,24 +237,39 @@ export const localBusinessSchema = {
       availableLanguage: ["English", "Hindi"],
     },
   ],
-  makesOffer: [
-    "Kids Haircut",
-    "Baby First Haircut",
-    "Mundan Ceremony",
-    "Nail Art",
-    "Nail Extensions",
+  knowsAbout: [
+    "Kids haircuts",
+    "Baby first haircuts",
+    "Toddler haircuts",
+    "Mundan ceremonies",
+    "Children's hair styling",
+    "Kids nail art",
+    "Nail extensions",
     "Manicure",
     "Pedicure",
-    "Hair Styling",
-    "Hairdresser Services",
-    "Family Salon Services",
-  ].map((name) => ({
+    "Child-friendly salon experiences",
+    "Salon hygiene for children",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    "@id": `${BASE_URL}/#service-catalog`,
+    name: "KidSalonia Services",
+    itemListElement: coreServiceNames.map((name) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name,
+        provider: { "@id": LOCAL_BUSINESS_ID },
+      },
+    })),
+  },
+  makesOffer: coreServiceNames.map((name) => ({
     "@type": "Offer",
     itemOffered: {
       "@type": "Service",
       name,
-      provider: { "@id": `${BASE_URL}/#localbusiness` },
-      areaServed: "Gurugram",
+      provider: { "@id": LOCAL_BUSINESS_ID },
+      areaServed: structuredServiceAreas,
     },
   })),
   aggregateRating: {
@@ -230,7 +278,7 @@ export const localBusinessSchema = {
     reviewCount: "69",
     bestRating: "5",
   },
-  parentOrganization: { "@id": `${BASE_URL}/#organization` },
+  parentOrganization: { "@id": ORGANIZATION_ID },
   sameAs: organizationSchema.sameAs,
 };
 
@@ -247,34 +295,62 @@ export const createBreadcrumbSchema = (
   })),
 });
 
+const getAreaServedType = (locationName: string) => {
+  if (/Delhi NCR/i.test(locationName)) return "AdministrativeArea";
+  if (/^(Gurgaon|Gurugram|Sohna|Manesar|Faridabad|Noida|Ghaziabad)/i.test(locationName)) {
+    return "City";
+  }
+  return "Place";
+};
+
+const extractLocationFromServiceName = (serviceName: string) => {
+  const location = serviceName.split(/\sin\s/i).pop()?.trim();
+  return location || "Gurugram";
+};
+
 export const createServiceSchema = ({
   name,
   description,
   url,
   serviceType = name,
+  areaServedName,
 }: {
   name: string;
   description: string;
   url: string;
   serviceType?: string;
-}) => ({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": `${url}#service`,
-  name,
-  serviceType,
-  description,
-  provider: { "@id": `${BASE_URL}/#localbusiness` },
-  areaServed: {
-    "@type": "City",
-    name: "Gurugram",
-  },
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: url,
-    servicePhone: BUSINESS_PHONE,
-  },
-});
+  areaServedName?: string;
+}) => {
+  const locationName = areaServedName || extractLocationFromServiceName(name);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name,
+    serviceType,
+    description,
+    url,
+    provider: { "@id": LOCAL_BUSINESS_ID },
+    areaServed: {
+      "@type": getAreaServedType(locationName),
+      name: locationName,
+    },
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: url,
+      servicePhone: BUSINESS_PHONE,
+      serviceLocation: { "@id": LOCAL_BUSINESS_ID },
+    },
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      url,
+      seller: { "@id": LOCAL_BUSINESS_ID },
+    },
+    mainEntityOfPage: { "@id": url },
+  };
+};
 
 export const createBlogPostSchema = (blog: {
   title: string;
@@ -296,14 +372,7 @@ export const createBlogPostSchema = (blog: {
     name: blog.author,
     url: BASE_URL,
   },
-  publisher: {
-    "@type": "Organization",
-    name: BUSINESS_NAME,
-    logo: {
-      "@type": "ImageObject",
-      url: `${BASE_URL}/image/logo.webp`,
-    },
-  },
+  publisher: { "@id": ORGANIZATION_ID },
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": `${BASE_URL}/insights/${blog.slug}`,
