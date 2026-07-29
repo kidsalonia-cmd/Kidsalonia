@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import InstagramFeed from "./InstagramFeed";
 import type { InstagramPost } from "@/data/instagram-posts";
 
@@ -12,10 +12,61 @@ const renderFeed = (posts?: InstagramPost[]) =>
   );
 
 describe("InstagramFeed", () => {
+  afterEach(() => {
+    document.querySelectorAll('script[src="https://www.instagram.com/embed.js"]').forEach((script) => script.remove());
+    delete window.instgrm;
+  });
+
   it("renders six fallback posts", () => {
     renderFeed();
     expect(screen.getAllByTestId("instagram-post-card")).toHaveLength(6);
     expect(screen.getAllByRole("img")).toHaveLength(6);
+  });
+
+  it("renders no more than two featured public Reels above the six-card grid", () => {
+    renderFeed();
+
+    const featuredReels = screen.getAllByTestId("instagram-featured-reel");
+    expect(featuredReels).toHaveLength(2);
+    expect(featuredReels[0].querySelector("blockquote")).toHaveAttribute(
+      "data-instgrm-permalink",
+      "https://www.instagram.com/kidsalonia/reel/DZqBpuszGsg/",
+    );
+    expect(featuredReels[1].querySelector("blockquote")).toHaveAttribute(
+      "data-instgrm-permalink",
+      "https://www.instagram.com/kidsalonia/reel/DYFKuxIpJhF/",
+    );
+    expect(screen.getAllByTestId("instagram-post-card")).toHaveLength(6);
+  });
+
+  it("shows a secure thumbnail fallback when the official embed script fails", async () => {
+    const featuredPost: InstagramPost = {
+      postUrl: "https://www.instagram.com/kidsalonia/reel/example-featured/",
+      thumbnailUrl: "https://example.com/featured.jpg",
+      caption: "Featured haircut Reel",
+      mediaType: "reel",
+      featured: true,
+    };
+    renderFeed([featuredPost]);
+
+    const script = document.querySelector<HTMLScriptElement>(
+      'script[src="https://www.instagram.com/embed.js"]',
+    );
+    expect(script).not.toBeNull();
+    fireEvent.error(script!);
+
+    const fallback = await screen.findByTestId("instagram-embed-fallback");
+    const watchLink = screen.getByRole("link", { name: /watch on instagram/i });
+    expect(fallback).toBeInTheDocument();
+    expect(watchLink).toHaveAttribute("href", featuredPost.postUrl);
+    expect(watchLink).toHaveAttribute("target", "_blank");
+    expect(watchLink).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("loads the official Instagram embed script only once for two featured Reels", () => {
+    renderFeed();
+
+    expect(document.querySelectorAll('script[src="https://www.instagram.com/embed.js"]')).toHaveLength(1);
   });
 
   it("renders a secure Instagram profile CTA", () => {

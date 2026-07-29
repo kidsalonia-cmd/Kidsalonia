@@ -6,6 +6,7 @@ export type InstagramPost = {
   caption: string;
   mediaType: InstagramMediaType;
   service?: string;
+  featured?: boolean;
 };
 
 /**
@@ -14,6 +15,8 @@ export type InstagramPost = {
  * 2. Replace the thumbnail with the public cover-image URL shown by Instagram.
  * 3. Write a short, descriptive caption for website visitors.
  * 4. Optionally set `service` to a slug supported by src/lib/booking.ts.
+ * 5. Set `featured: true` on public, embeddable Reels to feature them above
+ *    the grid. The homepage intentionally embeds no more than the first two.
  *
  * Instagram CDN thumbnail URLs can expire. The feed has an image-error fallback,
  * so an expired thumbnail never leaves a broken image or blocks booking/profile CTAs.
@@ -34,6 +37,7 @@ export const instagramPosts: InstagramPost[] = [
     caption: "Bring your bestie for a playful salon experience and celebration-ready styling.",
     mediaType: "reel",
     service: "kids-hair-styling",
+    featured: true,
   },
   {
     postUrl: "https://www.instagram.com/kidsalonia/reel/DYFKuxIpJhF/",
@@ -42,6 +46,7 @@ export const instagramPosts: InstagramPost[] = [
     caption: "A fun look at kids hair days with patient, child-friendly salon care.",
     mediaType: "reel",
     service: "kids-haircut",
+    featured: true,
   },
   {
     postUrl: "https://www.instagram.com/kidsalonia/reel/Da2MKL7pxyK/",
