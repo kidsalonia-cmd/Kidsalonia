@@ -3,6 +3,7 @@ import { CalendarDays, ExternalLink, Instagram, Layers3, MessageCircle, Play } f
 import { Link } from "react-router-dom";
 import { instagramPosts, type InstagramPost } from "@/data/instagram-posts";
 import { getBookingPath } from "@/lib/booking";
+import KidsStickers from "@/components/KidsStickers";
 
 const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/kidsalonia";
 const INSTAGRAM_EMBED_SCRIPT_SRC = "https://www.instagram.com/embed.js";
@@ -286,7 +287,12 @@ const InstagramFeed = ({ posts = instagramPosts }: InstagramFeedProps) => {
     <section className="relative overflow-hidden bg-gradient-to-b from-white via-pink-50/70 to-orange-50 px-4 py-16 sm:px-6 lg:px-8 lg:py-24" aria-labelledby="instagram-feed-title">
       <div className="pointer-events-none absolute -left-24 top-10 h-64 w-64 rounded-full bg-pink-200/30 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-10 h-64 w-64 rounded-full bg-orange-200/30 blur-3xl" />
-      <div className="relative mx-auto max-w-6xl">
+      <KidsStickers items={[
+        { id: "instagram-hearts", icon: "hearts", size: 50, animation: "float", delay: -1, position: { left: "3%", top: "7%" }, className: "hidden md:block", opacity: 0.72 },
+        { id: "instagram-camera", icon: "camera", size: 55, animation: "rotate", delay: -2, position: { right: "3%", top: "8%" }, className: "hidden lg:block", opacity: 0.72 },
+        { id: "instagram-stars", icon: "stars", size: 38, animation: "bounce", delay: -3, position: { right: "2%", bottom: "4%" }, opacity: 0.68 },
+      ]} />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold text-primary shadow-sm">
             <Instagram size={18} aria-hidden="true" /> @kidsalonia

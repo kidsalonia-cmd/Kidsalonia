@@ -1,6 +1,7 @@
 import ServiceItem from "./ServiceItem";
 import softcareImg from "@/assets/softcare.png";
 import skinIconImg from "@/assets/skin-icon.png";
+import KidsStickers from "@/components/KidsStickers";
 
 const skinServices = [
   { name: "KIDS PARTY MAKEUP (CLASSIC)", description: "Light, playful makeup for birthdays and celebrations.", price: "₹ 499" },
@@ -11,8 +12,13 @@ const skinServices = [
 
 const SkinSection = () => {
   return (
-    <section id="skin" className="bg-background py-4 sm:py-8">
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
+    <section id="skin" className="relative isolate overflow-hidden bg-background py-4 sm:py-8">
+      <KidsStickers items={[
+        { id: "skin-flowers", icon: "flowers", size: 58, animation: "rotate", delay: -2, position: { left: "2%", top: "12%" }, className: "hidden lg:block" },
+        { id: "skin-stars", icon: "stars", size: 44, animation: "float", delay: -3, position: { right: "2%", top: "38%" }, opacity: 0.7 },
+        { id: "skin-panda", icon: "panda", size: 64, animation: "bounce", delay: -1, position: { right: "3%", bottom: "5%" }, className: "hidden md:block" },
+      ]} />
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
         <div className="ks-image-frame relative min-h-[350px] w-full lg:min-h-full">
           <img
             src={softcareImg}

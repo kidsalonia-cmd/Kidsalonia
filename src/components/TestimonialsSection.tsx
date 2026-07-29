@@ -1,6 +1,7 @@
 import { Star } from "lucide-react";
 import girlImg from "@/assets/girl-testimonial.png";
 import TiltCard from "@/components/TiltCard";
+import KidsStickers from "@/components/KidsStickers";
 
 const reviews = [
   {
@@ -43,9 +44,13 @@ const StarRating = ({ rating }: { rating: number }) => (
 
 const TestimonialsSection = () => {
   return (
-    <section className="bg-[hsl(0,0%,97%)] py-16 lg:py-24">
+    <section className="relative isolate overflow-hidden bg-[hsl(0,0%,97%)] py-16 lg:py-24">
+      <KidsStickers items={[
+        { id: "testimonials-speech", icon: "speech", size: 62, animation: "float", delay: -1, position: { left: "2%", top: "48%" }, className: "hidden lg:block" },
+        { id: "testimonials-smile", icon: "smile", size: 54, animation: "bounce", delay: -2.5, position: { right: "3%", bottom: "8%" }, className: "hidden md:block", opacity: 0.78 },
+      ]} />
       {/* Hero Image */}
-      <div className="w-full px-6 lg:px-28 mb-12">
+      <div className="relative z-10 w-full px-6 lg:px-28 mb-12">
         <div className="ks-image-frame w-full aspect-[16/7] overflow-hidden rounded-2xl">
           <img
             src={girlImg}
@@ -56,7 +61,7 @@ const TestimonialsSection = () => {
       </div>
 
       {/* Section Header */}
-      <div className="text-center px-6 mb-12">
+      <div className="relative z-10 text-center px-6 mb-12">
         <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-2">
           What Parents Say
         </p>
@@ -79,7 +84,7 @@ const TestimonialsSection = () => {
       </div>
 
       {/* Review Cards */}
-      <div className="px-6 lg:px-28 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="relative z-10 px-6 lg:px-28 grid grid-cols-1 md:grid-cols-2 gap-6">
         {reviews.map((review, i) => (
           <TiltCard
             key={i}

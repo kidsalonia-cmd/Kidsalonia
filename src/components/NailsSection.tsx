@@ -3,6 +3,7 @@ import ServiceItem from "./ServiceItem";
 import kidsNailsImg from "@/assets/kids-nails.png";
 import adultNailsImg from "@/assets/adult-nails.png";
 import artnailImg from "@/assets/artnail.png";
+import KidsStickers from "@/components/KidsStickers";
 
 const kidsNailServices = [
   { name: "NAIL POLISH FEET", description: "Fun, sparkly, and perfect for little hands and feet.", price: "₹ 99" },
@@ -35,8 +36,13 @@ const adultNailServices = [
 
 const NailsSection = () => {
   return (
-    <section id="nails" className="bg-background py-4 sm:py-8">
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
+    <section id="nails" className="relative isolate overflow-hidden bg-background py-4 sm:py-8">
+      <KidsStickers items={[
+        { id: "nails-unicorn", icon: "unicorn", size: 70, animation: "bounce", delay: -1, position: { left: "2%", top: "8%" }, className: "hidden lg:block" },
+        { id: "nails-rainbow", icon: "rainbow", size: 68, animation: "float", delay: -2, position: { right: "2%", bottom: "8%" }, className: "hidden md:block" },
+        { id: "nails-sparkles", icon: "sparkles", size: 38, animation: "rotate", delay: -3, position: { right: "3%", top: "25%" }, opacity: 0.75 },
+      ]} />
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
         <div className="ks-section-panel flex justify-center rounded-[2rem]">
           <div className="w-full py-12 max-w-2xl px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-primary leading-tight">

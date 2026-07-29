@@ -4,6 +4,7 @@ import logo from "@/assets/Logo2.webp";
 import { Instagram, Facebook, MessageCircle, Calendar, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import KidsStickers from "@/components/KidsStickers";
 
 const WHATSAPP_URL = "https://wa.me/918130307036?text=Hi%20KidSalonia%2C%20I%20want%20to%20book%20an%20appointment";
 const PHONE_URL = "tel:+918130307036";
@@ -91,8 +92,13 @@ const Footer = () => {
       </section>
 
       {/* Main Footer */}
-      <footer className="ks-footer-depth bg-white border-t border-black/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <footer className="kids-rainbow-border ks-footer-depth relative isolate overflow-hidden bg-white border-t border-black/10">
+        <KidsStickers items={[
+          { id: "footer-cloud-left", icon: "cloud", size: 70, animation: "float", delay: -1, position: { left: "1%", top: "4%" }, className: "hidden lg:block", opacity: 0.7 },
+          { id: "footer-cloud-right", icon: "cloud", size: 58, animation: "float", delay: -3, position: { right: "2%", top: "8%" }, className: "hidden md:block", opacity: 0.65 },
+          { id: "footer-stars", icon: "stars", size: 35, animation: "rotate", delay: -2, position: { right: "3%", bottom: "17%" }, opacity: 0.62 },
+        ]} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
             <img src={logo} alt="KidSalonia" className="h-20" />
@@ -212,7 +218,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
+        <div className="relative z-10 bg-[hsl(0,0%,20%)] text-white text-center py-4 text-sm">
           © {new Date().getFullYear()} KidSalonia. Designed and Developed by{" "}
           <a href="/" className="underline hover:text-white/80 transition">
             Kidsalonia

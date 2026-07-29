@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ServiceItem from "./ServiceItem";
 import hairPriceImg from "@/assets/hair-newprice.png";
 import hairssImg from "@/assets/hairss.png";
+import KidsStickers from "@/components/KidsStickers";
 
 const hairServices = [
   { name: "BOYS HAIRCUT", description: "Clean and comfortable cuts for boys of all ages.", price: "₹ 299" },
@@ -23,8 +24,14 @@ const hairServices = [
 
 const HairSection = () => {
   return (
-    <section id="hair" className="bg-background py-4 sm:py-8">
-      <div className="mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
+    <section id="hair" className="relative isolate overflow-hidden bg-background py-4 sm:py-8">
+      <KidsStickers items={[
+        { id: "hair-scissors", icon: "scissors", size: 66, animation: "rotate", delay: -1, position: { right: "2%", top: "10%" }, className: "hidden xl:block" },
+        { id: "hair-comb", icon: "comb", size: 55, animation: "float", delay: -2, position: { left: "1%", bottom: "25%" }, className: "hidden lg:block" },
+        { id: "hair-teddy", icon: "teddy", size: 62, animation: "bounce", delay: -3, position: { right: "3%", bottom: "4%" }, className: "hidden md:block" },
+        { id: "hair-bubbles", icon: "bubbles", size: 50, animation: "float", delay: -1.5, position: { left: "2%", top: "40%" }, opacity: 0.65 },
+      ]} />
+      <div className="relative z-10 mx-auto grid max-w-[1600px] grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2">
         <div className="ks-image-frame relative min-h-[300px] w-full sm:min-h-[400px] lg:min-h-full">
           <img
             src={hairPriceImg}

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import heroBanner from "@/assets/navratri-banner-desktop.jpg";
+import KidsStickers from "@/components/KidsStickers";
 import TiltCard from "@/components/TiltCard";
 
 const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
@@ -29,7 +30,18 @@ const HeroBanner = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
 
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <KidsStickers
+        items={[
+          { id: "hero-rainbow", icon: "rainbow", size: 94, animation: "float", delay: -1, position: { right: "4%", bottom: "6%" }, className: "hidden sm:block" },
+          { id: "hero-cloud", icon: "cloud", size: 76, animation: "bounce", delay: -2.5, position: { left: "3%", top: "9%" }, opacity: 0.82 },
+          { id: "hero-balloons", icon: "balloons", size: 82, animation: "float", delay: -3, position: { right: "8%", top: "9%" }, className: "hidden lg:block" },
+          { id: "hero-sparkle-one", icon: "sparkles", size: 32, animation: "bounce", delay: -0.5, position: { left: "38%", top: "8%" }, className: "kids-sticker-particle hidden sm:block" },
+          { id: "hero-sparkle-two", icon: "sparkles", size: 22, animation: "bounce", delay: -2, position: { left: "46%", bottom: "13%" }, className: "kids-sticker-particle hidden md:block", opacity: 0.72 },
+          { id: "hero-sparkle-three", icon: "sparkles", size: 18, animation: "bounce", delay: -3.5, position: { right: "34%", top: "27%" }, className: "kids-sticker-particle hidden lg:block", opacity: 0.65 },
+        ]}
+      />
+
+      <div className="hidden" aria-hidden="true">
         <span className="absolute left-[5%] top-[12%] animate-pulse text-2xl opacity-70">⭐</span>
         <span className="absolute left-[32%] top-[9%] text-xl opacity-70">✨</span>
         <span className="absolute right-[14%] top-[14%] text-3xl opacity-70">🎈</span>
@@ -37,7 +49,7 @@ const HeroBanner = () => {
         <span className="absolute bottom-[18%] left-[42%] text-xl opacity-60">🫧</span>
       </div>
 
-      <div className="relative mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12 lg:py-20">
+      <div className="relative z-10 mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12 lg:py-20">
         <div className="max-w-3xl text-white">
           <div className="ks-glass-panel mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] sm:text-sm">
             <Sparkles size={16} className="text-yellow-300" />
