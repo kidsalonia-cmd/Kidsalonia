@@ -31,7 +31,7 @@ export const instagramPosts: InstagramPost[] = [
     mediaType: "carousel",
   },
   {
-    postUrl: "https://www.instagram.com/kidsalonia/reel/DZqBpuszGsg/",
+    postUrl: "https://www.instagram.com/reel/DZqBpuszGsg/",
     thumbnailUrl:
       "https://scontent.cdninstagram.com/v/t51.71878-15/724685164_1328501479259287_3297721029266214657_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=IM9i5Q8ro_sQ7kNvwFBfV0-&_nc_oc=Ado2rG6LkLaz78rFR_Ea7kDU2t1YraG3fCg-_vLpQteX5ymONPAOVCr5VCAA6NmFUpk&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=toyeBXarPTZN1BNKnwLrDQ&_nc_ss=7ba8c&oh=00_AQCxM8zPY76AFer5aM-WCbFlN7WprgpGrTCYGaHicJue2A&oe=6A6FF3A4",
     caption: "Bring your bestie for a playful salon experience and celebration-ready styling.",
@@ -40,7 +40,7 @@ export const instagramPosts: InstagramPost[] = [
     featured: true,
   },
   {
-    postUrl: "https://www.instagram.com/kidsalonia/reel/DYFKuxIpJhF/",
+    postUrl: "https://www.instagram.com/reel/DYFKuxIpJhF/",
     thumbnailUrl:
       "https://scontent.cdninstagram.com/v/t51.71878-15/693682799_2500252250465114_3249018242396685848_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=SJjTPGGyWfsQ7kNvwEPKT5R&_nc_oc=AdpwU95gjFxURbmnGAWtQ51Gl8OOaC_lXtoT1YsiC5Z0EagtzeNfFKp2tiJ1zef0f3M&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=toyeBXarPTZN1BNKnwLrDQ&_nc_ss=7ba8c&oh=00_AQAYTdi78Nmamcezsk1hc_BDn1XHk8jd4P_GVpwJcI4DRA&oe=6A6FD5DD",
     caption: "A fun look at kids hair days with patient, child-friendly salon care.",
