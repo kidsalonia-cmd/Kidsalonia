@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import HeroBanner from "@/components/HeroBanner";
 import WeeklyBanner from "@/components/WeeklyBanner";
@@ -13,6 +14,8 @@ import GallerySection from "@/components/GallerySection";
 import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
 import SocialProofWidget from "@/components/SocialProofWidget";
+
+const InstagramFeed = lazy(() => import("@/components/InstagramFeed"));
 
 import SEO, {
   BASE_URL,
@@ -99,6 +102,9 @@ const Index = () => {
       <InsightsSection />
       <TestimonialsSection />
       <GallerySection />
+      <Suspense fallback={<div className="min-h-96 bg-gradient-to-b from-white via-pink-50/70 to-orange-50" aria-hidden="true" />}>
+        <InstagramFeed />
+      </Suspense>
       <SocialProofWidget />
       <Footer />
     </div>
