@@ -6,19 +6,19 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
 import SEO, { BASE_URL, createBreadcrumbSchema } from "@/components/SEO";
-import { COUPON_CODE } from "@/components/ConversionActions";
-
-const OFFER_MESSAGE =
-  "Hi KidSalonia, I want to claim 15% off on eligible weekday services using coupon KIDS15. I understand that Mundan is excluded. Please share the available timings.";
-
-const WHATSAPP_OFFER_URL = `https://wa.me/918130307036?text=${encodeURIComponent(OFFER_MESSAGE)}`;
+import { getSelectedDailyOffer } from "@/lib/daily-offer";
 
 const Offers = () => {
   const [copied, setCopied] = useState(false);
+  const offer = getSelectedDailyOffer();
+  const displayDate = new Intl.DateTimeFormat("en-IN", { dateStyle: "long", timeZone: "Asia/Kolkata" })
+    .format(new Date(`${offer.date}T12:00:00+05:30`));
+  const offerMessage = `Hi KidSalonia, I want to claim ${offer.discountPercent}% off for ${offer.title} using coupon ${offer.couponCode}, valid ${offer.date}. Please share available timings.`;
+  const whatsappOfferUrl = `https://wa.me/918130307036?text=${encodeURIComponent(offerMessage)}`;
 
   const copyCoupon = async () => {
     try {
-      await navigator.clipboard.writeText(COUPON_CODE);
+      await navigator.clipboard.writeText(offer.couponCode);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -30,7 +30,7 @@ const Offers = () => {
     <>
       <SEO
         title="Kids Salon Offers in Gurgaon | KidSalonia"
-        description="View current KidSalonia offers and save 15% on eligible weekday kids salon services in Gurgaon. Coupon KIDS15. Mundan excluded."
+        description={`Today's KidSalonia family salon offer: ${offer.title}. Save 15% with coupon ${offer.couponCode}.`}
         canonical={`${BASE_URL}/offers`}
         schemas={[
           createBreadcrumbSchema([
@@ -71,30 +71,25 @@ const Offers = () => {
               <div className="p-7 sm:p-10 lg:p-12">
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="rounded-full bg-emerald-100 px-4 py-2 text-xs font-black uppercase tracking-widest text-emerald-700">
-                    Weekday Offer
+                    {offer.occasion}
                   </span>
                   <span className="rounded-full bg-yellow-100 px-4 py-2 text-xs font-black uppercase tracking-widest text-yellow-800">
-                    Monday–Friday
+                    One offer for today
                   </span>
                 </div>
 
                 <h2 className="mt-6 text-4xl font-black text-slate-950 sm:text-5xl">
-                  Get 15% OFF
+                  {offer.title}
                 </h2>
                 <p className="mt-3 text-xl font-extrabold text-primary">
-                  On eligible kids salon services
+                  Get {offer.discountPercent}% OFF · Valid {displayDate}
                 </p>
                 <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">
-                  Use coupon <strong>{COUPON_CODE}</strong> when booking eligible weekday services such as haircuts, nail art and grooming. Mundan services are excluded.
+                  {offer.description} Use coupon <strong>{offer.couponCode}</strong> when booking.
                 </p>
 
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Kids haircuts",
-                    "Nail art services",
-                    "Kids grooming",
-                    "Selected salon services",
-                  ].map((item) => (
+                  {offer.includedServices.map((item) => (
                     <div key={item} className="flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 font-bold text-slate-700">
                       <CheckCircle2 size={19} className="shrink-0 text-emerald-500" />
                       {item}
@@ -108,10 +103,10 @@ const Offers = () => {
                     onClick={copyCoupon}
                     className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary px-7 py-4 font-black text-primary transition hover:bg-primary hover:text-white"
                   >
-                    <Copy size={19} /> {copied ? "Coupon Copied" : `Copy ${COUPON_CODE}`}
+                    <Copy size={19} /> {copied ? "Coupon Copied" : `Copy ${offer.couponCode}`}
                   </button>
                   <a
-                    href={WHATSAPP_OFFER_URL}
+                    href={whatsappOfferUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 font-black text-white shadow-lg transition hover:-translate-y-1"
@@ -127,15 +122,15 @@ const Offers = () => {
                 <div className="mt-7 space-y-4">
                   <div className="flex gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur">
                     <Scissors className="shrink-0 text-yellow-300" />
-                    <p><strong>Choose</strong> an eligible weekday salon service.</p>
+                    <p><strong>Choose</strong> one of today&apos;s included services.</p>
                   </div>
                   <div className="flex gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur">
                     <CalendarDays className="shrink-0 text-yellow-300" />
-                    <p><strong>Book</strong> your appointment from Monday to Friday.</p>
+                    <p><strong>Book</strong> your appointment for {displayDate}.</p>
                   </div>
                   <div className="flex gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur">
                     <Sparkles className="shrink-0 text-yellow-300" />
-                    <p><strong>Share</strong> coupon {COUPON_CODE} while confirming your booking.</p>
+                    <p><strong>Share</strong> coupon {offer.couponCode} while confirming your booking.</p>
                   </div>
                 </div>
               </div>
@@ -145,7 +140,7 @@ const Offers = () => {
           <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-7 text-center shadow-lg sm:p-10">
             <h2 className="text-3xl font-black text-slate-950">Ready to Book Your Child’s Visit?</h2>
             <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-              Reserve a convenient weekday slot and mention coupon {COUPON_CODE} while confirming your appointment.
+              Reserve a convenient slot and mention coupon {offer.couponCode} while confirming your appointment.
             </p>
             <Link
               to="/book"
@@ -154,7 +149,7 @@ const Offers = () => {
               <CalendarDays size={20} /> Book Appointment
             </Link>
             <p className="mt-5 text-xs text-slate-500">
-              Offer valid Monday to Friday until 9:00 PM. Mundan excluded. Terms and conditions may apply.
+              Valid only on {displayDate}. Subject to availability and cannot be combined with another offer. Source: {offer.source}.
             </p>
           </div>
         </section>
