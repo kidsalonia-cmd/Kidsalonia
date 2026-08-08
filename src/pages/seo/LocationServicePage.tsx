@@ -54,6 +54,14 @@ const formatLocationName = (location: string) => {
   return `${location}, Gurgaon`;
 };
 
+const getServiceLocationPath = (serviceSlug: string, location: string) => {
+  const locationSlug = slugify(location);
+  if (locationSlug === "gurgaon" && serviceSlug.endsWith("-gurgaon")) {
+    return `/${serviceSlug}`;
+  }
+  return `/${serviceSlug}-${locationSlug}`;
+};
+
 const getMatchedService = (currentSlug: string) =>
   [...seoServices]
     .sort((a, b) => b.slug.length - a.slug.length)
@@ -111,6 +119,10 @@ const getLocationContext = (location: string) => {
     return `${location} families can book KidSalonia services in advance and plan their visit to our Gurugram salon near Airia Mall and Golf Course Extension Road.`;
   }
 
+  if (location === "Gurgaon" || location === "Gurugram") {
+    return "KidSalonia is located in Sector 67, Gurugram, close to Airia Mall and Golf Course Extension Road. Families from across Gurgaon can book in advance to confirm service availability and preferred appointment times.";
+  }
+
   return `KidSalonia serves families travelling from ${formatLocationName(
     location
   )} and nearby communities. Advance booking helps customers confirm the service, preferred time and expected visit duration before travelling.`;
@@ -133,8 +145,90 @@ const getVisitPlanningContent = (location: string) => {
 
   return {
     heading: `Appointment planning for ${formatLocationName(location)}`,
-    text: "Book before travelling so the team can confirm availability, service duration and any preparation needed for your child's appointment.",
+    text: "Book before travelling so the team can confirm availability, service duration and any preparation needed for your appointment.",
   };
+};
+
+const getServicePageContent = (category: string, serviceType: string) => {
+  switch (category) {
+    case "kids-salon":
+      return {
+        heading: `A calmer ${serviceType.toLowerCase()} experience for children`,
+        intro: "Parents usually want more than a quick salon visit: they want patience, hygiene and a stylist who understands how children react to unfamiliar sounds, tools and seating.",
+        detail: "KidSalonia is designed around younger customers, with a colourful environment and a team accustomed to babies, toddlers, boys and girls. Parents can stay involved throughout the appointment and discuss the preferred style before the service begins.",
+        expectations: [
+          "A quick consultation about the child's age, hair or grooming needs",
+          "Patient service with hygiene and comfort kept in focus",
+          "Clear guidance on styling, maintenance and aftercare where relevant",
+        ],
+      };
+    case "nail-art":
+      return {
+        heading: `${serviceType} with design choices for kids, teens and moms`,
+        intro: "Nail services work best when the design, finish and maintenance level match the customer's age, occasion and preference.",
+        detail: "At KidSalonia, customers can discuss colours, shapes and design ideas before the service. Kids options focus on fun, age-appropriate looks, while teens and moms can choose from more detailed nail art and extension styles where available.",
+        expectations: [
+          "Design and colour discussion before the service starts",
+          "Hygienic nail preparation and careful application",
+          "Simple aftercare guidance to help protect the finished look",
+        ],
+      };
+    case "manicure":
+      return {
+        heading: `${serviceType} focused on neat, hygienic hand and nail care`,
+        intro: "A good manicure is about clean preparation and comfortable grooming, not just polish. The service can be adapted for kids or adults depending on the selected option.",
+        detail: "KidSalonia's manicure services focus on nail shaping, grooming and a tidy finish. Customers can confirm available polish, nail-art or spa add-ons with the team when booking.",
+        expectations: [
+          "Nail cleaning and shaping based on the selected service",
+          "Gentle hand and cuticle care with a hygienic setup",
+          "Optional finishing or nail colour depending on the booked package",
+        ],
+      };
+    case "pedicure":
+      return {
+        heading: `${serviceType} for clean, comfortable foot and nail grooming`,
+        intro: "Pedicure appointments should feel comfortable, hygienic and unhurried, whether the service is for a child, parent or a family grooming visit.",
+        detail: "KidSalonia offers pedicure options that focus on neat toenails, foot grooming and a relaxing salon experience. The exact steps depend on the service or package selected at booking.",
+        expectations: [
+          "Toenail cleaning and shaping as appropriate for the package",
+          "Comfort-focused foot grooming in a clean service area",
+          "Optional polish or finishing steps depending on the selected service",
+        ],
+      };
+    case "mundan":
+      return {
+        heading: `${serviceType} with hygiene and gentle handling in focus`,
+        intro: "Mundan and first-haircut appointments are important family moments, so parents often prioritise cleanliness, patience and careful handling.",
+        detail: "KidSalonia provides a calm salon setting for baby and child mundan services. Families can call before the appointment to discuss timing, preparation and any questions about the service.",
+        expectations: [
+          "A brief discussion with parents before beginning",
+          "Clean equipment and careful handling throughout the service",
+          "Time for parents to stay close and help keep the child comfortable",
+        ],
+      };
+    case "hairdresser":
+      return {
+        heading: `${serviceType} with practical styling and grooming advice`,
+        intro: "Hair services are easier to maintain when the cut, colour or styling choice suits the customer's hair type, routine and occasion.",
+        detail: "KidSalonia's team can discuss the desired result before starting and recommend a practical approach based on the service booked. Families can also combine selected hair and grooming services in one visit.",
+        expectations: [
+          "Consultation on the desired look and service suitability",
+          "Professional grooming with hygiene and comfort in focus",
+          "Basic maintenance or aftercare guidance where relevant",
+        ],
+      };
+    default:
+      return {
+        heading: `Professional ${serviceType.toLowerCase()} at KidSalonia`,
+        intro: "Customers can book in advance to confirm service availability, expected duration and any preparation needed before visiting.",
+        detail: "Our team focuses on a clean, comfortable and clearly explained salon experience from consultation through completion.",
+        expectations: [
+          "Service consultation before starting",
+          "Hygienic and comfortable appointment experience",
+          "Clear guidance about the selected service",
+        ],
+      };
+  }
 };
 
 const LocationServicePage = () => {
@@ -173,11 +267,14 @@ const LocationServicePage = () => {
   }
 
   const locationName = formatLocationName(matchedLocation);
-  const locationSlug = slugify(matchedLocation);
   const pageTitle = `${matchedService.serviceName} in ${locationName}`;
   const pageUrl = `${BASE_URL}/${slug}`;
   const nearbyLocations = getNearbyLocations(matchedLocation);
   const visitPlanning = getVisitPlanningContent(matchedLocation);
+  const serviceContent = getServicePageContent(
+    matchedService.category,
+    matchedService.serviceType
+  );
   const relatedServices = seoServices
     .filter((service) => service.slug !== matchedService.slug)
     .sort((a, b) => {
@@ -216,12 +313,15 @@ const LocationServicePage = () => {
     { name: "Home", url: `${BASE_URL}/` },
     {
       name: matchedService.serviceType,
-      url: `${BASE_URL}/${matchedService.slug}-gurgaon`,
+      url: `${BASE_URL}${getServiceLocationPath(
+        matchedService.slug,
+        "Gurgaon"
+      )}`,
     },
     { name: locationName, url: pageUrl },
   ]);
 
-  const seoDescription = `Book ${matchedService.serviceType.toLowerCase()} near ${locationName} at KidSalonia Gurugram. Child-friendly service, hygienic setup and advance appointments. Call 81303 07036.`;
+  const seoDescription = `${matchedService.serviceType} in ${locationName} at KidSalonia Gurugram. Hygienic salon service, clear appointment guidance and convenient Sector 67 location. Call 81303 07036.`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -248,7 +348,7 @@ const LocationServicePage = () => {
             <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary">Home</Link>
               <span className="mx-2">/</span>
-              <Link to={`/${matchedService.slug}-gurgaon`} className="hover:text-primary">
+              <Link to={getServiceLocationPath(matchedService.slug, "Gurgaon")} className="hover:text-primary">
                 {matchedService.serviceType}
               </Link>
               <span className="mx-2">/</span>
@@ -262,8 +362,8 @@ const LocationServicePage = () => {
               {pageTitle}
             </h1>
             <p className="mb-5 max-w-4xl text-lg leading-8 text-muted-foreground md:text-xl">
-              {matchedService.intro} We welcome customers from {locationName}
-              and nearby communities at our kids-first Gurugram salon.
+              {matchedService.intro} We welcome customers from {locationName}{" "}
+              and nearby communities at our Gurugram salon in Sector 67.
             </p>
             <p className="mb-8 max-w-4xl leading-7 text-muted-foreground">
               {getLocationContext(matchedLocation)}
@@ -286,23 +386,28 @@ const LocationServicePage = () => {
           <div className="container mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[1.5fr_0.8fr]">
             <article>
               <h2 className="mb-5 text-3xl font-bold md:text-4xl">
-                Child-friendly {matchedService.serviceType} near {locationName}
+                {serviceContent.heading} in {locationName}
               </h2>
               <div className="space-y-5 text-lg leading-8 text-muted-foreground">
+                <p>{serviceContent.intro}</p>
+                <p>{serviceContent.detail}</p>
                 <p>
-                  Families booking <strong>{pageTitle.toLowerCase()}</strong> often
-                  look for patient service, hygiene, clear communication and a
-                  comfortable setting—especially for babies, toddlers and children.
+                  Our salon is at {SALON_ADDRESS}. Customers from {locationName}{" "}
+                  can call ahead to confirm availability, service duration and the
+                  most suitable appointment time.
                 </p>
-                <p>
-                  KidSalonia is a kids-first family salon and nail studio offering
-                  kids haircuts, baby first haircut, mundan, styling, nail art,
-                  manicure, pedicure and selected family salon services.
-                </p>
-                <p>
-                  Our salon is at {SALON_ADDRESS}. Customers from {locationName}
-                  should confirm their appointment before travelling.
-                </p>
+              </div>
+
+              <div className="mt-10 rounded-3xl border bg-card p-7 shadow-sm">
+                <h2 className="text-2xl font-bold">What to expect at your appointment</h2>
+                <ul className="mt-5 space-y-3 text-muted-foreground">
+                  {serviceContent.expectations.map((item) => (
+                    <li key={item} className="flex gap-3 leading-7">
+                      <span aria-hidden="true" className="mt-1 font-bold text-primary">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="mt-10 rounded-3xl border bg-muted/30 p-7">
@@ -318,8 +423,7 @@ const LocationServicePage = () => {
                   <div key={benefit} className="rounded-2xl border bg-card p-6 shadow-sm">
                     <h3 className="mb-3 text-lg font-semibold">{benefit}</h3>
                     <p className="leading-7 text-muted-foreground">
-                      Our team focuses on hygiene, comfort, suitable products and a
-                      friendly appointment experience.
+                      This is part of how we make {matchedService.serviceType.toLowerCase()} appointments clearer, more comfortable and easier to plan for customers.
                     </p>
                   </div>
                 ))}
@@ -363,7 +467,7 @@ const LocationServicePage = () => {
             <p className="mb-8 text-muted-foreground">Explore other KidSalonia services available for customers from this area.</p>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {relatedServices.map((service) => (
-                <Link key={service.slug} to={`/${service.slug}-${locationSlug}`} className="rounded-2xl border bg-background p-5 transition hover:border-primary hover:shadow-md">
+                <Link key={service.slug} to={getServiceLocationPath(service.slug, matchedLocation)} className="rounded-2xl border bg-background p-5 transition hover:border-primary hover:shadow-md">
                   <p className="text-sm font-semibold capitalize text-primary">{service.category.replace(/-/g, " ")}</p>
                   <h3 className="mt-2 font-bold">{service.serviceName} in {locationName}</h3>
                 </Link>
@@ -378,7 +482,7 @@ const LocationServicePage = () => {
             <p className="mb-8 text-muted-foreground">Explore this service across Gurgaon sectors, townships and residential communities.</p>
             <div className="flex flex-wrap gap-3">
               {nearbyLocations.map((location) => (
-                <Link key={location} to={`/${matchedService.slug}-${slugify(location)}`} className="rounded-full border bg-background px-4 py-2 text-sm font-medium transition hover:border-primary hover:bg-primary hover:text-primary-foreground">
+                <Link key={location} to={getServiceLocationPath(matchedService.slug, location)} className="rounded-full border bg-background px-4 py-2 text-sm font-medium transition hover:border-primary hover:bg-primary hover:text-primary-foreground">
                   {matchedService.serviceName} in {formatLocationName(location)}
                 </Link>
               ))}
