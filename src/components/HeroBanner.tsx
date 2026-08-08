@@ -3,76 +3,61 @@ import {
   CalendarDays,
   CheckCircle2,
   MessageCircle,
+  PlayCircle,
   ShieldCheck,
   Sparkles,
   Star,
 } from "lucide-react";
 
-import heroBanner from "@/assets/navratri-banner-desktop.jpg";
 import KidsStickers from "@/components/KidsStickers";
-import TiltCard from "@/components/TiltCard";
 
 const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
   "Hi KidSalonia! I would like to book a salon appointment for my child. Please share the available timings.",
 )}`;
 
+const HERO_VIDEO = `https://raw.githubusercontent.com/kidsalonia-cmd/Kidsalonia/main/${encodeURIComponent(
+  "Splash, snip, smile! 🫧✂️😊A refreshing head wash followed by a stylish haircut—the perfect pamp.mp4",
+)}`;
+
 const HeroBanner = () => {
   return (
-    <section className="ks-perspective ks-shine relative isolate overflow-hidden bg-slate-950">
-      <img
-        src={heroBanner}
-        alt="KidSalonia kids salon services in Gurgaon"
-        className="absolute inset-0 h-full w-full scale-[1.02] object-cover object-center"
-        loading="eager"
-        fetchPriority="high"
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#fff8fb] via-white to-[#eef9ff]">
+      <div className="pointer-events-none absolute left-[-8rem] top-12 h-80 w-80 rounded-full bg-pink-300/30 blur-3xl" />
+      <div className="pointer-events-none absolute right-[-7rem] top-20 h-96 w-96 rounded-full bg-sky-300/25 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-[-8rem] left-1/3 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
 
       <KidsStickers
         items={[
-          { id: "hero-rainbow", icon: "rainbow", size: 94, animation: "float", delay: -1, position: { right: "4%", bottom: "6%" }, className: "hidden sm:block" },
-          { id: "hero-cloud", icon: "cloud", size: 76, animation: "bounce", delay: -2.5, position: { left: "3%", top: "9%" }, opacity: 0.82 },
-          { id: "hero-balloons", icon: "balloons", size: 82, animation: "float", delay: -3, position: { right: "8%", top: "9%" }, className: "hidden lg:block" },
-          { id: "hero-sparkle-one", icon: "sparkles", size: 32, animation: "bounce", delay: -0.5, position: { left: "38%", top: "8%" }, className: "kids-sticker-particle hidden sm:block" },
-          { id: "hero-sparkle-two", icon: "sparkles", size: 22, animation: "bounce", delay: -2, position: { left: "46%", bottom: "13%" }, className: "kids-sticker-particle hidden md:block", opacity: 0.72 },
-          { id: "hero-sparkle-three", icon: "sparkles", size: 18, animation: "bounce", delay: -3.5, position: { right: "34%", top: "27%" }, className: "kids-sticker-particle hidden lg:block", opacity: 0.65 },
+          { id: "hero-rainbow", icon: "rainbow", size: 92, animation: "float", delay: -1, position: { right: "3%", bottom: "6%" }, className: "hidden sm:block" },
+          { id: "hero-cloud", icon: "cloud", size: 72, animation: "bounce", delay: -2.5, position: { left: "2%", top: "9%" }, opacity: 0.7 },
+          { id: "hero-balloons", icon: "balloons", size: 78, animation: "float", delay: -3, position: { right: "5%", top: "8%" }, className: "hidden xl:block" },
         ]}
       />
 
-      <div className="hidden" aria-hidden="true">
-        <span className="absolute left-[5%] top-[12%] animate-pulse text-2xl opacity-70">⭐</span>
-        <span className="absolute left-[32%] top-[9%] text-xl opacity-70">✨</span>
-        <span className="absolute right-[14%] top-[14%] text-3xl opacity-70">🎈</span>
-        <span className="absolute bottom-[12%] right-[8%] text-2xl opacity-60">🌈</span>
-        <span className="absolute bottom-[18%] left-[42%] text-xl opacity-60">🫧</span>
-      </div>
-
-      <div className="relative z-10 mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-12 lg:py-20">
-        <div className="max-w-3xl text-white">
-          <div className="ks-glass-panel mb-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] sm:text-sm">
-            <Sparkles size={16} className="text-yellow-300" />
-            Gurgaon&apos;s Favourite Kids Salon
+      <div className="relative z-10 mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12 lg:py-16">
+        <div className="max-w-2xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/90 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-sm backdrop-blur sm:text-sm">
+            <Sparkles size={16} className="text-orange-400" />
+            A Fresh Kids-First Salon Experience
           </div>
 
-          <h1 className="max-w-3xl text-4xl font-black leading-[1.05] sm:text-5xl lg:text-6xl">
-            A Happy, Safe &amp; Fun Salon Experience for Every Child
+          <h1 className="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-7xl">
+            Haircuts, Smiles &amp; Happy Memories—Made for Kids
           </h1>
 
-          <p className="mt-5 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">
-            Child-friendly haircuts, nail art, grooming and first-haircut experiences delivered by trained kids specialists in a colourful, hygienic salon.
+          <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            Real salon moments, trained kids specialists and a colourful environment for haircuts, mundan, nail art and family grooming in Gurugram.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold text-white/95">
-            <span className="ks-glass-panel inline-flex items-center gap-2 rounded-full px-4 py-2">
-              <CheckCircle2 size={16} className="text-emerald-300" /> 1500+ Happy Kids
+          <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold text-slate-700">
+            <span className="inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 shadow-sm">
+              <CheckCircle2 size={16} className="text-emerald-500" /> 1500+ Happy Kids
             </span>
-            <span className="ks-glass-panel inline-flex items-center gap-2 rounded-full px-4 py-2">
-              <ShieldCheck size={16} className="text-sky-300" /> Safe &amp; Hygienic
+            <span className="inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 shadow-sm">
+              <ShieldCheck size={16} className="text-sky-500" /> Safe &amp; Hygienic
             </span>
-            <span className="ks-glass-panel inline-flex items-center gap-2 rounded-full px-4 py-2">
-              <Star size={16} className="text-yellow-300" fill="currentColor" /> Kids Specialists
+            <span className="inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 shadow-sm">
+              <Star size={16} className="text-yellow-500" fill="currentColor" /> Kids Specialists
             </span>
           </div>
 
@@ -94,62 +79,43 @@ const HeroBanner = () => {
             </Link>
           </div>
 
-          <p className="mt-4 text-xs font-medium text-white/70 sm:text-sm">
-            Haircuts • Nail Art • Grooming • First Haircut • Birthday Makeovers
-          </p>
+          <div className="mt-8 flex items-center gap-3 text-sm font-semibold text-slate-500">
+            <PlayCircle size={19} className="text-primary" />
+            Now featuring real KidSalonia salon moments on the website.
+          </div>
         </div>
 
-        <div className="hidden justify-self-end lg:block">
-          <TiltCard maxTilt={3} className="ks-glass-panel ks-shine w-full max-w-sm rounded-[2rem] p-6 text-white">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-yellow-300">
-              Why Parents Choose KidSalonia
-            </p>
+        <div className="relative mx-auto w-full max-w-[620px] lg:justify-self-end">
+          <div className="absolute -left-5 top-10 hidden rounded-3xl border bg-white/95 p-4 shadow-xl backdrop-blur sm:block">
+            <p className="text-xs font-black uppercase tracking-[0.14em] text-primary">Real Experience</p>
+            <p className="mt-1 text-sm font-bold text-slate-800">Head wash + stylish haircut</p>
+          </div>
 
-            <div className="mt-5 space-y-4">
-              <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-inner">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-400/20">
-                  <CheckCircle2 size={20} className="text-emerald-300" />
-                </div>
-                <div>
-                  <p className="font-extrabold">1500+ Happy Kids</p>
-                  <p className="mt-1 text-sm leading-5 text-white/75">
-                    Trusted by families for joyful, stress-free salon visits.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-inner">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-400/20">
-                  <ShieldCheck size={20} className="text-sky-300" />
-                </div>
-                <div>
-                  <p className="font-extrabold">Safe &amp; Hygienic</p>
-                  <p className="mt-1 text-sm leading-5 text-white/75">
-                    Child-friendly products, clean tools and careful service.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4 shadow-inner">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-yellow-400/20">
-                  <Star size={20} className="text-yellow-300" fill="currentColor" />
-                </div>
-                <div>
-                  <p className="font-extrabold">Kids Salon Specialists</p>
-                  <p className="mt-1 text-sm leading-5 text-white/75">
-                    Friendly stylists trained to keep children comfortable.
-                  </p>
-                </div>
-              </div>
+          <div className="relative ml-auto overflow-hidden rounded-[2.5rem] border-[10px] border-white bg-slate-950 shadow-2xl shadow-pink-200/60 sm:w-[78%]">
+            <video
+              src={HERO_VIDEO}
+              className="aspect-[9/13] h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Real KidSalonia kids haircut experience"
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 pt-20 text-white">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-yellow-300">Inside KidSalonia</p>
+              <p className="mt-2 text-2xl font-black">Splash. Snip. Smile.</p>
+              <p className="mt-1 text-sm text-white/80">A real salon moment from our Gurugram studio.</p>
             </div>
+          </div>
 
-            <Link
-              to="/book"
-              className="ks-button-3d mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3.5 font-extrabold text-slate-950"
-            >
-              <CalendarDays size={19} className="text-primary" /> Reserve Your Child&apos;s Slot
-            </Link>
-          </TiltCard>
+          <div className="absolute -bottom-5 -left-2 rounded-3xl border bg-white p-5 shadow-xl sm:max-w-[220px]">
+            <div className="flex items-center gap-2 text-primary">
+              <Star size={17} fill="currentColor" />
+              <span className="text-xs font-black uppercase tracking-[0.12em]">Kids-first comfort</span>
+            </div>
+            <p className="mt-2 text-sm leading-6 text-slate-600">Designed to make salon visits feel easier, happier and more memorable.</p>
+          </div>
         </div>
       </div>
     </section>
