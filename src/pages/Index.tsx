@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import HeroBanner from "@/components/HeroBanner";
 import WeeklyBanner from "@/components/WeeklyBanner";
+import RealExperiencesSection from "@/components/RealExperiencesSection";
 import IntroSection from "@/components/IntroSection";
 import HairSection from "@/components/HairSection";
 import NailsSection from "@/components/NailsSection";
@@ -93,6 +94,7 @@ const Index = () => {
       <SocialSidebar />
       <HeroBanner />
       <WeeklyBanner />
+      <RealExperiencesSection />
       <IntroSection />
       <HairSection />
       <NailsSection />
