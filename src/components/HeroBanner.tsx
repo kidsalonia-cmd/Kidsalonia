@@ -34,14 +34,14 @@ const HeroBanner = () => {
         ]}
       />
 
-      <div className="relative z-10 mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:px-12 lg:py-16">
-        <div className="max-w-2xl">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 md:py-20 lg:min-h-[680px] lg:grid-cols-[0.92fr_1.08fr] lg:px-12 lg:py-20">
+        <div className="max-w-2xl pt-2 lg:pt-0">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/90 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary shadow-sm backdrop-blur sm:text-sm">
             <Sparkles size={16} className="text-orange-400" />
             A Fresh Kids-First Salon Experience
           </div>
 
-          <h1 className="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="max-w-3xl text-4xl font-black leading-[1.04] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-7xl">
             Haircuts, Smiles &amp; Happy Memories—Made for Kids
           </h1>
 
@@ -80,41 +80,44 @@ const HeroBanner = () => {
           </div>
 
           <div className="mt-8 flex items-center gap-3 text-sm font-semibold text-slate-500">
-            <PlayCircle size={19} className="text-primary" />
+            <PlayCircle size={19} className="shrink-0 text-primary" />
             Now featuring real KidSalonia salon moments on the website.
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[620px] lg:justify-self-end">
-          <div className="absolute -left-5 top-10 hidden rounded-3xl border bg-white/95 p-4 shadow-xl backdrop-blur sm:block">
-            <p className="text-xs font-black uppercase tracking-[0.14em] text-primary">Real Experience</p>
-            <p className="mt-1 text-sm font-bold text-slate-800">Head wash + stylish haircut</p>
-          </div>
-
-          <div className="relative ml-auto overflow-hidden rounded-[2.5rem] border-[10px] border-white bg-slate-950 shadow-2xl shadow-pink-200/60 sm:w-[78%]">
-            <video
-              src={HERO_VIDEO}
-              className="aspect-[9/13] h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Real KidSalonia kids haircut experience"
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 pt-20 text-white">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-yellow-300">Inside KidSalonia</p>
-              <p className="mt-2 text-2xl font-black">Splash. Snip. Smile.</p>
-              <p className="mt-1 text-sm text-white/80">A real salon moment from our Gurugram studio.</p>
+        <div className="mx-auto w-full max-w-[570px] lg:justify-self-end">
+          <div className="overflow-hidden rounded-[2.25rem] border-[8px] border-white bg-slate-950 shadow-2xl shadow-pink-200/60">
+            <div className="relative mx-auto max-w-[430px] bg-slate-950">
+              <video
+                src={HERO_VIDEO}
+                className="aspect-[9/12] w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Real KidSalonia kids haircut experience"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent p-6 pt-20 text-white">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-yellow-300">Inside KidSalonia</p>
+                <p className="mt-2 text-2xl font-black">Splash. Snip. Smile.</p>
+                <p className="mt-1 text-sm text-white/80">A real salon moment from our Gurugram studio.</p>
+              </div>
             </div>
           </div>
 
-          <div className="absolute -bottom-5 -left-2 rounded-3xl border bg-white p-5 shadow-xl sm:max-w-[220px]">
-            <div className="flex items-center gap-2 text-primary">
-              <Star size={17} fill="currentColor" />
-              <span className="text-xs font-black uppercase tracking-[0.12em]">Kids-first comfort</span>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border bg-white/95 p-4 shadow-lg backdrop-blur">
+              <p className="text-xs font-black uppercase tracking-[0.14em] text-primary">Real Experience</p>
+              <p className="mt-1 text-sm font-bold text-slate-800">Head wash + stylish haircut</p>
             </div>
-            <p className="mt-2 text-sm leading-6 text-slate-600">Designed to make salon visits feel easier, happier and more memorable.</p>
+            <div className="rounded-2xl border bg-white/95 p-4 shadow-lg backdrop-blur">
+              <div className="flex items-center gap-2 text-primary">
+                <Star size={16} fill="currentColor" />
+                <span className="text-xs font-black uppercase tracking-[0.12em]">Kids-first comfort</span>
+              </div>
+              <p className="mt-1 text-sm leading-5 text-slate-600">Easier, happier and more memorable salon visits.</p>
+            </div>
           </div>
         </div>
       </div>
