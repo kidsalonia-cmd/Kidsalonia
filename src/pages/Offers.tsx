@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
 import SEO, { BASE_URL, createBreadcrumbSchema } from "@/components/SEO";
 import { getSelectedDailyOffer } from "@/lib/daily-offer";
+import { manualOffers } from "@/data/manual-offers";
+
+const septemberOffers = manualOffers.filter((entry) => entry.date.startsWith("2026-09-"));
 
 const Offers = () => {
   const [copied, setCopied] = useState(false);
@@ -29,8 +32,8 @@ const Offers = () => {
   return (
     <>
       <SEO
-        title="Kids Salon Offers in Gurgaon | KidSalonia"
-        description={`Today's KidSalonia family salon offer: ${offer.title}. Save 15% with coupon ${offer.couponCode}.`}
+        title="September Kids Salon Offers in Gurgaon | KidSalonia"
+        description={`KidSalonia September 2026 daily offer calendar plus today's family salon offer: ${offer.title}.`}
         canonical={`${BASE_URL}/offers`}
         schemas={[
           createBreadcrumbSchema([
@@ -54,13 +57,13 @@ const Offers = () => {
 
           <div className="relative mx-auto max-w-5xl text-center">
             <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm font-black uppercase tracking-widest backdrop-blur">
-              <Gift size={18} /> KidSalonia Specials
+              <Gift size={18} /> September 2026 Specials
             </div>
             <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">
-              Current Offers for Happy Kids
+              A New KidSalonia Offer Every Day
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">
-              Discover our latest salon offers and book a joyful, safe and child-friendly grooming experience.
+              Explore the full September offer calendar and check back daily for the active salon deal.
             </p>
           </div>
         </section>
@@ -74,7 +77,7 @@ const Offers = () => {
                     {offer.occasion}
                   </span>
                   <span className="rounded-full bg-yellow-100 px-4 py-2 text-xs font-black uppercase tracking-widest text-yellow-800">
-                    One offer for today
+                    Today&apos;s offer
                   </span>
                 </div>
 
@@ -137,10 +140,42 @@ const Offers = () => {
             </div>
           </div>
 
-          <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-7 text-center shadow-lg sm:p-10">
+          <div className="mt-14">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-primary">1–30 September 2026</p>
+              <h2 className="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">September Daily Offer Calendar</h2>
+              <p className="mx-auto mt-3 max-w-2xl text-slate-600">Every date has a different service focus. All September calendar offers are valid only on the listed date and subject to availability.</p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {septemberOffers.map((item) => {
+                const date = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", weekday: "short", timeZone: "Asia/Kolkata" })
+                  .format(new Date(`${item.date}T12:00:00+05:30`));
+                const message = `Hi KidSalonia, I want to book the ${item.title} offer for ${item.date} using coupon ${item.couponCode}. Please share available timings.`;
+                const whatsappUrl = `https://wa.me/918130307036?text=${encodeURIComponent(message)}`;
+
+                return (
+                  <article key={item.id} className="rounded-3xl border border-pink-100 bg-white p-5 shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="rounded-full bg-pink-50 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-primary">{date}</span>
+                      <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-700">15% OFF</span>
+                    </div>
+                    <h3 className="mt-4 text-xl font-black text-slate-950">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
+                    <p className="mt-4 text-xs font-bold uppercase tracking-wide text-slate-500">Coupon: <span className="text-primary">{item.couponCode}</span></p>
+                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-black text-white">
+                      <MessageCircle size={17} /> Book This Offer
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-12 rounded-3xl border border-slate-200 bg-white p-7 text-center shadow-lg sm:p-10">
             <h2 className="text-3xl font-black text-slate-950">Ready to Book Your Child’s Visit?</h2>
             <p className="mx-auto mt-3 max-w-2xl text-slate-600">
-              Reserve a convenient slot and mention coupon {offer.couponCode} while confirming your appointment.
+              Reserve a convenient slot and mention the daily coupon while confirming your appointment.
             </p>
             <Link
               to="/book"
@@ -149,7 +184,7 @@ const Offers = () => {
               <CalendarDays size={20} /> Book Appointment
             </Link>
             <p className="mt-5 text-xs text-slate-500">
-              Valid only on {displayDate}. Subject to availability and cannot be combined with another offer. Source: {offer.source}.
+              Daily offers are valid only on their listed date, subject to availability, and cannot be combined with another offer.
             </p>
           </div>
         </section>
