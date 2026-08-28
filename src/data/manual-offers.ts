@@ -1,27 +1,60 @@
 import type { ManualOfferInput } from "@/lib/offer-calendar";
 
-/**
- * Local manual-offer provider.
- *
- * Add entries to this array using the shape below. The calendar consumes this
- * through a provider boundary, so this file can later be replaced by a
- * Supabase/admin fetch without changing the offer-selection rules.
- *
- * Example:
- * {
- *   id: "custom-2026-09-18",
- *   date: "2026-09-18",
- *   title: "Custom Family Friday Offer",
- *   description: "A family-friendly Friday grooming offer.",
- *   includedServices: ["Adult Pedicure", "Kids Nail Art"],
- *   discountPercent: 15,
- *   couponCode: "CUSTOM15",
- *   enabled: true,
- *   override: true,
- *   websiteEnabled: true,
- *   googleBusinessEnabled: true,
- * }
- */
-export const manualOffers: ManualOfferInput[] = [];
+const septemberOffer = (
+  day: number,
+  title: string,
+  description: string,
+  includedServices: ManualOfferInput["includedServices"],
+  couponCode: string,
+  occasion: string,
+): ManualOfferInput => ({
+  id: `september-2026-${String(day).padStart(2, "0")}`,
+  date: `2026-09-${String(day).padStart(2, "0")}`,
+  title,
+  description,
+  includedServices,
+  discountPercent: 15,
+  couponCode,
+  enabled: true,
+  override: true,
+  websiteEnabled: true,
+  googleBusinessEnabled: true,
+  occasion,
+  imageBrief:
+    "A bright, premium KidSalonia kids and family salon moment featuring the listed service, cheerful children or families, clean grooming setup, natural expressions and no text overlay.",
+});
+
+export const manualOffers: ManualOfferInput[] = [
+  septemberOffer(1, "Hello September Family Treat", "Start September with a cheerful family grooming visit and enjoy 15% off selected services.", ["Kids Haircut", "Adult Haircut", "Family Grooming Combination"], "SEP01", "September launch"),
+  septemberOffer(2, "Fresh Cut Wednesday", "Refresh the school-week look with a kids haircut and neat finishing.", ["Kids Haircut", "Kids Hair Styling"], "SEP02", "Fresh cut day"),
+  septemberOffer(3, "Tiny Nails, Big Style", "Make Thursday colourful with age-appropriate kids nail care and nail art.", ["Kids Nail Art", "Kids Manicure"], "SEP03", "Kids nail day"),
+  septemberOffer(4, "Princess Friday", "A fun Friday makeover with girls styling and cute finishing touches.", ["Kids Hair Styling", "Kids Nail Art"], "SEP04", "Princess makeover"),
+  septemberOffer(5, "Family Salon Saturday", "Book a relaxed parent-and-child grooming visit together this Saturday.", ["Parent-Child Combination", "Kids Haircut", "Adult Haircut"], "SEP05", "Family Saturday"),
+  septemberOffer(6, "Sunday Style Day", "A playful Sunday refresh with kids haircut and styling services.", ["Kids Haircut", "Kids Hair Styling"], "SEP06", "Sunday styling"),
+  septemberOffer(7, "Monday Hair Care", "Start the week with neat grooming and styling for a fresh, polished look.", ["Kids Hair Styling", "Adult Haircut"], "SEP07", "Monday refresh"),
+  septemberOffer(8, "Double Treat Tuesday", "Pair grooming with a colourful kids nail service for an easy midweek treat.", ["Kids Haircut", "Kids Nail Art", "Parent-Child Combination"], "SEP08", "Midweek treat"),
+  septemberOffer(9, "Smart Look Wednesday", "Keep the look neat with a kids haircut and child-friendly styling.", ["Kids Haircut", "Kids Hair Styling"], "SEP09", "Smart look day"),
+  septemberOffer(10, "Mom & Me Nail Date", "Enjoy a colourful nail-care date together with services for moms and kids.", ["Adult Manicure", "Kids Nail Art", "Parent-Child Combination"], "SEP10", "Mom and me"),
+  septemberOffer(11, "Princess Styling Friday", "Friday is for braids, styling and a fun kids-first salon experience.", ["Kids Hair Styling", "Kids Nail Art"], "SEP11", "Friday styling"),
+  septemberOffer(12, "Mundan Weekend Care", "Plan a calm family grooming visit around your child’s special first-haircut or mundan day.", ["Kids Haircut", "Family Grooming Combination"], "SEP12", "Mundan weekend"),
+  septemberOffer(13, "Birthday Ready Sunday", "Get celebration-ready with kids grooming, styling and colourful nail options.", ["Kids Hair Styling", "Kids Nail Art", "Kids Haircut"], "SEP13", "Birthday grooming"),
+  septemberOffer(14, "Mani Monday", "A neat start to the week with manicure services for adults and kids.", ["Adult Manicure", "Kids Manicure"], "SEP14", "Manicure Monday"),
+  septemberOffer(15, "September Mid-Month Special", "Celebrate the middle of the month with selected family grooming services at 15% off.", ["Family Grooming Combination", "Kids Haircut", "Adult Haircut"], "SEP15", "Mid-month special"),
+  septemberOffer(16, "Snip & Smile Wednesday", "A cheerful kids haircut day designed for quick, comfortable grooming.", ["Kids Haircut", "Kids Hair Styling"], "SEP16", "Snip and smile"),
+  septemberOffer(17, "Happy Feet Thursday", "Give feet a little extra care with pedicure options for adults and kids.", ["Adult Pedicure", "Kids Pedicure"], "SEP17", "Pedicure Thursday"),
+  septemberOffer(18, "Friday Mini Makeover", "Combine a fresh kids haircut with a colourful nail-art moment.", ["Kids Haircut", "Kids Nail Art"], "SEP18", "Friday makeover"),
+  septemberOffer(19, "Family Combo Saturday", "Turn Saturday into a family grooming outing with services for kids and parents.", ["Family Grooming Combination", "Parent-Child Combination", "Kids Haircut"], "SEP19", "Family combo"),
+  septemberOffer(20, "Super Sunday Grooming", "Sunday is easier with a kids haircut, styling and a happy salon visit.", ["Kids Haircut", "Kids Hair Styling"], "SEP20", "Super Sunday"),
+  septemberOffer(21, "Healthy Hair Monday", "Start the week with neat kids styling and family hair grooming.", ["Kids Hair Styling", "Adult Haircut"], "SEP21", "Healthy hair day"),
+  septemberOffer(22, "Two-Service Tuesday", "Choose two complementary grooming services and make the visit extra special.", ["Kids Haircut", "Kids Nail Art", "Kids Hair Styling"], "SEP22", "Two-service Tuesday"),
+  septemberOffer(23, "Cool Kid Wednesday", "A neat haircut and easy styling for a smart midweek refresh.", ["Kids Haircut", "Kids Hair Styling"], "SEP23", "Cool kid day"),
+  septemberOffer(24, "Glam Nails Thursday", "Enjoy manicure and nail-art services for a polished Thursday look.", ["Adult Manicure", "Adult Nail Art", "Kids Nail Art"], "SEP24", "Glam nails"),
+  septemberOffer(25, "Fabulous Friday", "Finish the week with kids styling, haircut and a confidence-boosting salon visit.", ["Kids Haircut", "Kids Hair Styling"], "SEP25", "Fabulous Friday"),
+  septemberOffer(26, "Mundan Celebration Saturday", "A family-friendly grooming day for special childhood milestones and neat finishing.", ["Kids Haircut", "Family Grooming Combination"], "SEP26", "Mundan celebration"),
+  septemberOffer(27, "Sunday Transformation", "A playful Sunday makeover with kids hair and nail services.", ["Kids Haircut", "Kids Hair Styling", "Kids Nail Art"], "SEP27", "Sunday makeover"),
+  septemberOffer(28, "Pamper Monday", "Enjoy manicure and pedicure services for a relaxed start to the week.", ["Adult Manicure", "Adult Pedicure"], "SEP28", "Pamper Monday"),
+  septemberOffer(29, "September Closing Treat", "Make the most of the final days of September with selected family grooming services.", ["Family Grooming Combination", "Kids Haircut", "Parent-Child Combination"], "SEP29", "Month-end special"),
+  septemberOffer(30, "September Finale", "Close September with a fresh family grooming visit and 15% off selected services.", ["Family Grooming Combination", "Kids Haircut", "Adult Haircut"], "SEP30", "September finale"),
+];
 
 export default manualOffers;
