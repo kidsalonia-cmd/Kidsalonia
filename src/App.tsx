@@ -17,7 +17,6 @@ import Skin from "./pages/Skin";
 import AboutUs from "./pages/AboutUs";
 import Offers from "./pages/Offers";
 import PriceList from "./pages/PriceList";
-import Gallery from "./pages/Gallery";
 import SocialMedia from "./pages/SocialMedia";
 import FindUs from "./pages/FindUs";
 import AdminSeo from "./pages/AdminSeo";
@@ -54,7 +53,7 @@ const App = () => (
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/price-list" element={<PriceList />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery" element={<Navigate to="/social-media" replace />} />
           <Route path="/social-media" element={<SocialMedia />} />
           <Route path="/find-us" element={<FindUs />} />
           <Route path="/hair" element={<Hair />} />
