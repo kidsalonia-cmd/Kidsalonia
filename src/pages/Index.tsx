@@ -12,6 +12,7 @@ import ProductsSection from "@/components/ProductsSection";
 import InsightsSection from "@/components/InsightsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GallerySection from "@/components/GallerySection";
+import LocationMapSection from "@/components/LocationMapSection";
 import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
 import SocialProofWidget from "@/components/SocialProofWidget";
@@ -116,6 +117,7 @@ const Index = () => {
       >
         <InstagramFeed />
       </Suspense>
+      <LocationMapSection />
       <SocialProofWidget />
       <Footer />
     </div>
