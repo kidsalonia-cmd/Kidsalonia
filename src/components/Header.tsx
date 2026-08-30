@@ -24,18 +24,16 @@ const WHATSAPP_URL = `https://wa.me/918130307036?text=${encodeURIComponent(
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
   const isFranchisePage = location.pathname === "/franchise";
-  const homeAnchor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 
   const primaryItems = [
     { label: "About Us", href: "/about-us" },
-    { label: "Price List", href: homeAnchor("price-list") },
+    { label: "Price List", href: "/price-list" },
     { label: "Offers", href: "/offers" },
-    { label: "Gallery", href: homeAnchor("gallery") },
-    { label: "Social Media", href: homeAnchor("social-media") },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Social Media", href: "/social-media" },
     { label: "Insights", href: "/insights" },
-    { label: "Find Us", href: homeAnchor("find-us") },
+    { label: "Find Us", href: "/find-us" },
   ];
 
   const serviceItems = [
@@ -46,16 +44,10 @@ const Header = () => {
   ];
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
-  const renderNavLink = (item: { label: string; href: string }, mobile = false) => {
-    const classes = mobile
+  const navClass = (href: string, mobile = false) =>
+    mobile
       ? "block text-lg font-semibold text-foreground transition hover:text-primary"
-      : `text-[15px] font-semibold transition hover:text-primary ${location.pathname === item.href ? "text-primary" : "text-foreground"}`;
-
-    if (item.href.startsWith("/") && !item.href.startsWith("/#")) {
-      return <Link key={item.label} to={item.href} className={classes} onClick={mobile ? closeMobileMenu : undefined}>{item.label}</Link>;
-    }
-    return <a key={item.label} href={item.href} className={classes} onClick={mobile ? closeMobileMenu : undefined}>{item.label}</a>;
-  };
+      : `text-[15px] font-semibold transition hover:text-primary ${location.pathname === href ? "text-primary" : "text-foreground"}`;
 
   return (
     <header className="ks-header-depth sticky top-0 z-50 w-full bg-background">
@@ -83,23 +75,25 @@ const Header = () => {
       </div>
 
       <nav className="hidden items-center justify-center gap-7 border-t border-border/30 py-3 lg:flex">
-        {renderNavLink(primaryItems[0])}
-        <div className="group relative">
+        <Link to={primaryItems[0].href} className={navClass(primaryItems[0].href)}>{primaryItems[0].label}</Link>
+        <div className="group relative -my-3 py-3">
           <button type="button" className="inline-flex items-center gap-1 text-[15px] font-semibold text-foreground transition hover:text-primary">Services <ChevronDown size={16} /></button>
-          <div className="invisible absolute left-1/2 top-full z-50 mt-3 w-52 -translate-x-1/2 rounded-2xl border bg-white p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100">
-            {serviceItems.map((item) => <Link key={item.label} to={item.href} className="block rounded-xl px-4 py-3 text-sm font-bold text-slate-700 hover:bg-pink-50 hover:text-primary">{item.label}</Link>)}
+          <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-1 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div className="rounded-2xl border bg-white p-2 shadow-xl">
+              {serviceItems.map((item) => <Link key={item.label} to={item.href} className="block rounded-xl px-4 py-3 text-sm font-bold text-slate-700 hover:bg-pink-50 hover:text-primary">{item.label}</Link>)}
+            </div>
           </div>
         </div>
-        {primaryItems.slice(1).map((item) => renderNavLink(item))}
+        {primaryItems.slice(1).map((item) => <Link key={item.label} to={item.href} className={navClass(item.href)}>{item.label}</Link>)}
       </nav>
 
       {!isFranchisePage && <div className="grid grid-cols-3 border-t border-white/20 lg:hidden"><Link to="/offers" className="flex items-center justify-center gap-2 bg-fuchsia-600 py-3 text-xs font-extrabold text-white"><Gift size={16} /> Offers</Link><Link to="/book" className="flex items-center justify-center gap-2 bg-emerald-500 py-3 text-xs font-extrabold text-white"><MessageCircle size={16} /> Book</Link><a href={`tel:${PHONE_NUMBER}`} className="flex items-center justify-center gap-2 bg-orange-500 py-3 text-xs font-extrabold text-white"><Phone size={16} /> Call</a></div>}
 
       {mobileMenuOpen && (
         <nav className="ks-mobile-layer max-h-[75vh] space-y-4 overflow-y-auto border-t border-border bg-background px-6 py-5 lg:hidden">
-          {renderNavLink(primaryItems[0], true)}
+          <Link to={primaryItems[0].href} className={navClass(primaryItems[0].href, true)} onClick={closeMobileMenu}>{primaryItems[0].label}</Link>
           <div><p className="mb-2 text-xs font-black uppercase tracking-[0.15em] text-primary">Services</p><div className="grid grid-cols-2 gap-2">{serviceItems.map((item) => <Link key={item.label} to={item.href} onClick={closeMobileMenu} className="rounded-xl bg-pink-50 px-3 py-2.5 font-bold text-slate-700">{item.label}</Link>)}</div></div>
-          {primaryItems.slice(1).map((item) => renderNavLink(item, true))}
+          {primaryItems.slice(1).map((item) => <Link key={item.label} to={item.href} className={navClass(item.href, true)} onClick={closeMobileMenu}>{item.label}</Link>)}
           <Link to="/franchise" className="block w-full rounded-full border border-primary px-6 py-3 text-center font-semibold text-primary" onClick={closeMobileMenu}>Get Franchise</Link>
           <Link to="/book" className="block w-full rounded-full bg-primary px-6 py-3 text-center font-semibold text-primary-foreground" onClick={closeMobileMenu}>Book Now</Link>
         </nav>
