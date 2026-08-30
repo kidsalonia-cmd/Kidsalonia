@@ -16,6 +16,10 @@ import Nails from "./pages/Nails";
 import Skin from "./pages/Skin";
 import AboutUs from "./pages/AboutUs";
 import Offers from "./pages/Offers";
+import PriceList from "./pages/PriceList";
+import Gallery from "./pages/Gallery";
+import SocialMedia from "./pages/SocialMedia";
+import FindUs from "./pages/FindUs";
 import AdminSeo from "./pages/AdminSeo";
 import BestKidsSalon from "./pages/BestKidsSalon";
 import KidsSalonSector67 from "./pages/KidsSalonSector67";
@@ -30,9 +34,7 @@ import KidsSalonNoida from "./pages/KidsSalonNoida";
 import KidsSalonGhaziabad from "./pages/KidsSalonGhaziabad";
 import KidsSalonDelhiNCR from "./pages/KidsSalonDelhiNCR";
 import Franchise from "./pages/Franchise";
-
 import NotFound from "./pages/NotFound";
-
 import ScrollToTop from "./components/ScrollToTop";
 import ConversionActions from "./components/ConversionActions";
 
@@ -43,141 +45,50 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-
       <BrowserRouter>
         <ScrollToTop />
-
         <Routes>
           <Route path="/" element={<Index />} />
-
           <Route path="/book" element={<Booking />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/price-list" element={<PriceList />} />
           <Route path="/offers" element={<Offers />} />
-
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/social-media" element={<SocialMedia />} />
+          <Route path="/find-us" element={<FindUs />} />
           <Route path="/hair" element={<Hair />} />
           <Route path="/skin" element={<Skin />} />
           <Route path="/nails" element={<Nails />} />
-
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/:slug" element={<BlogPost />} />
-
           <Route path="/guides/:hubSlug" element={<AuthorityHubPage />} />
-
           <Route path="/admin/seo" element={<AdminSeo />} />
-
-          <Route
-            path="/hyperrevamp-reporting"
-            element={<Navigate to="/admin/seo" replace />}
-          />
-
-          <Route
-            path="/best-kids-salon-gurugram"
-            element={<BestKidsSalon />}
-          />
-
-          <Route
-            path="/kids-salon-sector-67-gurugram"
-            element={<KidsSalonSector67 />}
-          />
-
-          <Route
-            path="/kids-salon-near-sohna-road-gurugram"
-            element={<KidsSalonSohnaRoad />}
-          />
-
-          <Route
-            path="/kids-salon-near-dlf-gurugram"
-            element={<KidsSalonDLF />}
-          />
-
-          <Route
-            path="/locations/kids-salon-faridabad"
-            element={<KidsSalonFaridabad />}
-          />
-
-          <Route
-            path="/locations/kids-salon-faridabad/"
-            element={<KidsSalonFaridabad />}
-          />
-
-          <Route
-            path="/locations/kids-salon-south-delhi"
-            element={<KidsSalonSouthDelhi />}
-          />
-
-          <Route
-            path="/locations/kids-salon-south-delhi/"
-            element={<KidsSalonSouthDelhi />}
-          />
-
-          <Route
-            path="/locations/kids-salon-new-gurgaon"
-            element={<KidsSalonNewGurgaon />}
-          />
-
-          <Route
-            path="/locations/kids-salon-new-gurgaon/"
-            element={<KidsSalonNewGurgaon />}
-          />
-
-          <Route
-            path="/locations/kids-salon-dwarka"
-            element={<KidsSalonDwarka />}
-          />
-
-          <Route
-            path="/locations/kids-salon-dwarka/"
-            element={<KidsSalonDwarka />}
-          />
-
-          <Route
-            path="/locations/kids-salon-greater-noida-west"
-            element={<KidsSalonGreaterNoidaWest />}
-          />
-
-          <Route
-            path="/locations/kids-salon-greater-noida-west/"
-            element={<KidsSalonGreaterNoidaWest />}
-          />
-
-          <Route
-            path="/locations/kids-salon-noida"
-            element={<KidsSalonNoida />}
-          />
-
-          <Route
-            path="/locations/kids-salon-noida/"
-            element={<KidsSalonNoida />}
-          />
-
-          <Route
-            path="/locations/kids-salon-ghaziabad"
-            element={<KidsSalonGhaziabad />}
-          />
-
-          <Route
-            path="/locations/kids-salon-ghaziabad/"
-            element={<KidsSalonGhaziabad />}
-          />
-
-          <Route
-            path="/locations/kids-salon-delhi-ncr"
-            element={<KidsSalonDelhiNCR />}
-          />
-
-          <Route
-            path="/locations/kids-salon-delhi-ncr/"
-            element={<KidsSalonDelhiNCR />}
-          />
-
+          <Route path="/hyperrevamp-reporting" element={<Navigate to="/admin/seo" replace />} />
+          <Route path="/best-kids-salon-gurugram" element={<BestKidsSalon />} />
+          <Route path="/kids-salon-sector-67-gurugram" element={<KidsSalonSector67 />} />
+          <Route path="/kids-salon-near-sohna-road-gurugram" element={<KidsSalonSohnaRoad />} />
+          <Route path="/kids-salon-near-dlf-gurugram" element={<KidsSalonDLF />} />
+          <Route path="/locations/kids-salon-faridabad" element={<KidsSalonFaridabad />} />
+          <Route path="/locations/kids-salon-faridabad/" element={<KidsSalonFaridabad />} />
+          <Route path="/locations/kids-salon-south-delhi" element={<KidsSalonSouthDelhi />} />
+          <Route path="/locations/kids-salon-south-delhi/" element={<KidsSalonSouthDelhi />} />
+          <Route path="/locations/kids-salon-new-gurgaon" element={<KidsSalonNewGurgaon />} />
+          <Route path="/locations/kids-salon-new-gurgaon/" element={<KidsSalonNewGurgaon />} />
+          <Route path="/locations/kids-salon-dwarka" element={<KidsSalonDwarka />} />
+          <Route path="/locations/kids-salon-dwarka/" element={<KidsSalonDwarka />} />
+          <Route path="/locations/kids-salon-greater-noida-west" element={<KidsSalonGreaterNoidaWest />} />
+          <Route path="/locations/kids-salon-greater-noida-west/" element={<KidsSalonGreaterNoidaWest />} />
+          <Route path="/locations/kids-salon-noida" element={<KidsSalonNoida />} />
+          <Route path="/locations/kids-salon-noida/" element={<KidsSalonNoida />} />
+          <Route path="/locations/kids-salon-ghaziabad" element={<KidsSalonGhaziabad />} />
+          <Route path="/locations/kids-salon-ghaziabad/" element={<KidsSalonGhaziabad />} />
+          <Route path="/locations/kids-salon-delhi-ncr" element={<KidsSalonDelhiNCR />} />
+          <Route path="/locations/kids-salon-delhi-ncr/" element={<KidsSalonDelhiNCR />} />
           <Route path="/franchise" element={<Franchise />} />
-
           <Route path="/:slug" element={<LocationServicePage />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
-
         <ConversionActions />
       </BrowserRouter>
     </TooltipProvider>
