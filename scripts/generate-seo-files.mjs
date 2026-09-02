@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, renameSync, rmSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = process.cwd();
@@ -58,6 +58,17 @@ function uniqueByPath(entries) {
   });
 }
 
+function writeFileSafely(path, content) {
+  const tempPath = `${path}.tmp`;
+  writeFileSync(tempPath, content, "utf8");
+  try {
+    renameSync(tempPath, path);
+  } catch {
+    rmSync(path, { force: true });
+    renameSync(tempPath, path);
+  }
+}
+
 const registryEntries = Array.from(
   registrySource.matchAll(
     /path:\s*"([^"]+)"[\s\S]*?lastUpdated:\s*"([^"]+)"[\s\S]*?status:\s*"([^"]+)"/g,
@@ -81,9 +92,6 @@ const blogEntries = Array.from(
   changefreq: "monthly",
 }));
 
-// Add the canonical Gurgaon landing page for each service in the dynamic SEO system.
-// This makes important service pages discoverable in the sitemap instead of relying
-// only on internal links or Google finding the catch-all route on its own.
 const serviceEntries = Array.from(
   servicesSource.matchAll(/slug:\s*"([^"]+)"/g),
 ).map((match) => {
@@ -149,7 +157,7 @@ ${latestBlogs}
 - Location: Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101
 `;
 
-writeFileSync(resolve(root, "public/sitemap.xml"), sitemap);
-writeFileSync(resolve(root, "public/llms.txt"), llms);
+writeFileSafely(resolve(root, "public/sitemap.xml"), sitemap);
+writeFileSafely(resolve(root, "public/llms.txt"), llms);
 
 console.log(`Generated sitemap.xml with ${routes.length} URLs.`);
