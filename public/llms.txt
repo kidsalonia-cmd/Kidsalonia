@@ -1,22 +1,56 @@
 # KidSalonia
 
-> KidSalonia is Gurugram's premium kids and family salon for gentle haircuts, mundan, nail art, skin care, party grooming, and child-friendly salon experiences.
+> KidSalonia is Gurugram's premium kids and family salon for gentle haircuts, mundan, nail art, manicure, pedicure, skin care, party grooming, and child-friendly salon experiences.
 
 KidSalonia is located at Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101, close to Airia Mall and Golf Course Extension Road. Services use child-safe products and trained stylists for babies, toddlers, kids, tweens, mothers, and families. Open Monday and Wednesday-Friday, 11:30 AM to 8:30 PM, and Saturday-Sunday, 10:30 AM to 9:00 PM. Closed Tuesdays.
 
 ## Core Pages
 
 - [Home](/)
+- [about us](/about-us)
+- [acrylic nail extension gurgaon](/acrylic-nail-extension-gurgaon)
+- [baby first haircut gurgaon](/baby-first-haircut-gurgaon)
+- [baby mundan gurgaon](/baby-mundan-gurgaon)
+- [best kids salon gurugram](/best-kids-salon-gurugram)
+- [boys haircut gurgaon](/boys-haircut-gurgaon)
+- [bridal nail art gurgaon](/bridal-nail-art-gurgaon)
+- [contact us](/contact-us)
+- [crystal jelly pedicure gurgaon](/crystal-jelly-pedicure-gurgaon)
+- [french nail art gurgaon](/french-nail-art-gurgaon)
+- [gel nail art gurgaon](/gel-nail-art-gurgaon)
+- [gel nail extension gurgaon](/gel-nail-extension-gurgaon)
+- [girls haircut gurgaon](/girls-haircut-gurgaon)
 - [hair](/hair)
-- [nails](/nails)
-- [skin](/skin)
-- [contact-us](/contact-us)
-- [about-us](/about-us)
+- [hair colouring gurgaon](/hair-colouring-gurgaon)
+- [hair highlights gurgaon](/hair-highlights-gurgaon)
+- [hair spa gurgaon](/hair-spa-gurgaon)
+- [hair styling gurgaon](/hair-styling-gurgaon)
+- [hair wash gurgaon](/hair-wash-gurgaon)
+- [hairdresser gurgaon](/hairdresser-gurgaon)
+- [hygienic mundan gurgaon](/hygienic-mundan-gurgaon)
 - [insights](/insights)
-- [best-kids-salon-gurugram](/best-kids-salon-gurugram)
-- [kids-salon-sector-67-gurugram](/kids-salon-sector-67-gurugram)
-- [kids-salon-near-sohna-road-gurugram](/kids-salon-near-sohna-road-gurugram)
-- [kids-salon-near-dlf-gurugram](/kids-salon-near-dlf-gurugram)
+- [kids birthday makeover gurgaon](/kids-birthday-makeover-gurgaon)
+- [kids hair styling gurgaon](/kids-hair-styling-gurgaon)
+- [kids haircut gurgaon](/kids-haircut-gurgaon)
+- [kids manicure gurgaon](/kids-manicure-gurgaon)
+- [kids nail art gurgaon](/kids-nail-art-gurgaon)
+- [kids party makeup gurgaon](/kids-party-makeup-gurgaon)
+- [kids pedicure gurgaon](/kids-pedicure-gurgaon)
+- [kids salon near dlf gurugram](/kids-salon-near-dlf-gurugram)
+- [kids salon near sohna road gurugram](/kids-salon-near-sohna-road-gurugram)
+- [kids salon sector 67 gurugram](/kids-salon-sector-67-gurugram)
+- [manicure gurgaon](/manicure-gurgaon)
+- [mundan gurgaon](/mundan-gurgaon)
+- [nail art gurgaon](/nail-art-gurgaon)
+- [nail extension removal gurgaon](/nail-extension-removal-gurgaon)
+- [nail refill gurgaon](/nail-refill-gurgaon)
+- [nails](/nails)
+- [pedicure gurgaon](/pedicure-gurgaon)
+- [skin](/skin)
+- [spa manicure gurgaon](/spa-manicure-gurgaon)
+- [spa pedicure gurgaon](/spa-pedicure-gurgaon)
+- [toddler haircut gurgaon](/toddler-haircut-gurgaon)
+- [traditional mundan gurgaon](/traditional-mundan-gurgaon)
 
 ## Latest Guides
 
