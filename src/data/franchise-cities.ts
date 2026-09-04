@@ -1,0 +1,230 @@
+export interface FranchiseCity {
+  name: string;
+  slug: string;
+  state: string;
+  region: "North" | "South" | "East" | "West" | "Central" | "Northeast";
+}
+
+const city = (name: string, state: string, region: FranchiseCity["region"]): FranchiseCity => ({
+  name,
+  state,
+  region,
+  slug: name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, ""),
+});
+
+export const franchiseCities: FranchiseCity[] = [
+  // Delhi NCR and North India
+  city("Delhi", "Delhi", "North"),
+  city("New Delhi", "Delhi", "North"),
+  city("Gurugram", "Haryana", "North"),
+  city("Faridabad", "Haryana", "North"),
+  city("Noida", "Uttar Pradesh", "North"),
+  city("Greater Noida", "Uttar Pradesh", "North"),
+  city("Ghaziabad", "Uttar Pradesh", "North"),
+  city("Sonipat", "Haryana", "North"),
+  city("Panipat", "Haryana", "North"),
+  city("Karnal", "Haryana", "North"),
+  city("Rohtak", "Haryana", "North"),
+  city("Hisar", "Haryana", "North"),
+  city("Ambala", "Haryana", "North"),
+  city("Yamunanagar", "Haryana", "North"),
+  city("Kurukshetra", "Haryana", "North"),
+  city("Rewari", "Haryana", "North"),
+  city("Panchkula", "Haryana", "North"),
+  city("Chandigarh", "Chandigarh", "North"),
+  city("Ludhiana", "Punjab", "North"),
+  city("Amritsar", "Punjab", "North"),
+  city("Jalandhar", "Punjab", "North"),
+  city("Patiala", "Punjab", "North"),
+  city("Bathinda", "Punjab", "North"),
+  city("Mohali", "Punjab", "North"),
+  city("Hoshiarpur", "Punjab", "North"),
+  city("Pathankot", "Punjab", "North"),
+  city("Jammu", "Jammu and Kashmir", "North"),
+  city("Srinagar", "Jammu and Kashmir", "North"),
+  city("Leh", "Ladakh", "North"),
+  city("Dehradun", "Uttarakhand", "North"),
+  city("Haridwar", "Uttarakhand", "North"),
+  city("Roorkee", "Uttarakhand", "North"),
+  city("Haldwani", "Uttarakhand", "North"),
+  city("Rishikesh", "Uttarakhand", "North"),
+  city("Shimla", "Himachal Pradesh", "North"),
+  city("Dharamshala", "Himachal Pradesh", "North"),
+  city("Solan", "Himachal Pradesh", "North"),
+  city("Mandi", "Himachal Pradesh", "North"),
+
+  // Uttar Pradesh
+  city("Lucknow", "Uttar Pradesh", "North"),
+  city("Kanpur", "Uttar Pradesh", "North"),
+  city("Agra", "Uttar Pradesh", "North"),
+  city("Varanasi", "Uttar Pradesh", "North"),
+  city("Prayagraj", "Uttar Pradesh", "North"),
+  city("Meerut", "Uttar Pradesh", "North"),
+  city("Bareilly", "Uttar Pradesh", "North"),
+  city("Moradabad", "Uttar Pradesh", "North"),
+  city("Aligarh", "Uttar Pradesh", "North"),
+  city("Gorakhpur", "Uttar Pradesh", "North"),
+  city("Jhansi", "Uttar Pradesh", "North"),
+  city("Mathura", "Uttar Pradesh", "North"),
+  city("Ayodhya", "Uttar Pradesh", "North"),
+  city("Saharanpur", "Uttar Pradesh", "North"),
+  city("Muzaffarnagar", "Uttar Pradesh", "North"),
+  city("Firozabad", "Uttar Pradesh", "North"),
+
+  // Rajasthan
+  city("Jaipur", "Rajasthan", "West"),
+  city("Jodhpur", "Rajasthan", "West"),
+  city("Udaipur", "Rajasthan", "West"),
+  city("Kota", "Rajasthan", "West"),
+  city("Ajmer", "Rajasthan", "West"),
+  city("Bikaner", "Rajasthan", "West"),
+  city("Alwar", "Rajasthan", "West"),
+  city("Bhilwara", "Rajasthan", "West"),
+  city("Sikar", "Rajasthan", "West"),
+  city("Sri Ganganagar", "Rajasthan", "West"),
+
+  // Gujarat
+  city("Ahmedabad", "Gujarat", "West"),
+  city("Surat", "Gujarat", "West"),
+  city("Vadodara", "Gujarat", "West"),
+  city("Rajkot", "Gujarat", "West"),
+  city("Gandhinagar", "Gujarat", "West"),
+  city("Bhavnagar", "Gujarat", "West"),
+  city("Jamnagar", "Gujarat", "West"),
+  city("Junagadh", "Gujarat", "West"),
+  city("Anand", "Gujarat", "West"),
+  city("Bharuch", "Gujarat", "West"),
+  city("Vapi", "Gujarat", "West"),
+
+  // Maharashtra and Goa
+  city("Mumbai", "Maharashtra", "West"),
+  city("Navi Mumbai", "Maharashtra", "West"),
+  city("Thane", "Maharashtra", "West"),
+  city("Pune", "Maharashtra", "West"),
+  city("Nagpur", "Maharashtra", "West"),
+  city("Nashik", "Maharashtra", "West"),
+  city("Aurangabad", "Maharashtra", "West"),
+  city("Kolhapur", "Maharashtra", "West"),
+  city("Solapur", "Maharashtra", "West"),
+  city("Amravati", "Maharashtra", "West"),
+  city("Sangli", "Maharashtra", "West"),
+  city("Satara", "Maharashtra", "West"),
+  city("Panaji", "Goa", "West"),
+  city("Margao", "Goa", "West"),
+
+  // Madhya Pradesh and Chhattisgarh
+  city("Indore", "Madhya Pradesh", "Central"),
+  city("Bhopal", "Madhya Pradesh", "Central"),
+  city("Jabalpur", "Madhya Pradesh", "Central"),
+  city("Gwalior", "Madhya Pradesh", "Central"),
+  city("Ujjain", "Madhya Pradesh", "Central"),
+  city("Sagar", "Madhya Pradesh", "Central"),
+  city("Satna", "Madhya Pradesh", "Central"),
+  city("Rewa", "Madhya Pradesh", "Central"),
+  city("Raipur", "Chhattisgarh", "Central"),
+  city("Bhilai", "Chhattisgarh", "Central"),
+  city("Bilaspur", "Chhattisgarh", "Central"),
+  city("Korba", "Chhattisgarh", "Central"),
+  city("Durg", "Chhattisgarh", "Central"),
+
+  // Bihar and Jharkhand
+  city("Patna", "Bihar", "East"),
+  city("Gaya", "Bihar", "East"),
+  city("Muzaffarpur", "Bihar", "East"),
+  city("Bhagalpur", "Bihar", "East"),
+  city("Darbhanga", "Bihar", "East"),
+  city("Purnia", "Bihar", "East"),
+  city("Ranchi", "Jharkhand", "East"),
+  city("Jamshedpur", "Jharkhand", "East"),
+  city("Dhanbad", "Jharkhand", "East"),
+  city("Bokaro", "Jharkhand", "East"),
+  city("Deoghar", "Jharkhand", "East"),
+
+  // West Bengal, Odisha and Sikkim
+  city("Kolkata", "West Bengal", "East"),
+  city("Howrah", "West Bengal", "East"),
+  city("Siliguri", "West Bengal", "East"),
+  city("Durgapur", "West Bengal", "East"),
+  city("Asansol", "West Bengal", "East"),
+  city("Kharagpur", "West Bengal", "East"),
+  city("Bhubaneswar", "Odisha", "East"),
+  city("Cuttack", "Odisha", "East"),
+  city("Rourkela", "Odisha", "East"),
+  city("Sambalpur", "Odisha", "East"),
+  city("Puri", "Odisha", "East"),
+  city("Berhampur", "Odisha", "East"),
+  city("Gangtok", "Sikkim", "Northeast"),
+
+  // Karnataka
+  city("Bengaluru", "Karnataka", "South"),
+  city("Mysuru", "Karnataka", "South"),
+  city("Mangaluru", "Karnataka", "South"),
+  city("Hubballi", "Karnataka", "South"),
+  city("Dharwad", "Karnataka", "South"),
+  city("Belagavi", "Karnataka", "South"),
+  city("Davangere", "Karnataka", "South"),
+  city("Ballari", "Karnataka", "South"),
+  city("Shivamogga", "Karnataka", "South"),
+  city("Kalaburagi", "Karnataka", "South"),
+
+  // Telangana and Andhra Pradesh
+  city("Hyderabad", "Telangana", "South"),
+  city("Warangal", "Telangana", "South"),
+  city("Karimnagar", "Telangana", "South"),
+  city("Nizamabad", "Telangana", "South"),
+  city("Khammam", "Telangana", "South"),
+  city("Vijayawada", "Andhra Pradesh", "South"),
+  city("Visakhapatnam", "Andhra Pradesh", "South"),
+  city("Guntur", "Andhra Pradesh", "South"),
+  city("Tirupati", "Andhra Pradesh", "South"),
+  city("Nellore", "Andhra Pradesh", "South"),
+  city("Kurnool", "Andhra Pradesh", "South"),
+  city("Rajahmundry", "Andhra Pradesh", "South"),
+  city("Kakinada", "Andhra Pradesh", "South"),
+
+  // Tamil Nadu and Puducherry
+  city("Chennai", "Tamil Nadu", "South"),
+  city("Coimbatore", "Tamil Nadu", "South"),
+  city("Madurai", "Tamil Nadu", "South"),
+  city("Tiruchirappalli", "Tamil Nadu", "South"),
+  city("Salem", "Tamil Nadu", "South"),
+  city("Tiruppur", "Tamil Nadu", "South"),
+  city("Vellore", "Tamil Nadu", "South"),
+  city("Erode", "Tamil Nadu", "South"),
+  city("Thoothukudi", "Tamil Nadu", "South"),
+  city("Puducherry", "Puducherry", "South"),
+
+  // Kerala
+  city("Kochi", "Kerala", "South"),
+  city("Thiruvananthapuram", "Kerala", "South"),
+  city("Kozhikode", "Kerala", "South"),
+  city("Thrissur", "Kerala", "South"),
+  city("Kollam", "Kerala", "South"),
+  city("Kannur", "Kerala", "South"),
+  city("Kottayam", "Kerala", "South"),
+  city("Alappuzha", "Kerala", "South"),
+  city("Palakkad", "Kerala", "South"),
+
+  // Northeast India
+  city("Guwahati", "Assam", "Northeast"),
+  city("Dibrugarh", "Assam", "Northeast"),
+  city("Silchar", "Assam", "Northeast"),
+  city("Jorhat", "Assam", "Northeast"),
+  city("Tezpur", "Assam", "Northeast"),
+  city("Shillong", "Meghalaya", "Northeast"),
+  city("Imphal", "Manipur", "Northeast"),
+  city("Aizawl", "Mizoram", "Northeast"),
+  city("Kohima", "Nagaland", "Northeast"),
+  city("Dimapur", "Nagaland", "Northeast"),
+  city("Agartala", "Tripura", "Northeast"),
+  city("Itanagar", "Arunachal Pradesh", "Northeast"),
+
+  // Island territories
+  city("Port Blair", "Andaman and Nicobar Islands", "South"),
+];
+
+export const franchiseCityBySlug = new Map(franchiseCities.map((entry) => [entry.slug, entry]));
