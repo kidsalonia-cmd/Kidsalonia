@@ -5,6 +5,7 @@ import SEO, { BASE_URL, createBreadcrumbSchema, createFAQSchema, localBusinessSc
 
 const services = [
   ["Kids Salon", "kids-haircut-gurgaon"],
+  ["Mundan Ceremony", "mundan"],
   ["Nail Art", "nail-art"],
   ["Manicure", "manicure"],
   ["Pedicure", "pedicure"],
@@ -18,21 +19,24 @@ const localities = [
 ] as const;
 
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const pathFor = (service: string, locality: string) =>
-  service === "waxing" ? `/waxing-near/${slugify(locality)}` : `/${service}-${slugify(locality)}`;
+const pathFor = (service: string, locality: string) => {
+  if (service === "waxing") return `/waxing-near/${slugify(locality)}`;
+  if (service === "mundan") return `/mundan-near/${slugify(locality)}`;
+  return `/${service}-${slugify(locality)}`;
+};
 
 const faqs = [
   { question: "Where is KidSalonia located in Gurgaon?", answer: "KidSalonia is at Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101, near Airia Mall and Golf Course Extension Road." },
-  { question: "Does KidSalonia serve families from different Gurgaon sectors and societies?", answer: "Yes. Customers travel to KidSalonia from Gurgaon sectors, residential societies and major road corridors. Advance booking is recommended before travelling." },
-  { question: "Which services can I book?", answer: "KidSalonia offers kids haircuts and grooming, nail art, manicure, pedicure, hair spa and related salon services. KidSalonia has also started at-home waxing in Gurgaon, subject to locality and appointment availability." },
+  { question: "Does KidSalonia provide Mundan at home and at the salon?", answer: "Yes. Mundan ceremony can be booked at KidSalonia salon in Sector 67 or as an at-home service in supported Gurgaon locations, subject to advance booking and staff availability." },
+  { question: "Which services can I book?", answer: "KidSalonia offers kids haircuts and grooming, Mundan ceremony, nail art, manicure, pedicure, hair spa and related salon services. KidSalonia also offers at-home waxing in Gurgaon, subject to locality and appointment availability." },
 ];
 
 export default function GurgaonLocalSalon() {
   return <div className="min-h-screen bg-background">
-    <SEO title="Kids Salon Near Me Gurgaon | Nail Art, Manicure, Pedicure, Hair Spa & Waxing | KidSalonia" description="Find KidSalonia from Gurgaon sectors, societies and major roads. Book kids salon, nail art, manicure, pedicure and hair spa, plus at-home waxing by availability." canonical={`${BASE_URL}/gurgaon-salon-near-me`} keywords={["kids salon near me", "salon near me Gurgaon", "nail art near me", "manicure near me", "pedicure near me", "hair spa near me", "waxing near me", "home waxing Gurgaon", "kids salon Gurgaon"]} schemas={[localBusinessSchema, createFAQSchema(faqs), createBreadcrumbSchema([{name:"Home",url:BASE_URL},{name:"Gurgaon Salon Near Me",url:`${BASE_URL}/gurgaon-salon-near-me`}])]} />
+    <SEO title="Kids Salon Near Me Gurgaon | Mundan, Nail Art, Manicure, Pedicure, Hair Spa & Waxing | KidSalonia" description="Find KidSalonia from Gurgaon sectors, societies and major roads. Book kids salon, Mundan at home or salon, nail art, manicure, pedicure, hair spa and at-home waxing." canonical={`${BASE_URL}/gurgaon-salon-near-me`} keywords={["kids salon near me", "salon near me Gurgaon", "mundan near me", "mundan at home Gurgaon", "nail art near me", "manicure near me", "pedicure near me", "hair spa near me", "waxing near me", "kids salon Gurgaon"]} schemas={[localBusinessSchema, createFAQSchema(faqs), createBreadcrumbSchema([{name:"Home",url:BASE_URL},{name:"Gurgaon Salon Near Me",url:`${BASE_URL}/gurgaon-salon-near-me`}])]} />
     <Header />
     <main>
-      <section className="bg-gradient-to-br from-pink-50 via-white to-sky-50 px-5 py-16 md:py-24"><div className="mx-auto max-w-6xl"><p className="text-sm font-black uppercase tracking-[0.18em] text-primary">KidSalonia Gurugram</p><h1 className="mt-3 max-w-4xl text-4xl font-black tracking-tight text-slate-950 md:text-6xl">Kids Salon, Nail Art, Manicure, Pedicure, Hair Spa & Waxing Near You in Gurgaon</h1><p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">Use this local directory to find the most relevant KidSalonia service page for your Gurgaon sector, road or residential community. Our physical salon is in Sector 67 near Airia Mall. At-home waxing is a separate home-service offering and is confirmed based on your locality and appointment slot.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/book" className="rounded-full bg-primary px-6 py-3 font-bold text-white">Book Appointment</Link><Link to="/waxing-gurgaon" className="rounded-full border border-primary px-6 py-3 font-bold text-primary">At-Home Waxing</Link><Link to="/find-us" className="rounded-full border border-primary px-6 py-3 font-bold text-primary">Directions</Link></div></div></section>
+      <section className="bg-gradient-to-br from-pink-50 via-white to-sky-50 px-5 py-16 md:py-24"><div className="mx-auto max-w-6xl"><p className="text-sm font-black uppercase tracking-[0.18em] text-primary">KidSalonia Gurugram</p><h1 className="mt-3 max-w-4xl text-4xl font-black tracking-tight text-slate-950 md:text-6xl">Kids Salon, Mundan, Nail Art, Manicure, Pedicure, Hair Spa & Waxing Near You in Gurgaon</h1><p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">Use this local directory to find the most relevant KidSalonia service page for your Gurgaon sector, road or residential community. Our physical salon is in Sector 67 near Airia Mall. Mundan can be booked at home or at the salon, while waxing is an at-home service subject to locality and appointment availability.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/book" className="rounded-full bg-primary px-6 py-3 font-bold text-white">Book Appointment</Link><Link to="/mundan-ceremony-gurgaon" className="rounded-full border border-primary px-6 py-3 font-bold text-primary">Mundan: Home or Salon</Link><Link to="/waxing-gurgaon" className="rounded-full border border-primary px-6 py-3 font-bold text-primary">At-Home Waxing</Link><Link to="/find-us" className="rounded-full border border-primary px-6 py-3 font-bold text-primary">Directions</Link></div></div></section>
       <section className="mx-auto max-w-6xl px-5 py-14"><h2 className="text-3xl font-black">Search by service and locality</h2><p className="mt-3 max-w-3xl text-slate-600">Choose a service first, then your nearby sector, society or road. We focus on useful Gurgaon searches rather than creating misleading branch listings.</p><div className="mt-10 space-y-10">{services.map(([label, slug]) => <div key={slug}><h3 className="text-xl font-black text-slate-900">{label} around Gurgaon</h3><div className="mt-4 flex flex-wrap gap-2">{localities.map(locality => <Link key={`${slug}-${locality}`} to={pathFor(slug, locality)} className="rounded-full border bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-primary hover:text-primary">{label} near {locality}</Link>)}</div></div>)}</div></section>
       <section className="bg-slate-50 px-5 py-14"><div className="mx-auto max-w-6xl"><h2 className="text-3xl font-black">Frequently asked questions</h2><div className="mt-6 grid gap-4 md:grid-cols-3">{faqs.map(f => <article key={f.question} className="rounded-2xl bg-white p-5 shadow-sm"><h3 className="font-black">{f.question}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{f.answer}</p></article>)}</div></div></section>
     </main>
