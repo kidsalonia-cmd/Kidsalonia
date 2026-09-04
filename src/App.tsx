@@ -33,6 +33,8 @@ import KidsSalonNoida from "./pages/KidsSalonNoida";
 import KidsSalonGhaziabad from "./pages/KidsSalonGhaziabad";
 import KidsSalonDelhiNCR from "./pages/KidsSalonDelhiNCR";
 import Franchise from "./pages/Franchise";
+import FranchiseCities from "./pages/FranchiseCities";
+import FranchiseCityPage from "./pages/FranchiseCityPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ConversionActions from "./components/ConversionActions";
@@ -85,6 +87,8 @@ const App = () => (
           <Route path="/locations/kids-salon-delhi-ncr" element={<KidsSalonDelhiNCR />} />
           <Route path="/locations/kids-salon-delhi-ncr/" element={<KidsSalonDelhiNCR />} />
           <Route path="/franchise" element={<Franchise />} />
+          <Route path="/franchise/cities" element={<FranchiseCities />} />
+          <Route path="/franchise/:citySlug" element={<FranchiseCityPage />} />
           <Route path="/:slug" element={<LocationServicePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
