@@ -131,10 +131,18 @@ const franchiseDirectoryEntry = {
   changefreq: "monthly",
 };
 
+const franchiseMediaKitEntry = {
+  path: "/franchise/media-kit",
+  lastmod: new Date().toISOString().slice(0, 10),
+  priority: "0.7",
+  changefreq: "monthly",
+};
+
 const routes = uniqueByPath([
   ...registryEntries,
   ...serviceEntries,
   franchiseDirectoryEntry,
+  franchiseMediaKitEntry,
   ...franchiseCityEntries,
   ...blogEntries,
 ]);
@@ -159,6 +167,7 @@ const localPages = uniqueByPath([
   ...registryEntries,
   ...serviceEntries,
   franchiseDirectoryEntry,
+  franchiseMediaKitEntry,
   ...franchiseCityEntries,
 ])
   .filter((entry) => !entry.path.startsWith("/insights/"))
@@ -191,6 +200,7 @@ ${latestBlogs}
 - Booking: ${site}/contact-us
 - Franchise: ${site}/franchise
 - Franchise city directory: ${site}/franchise/cities
+- Franchise media kit: ${site}/franchise/media-kit
 - Phone: +91 8130307036
 - Location: Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101
 `;
