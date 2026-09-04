@@ -7,6 +7,7 @@ const site = "https://www.kidsalonia.com";
 const blogsSource = readFileSync(resolve(root, "src/data/blogs.ts"), "utf8");
 const registrySource = readFileSync(resolve(root, "src/data/seo-registry.ts"), "utf8");
 const servicesSource = readFileSync(resolve(root, "src/data/services.ts"), "utf8");
+const franchiseCitiesSource = readFileSync(resolve(root, "src/data/franchise-cities.ts"), "utf8");
 
 const monthIndex = new Map(
   [
@@ -34,6 +35,14 @@ function toIsoDate(value) {
     return `${year}-${month}-${String(day).padStart(2, "0")}`;
   }
   return clean.match(/^\d{4}-\d{2}-\d{2}$/) ? clean : new Date().toISOString().slice(0, 10);
+}
+
+function slugify(value) {
+  return value
+    .toLowerCase()
+    .replaceAll("&", "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function escapeXml(value) {
@@ -106,7 +115,29 @@ const serviceEntries = Array.from(
   };
 });
 
-const routes = uniqueByPath([...registryEntries, ...serviceEntries, ...blogEntries]);
+const franchiseCityEntries = Array.from(
+  franchiseCitiesSource.matchAll(/city\("([^"]+)"\s*,\s*"([^"]+)"/g),
+).map((match) => ({
+  path: `/franchise/${slugify(match[1])}`,
+  lastmod: new Date().toISOString().slice(0, 10),
+  priority: "0.8",
+  changefreq: "monthly",
+}));
+
+const franchiseDirectoryEntry = {
+  path: "/franchise/cities",
+  lastmod: new Date().toISOString().slice(0, 10),
+  priority: "0.9",
+  changefreq: "monthly",
+};
+
+const routes = uniqueByPath([
+  ...registryEntries,
+  ...serviceEntries,
+  franchiseDirectoryEntry,
+  ...franchiseCityEntries,
+  ...blogEntries,
+]);
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -124,7 +155,12 @@ ${routes
 </urlset>
 `;
 
-const localPages = uniqueByPath([...registryEntries, ...serviceEntries])
+const localPages = uniqueByPath([
+  ...registryEntries,
+  ...serviceEntries,
+  franchiseDirectoryEntry,
+  ...franchiseCityEntries,
+])
   .filter((entry) => !entry.path.startsWith("/insights/"))
   .map((entry) => `- [${entry.path === "/" ? "Home" : entry.path.slice(1).replaceAll("-", " ")}](${entry.path})`)
   .join("\n");
@@ -137,7 +173,7 @@ const latestBlogs = blogEntries
 
 const llms = `# KidSalonia
 
-> KidSalonia is Gurugram's premium kids and family salon for gentle haircuts, mundan, nail art, manicure, pedicure, skin care, party grooming, and child-friendly salon experiences.
+> KidSalonia is Gurugram's premium kids and family salon for gentle haircuts, mundan, nail art, manicure, pedicure, skin care, party grooming, and child-friendly salon experiences. KidSalonia also invites franchise enquiries across India.
 
 KidSalonia is located at Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101, close to Airia Mall and Golf Course Extension Road. Services use child-safe products and trained stylists for babies, toddlers, kids, tweens, mothers, and families. Open Monday and Wednesday-Friday, 11:30 AM to 8:30 PM, and Saturday-Sunday, 10:30 AM to 9:00 PM. Closed Tuesdays.
 
@@ -153,6 +189,8 @@ ${latestBlogs}
 
 - Website: ${site}
 - Booking: ${site}/contact-us
+- Franchise: ${site}/franchise
+- Franchise city directory: ${site}/franchise/cities
 - Phone: +91 8130307036
 - Location: Ground Floor, A-19 JMD Suburbio 2, Gurugram, Haryana 122101
 `;
@@ -160,4 +198,4 @@ ${latestBlogs}
 writeFileSafely(resolve(root, "public/sitemap.xml"), sitemap);
 writeFileSafely(resolve(root, "public/llms.txt"), llms);
 
-console.log(`Generated sitemap.xml with ${routes.length} URLs.`);
+console.log(`Generated sitemap.xml with ${routes.length} URLs, including ${franchiseCityEntries.length} franchise city pages.`);
