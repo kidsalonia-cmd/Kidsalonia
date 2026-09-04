@@ -37,6 +37,7 @@ import FranchiseCities from "./pages/FranchiseCities";
 import FranchiseCityPage from "./pages/FranchiseCityPage";
 import FranchiseMediaKit from "./pages/FranchiseMediaKit";
 import GurgaonLocalSalon from "./pages/GurgaonLocalSalon";
+import GurgaonServiceLanding from "./pages/GurgaonServiceLanding";
 import WaxingServicePage from "./pages/WaxingServicePage";
 import MundanCeremonyPage from "./pages/MundanCeremonyPage";
 import NotFound from "./pages/NotFound";
@@ -65,6 +66,10 @@ const App = () => (
           <Route path="/hair" element={<Hair />} />
           <Route path="/skin" element={<Skin />} />
           <Route path="/nails" element={<Nails />} />
+          <Route path="/kids-haircut-gurgaon" element={<GurgaonServiceLanding service="kids-haircut" />} />
+          <Route path="/nail-art-gurgaon" element={<GurgaonServiceLanding service="nail-art" />} />
+          <Route path="/manicure-gurgaon" element={<GurgaonServiceLanding service="manicure" />} />
+          <Route path="/pedicure-gurgaon" element={<GurgaonServiceLanding service="pedicure" />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/:slug" element={<BlogPost />} />
           <Route path="/guides/:hubSlug" element={<AuthorityHubPage />} />
