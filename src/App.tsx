@@ -38,6 +38,7 @@ import FranchiseCityPage from "./pages/FranchiseCityPage";
 import FranchiseMediaKit from "./pages/FranchiseMediaKit";
 import GurgaonLocalSalon from "./pages/GurgaonLocalSalon";
 import WaxingServicePage from "./pages/WaxingServicePage";
+import MundanCeremonyPage from "./pages/MundanCeremonyPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ConversionActions from "./components/ConversionActions";
@@ -73,6 +74,8 @@ const App = () => (
           <Route path="/gurgaon-salon-near-me" element={<GurgaonLocalSalon />} />
           <Route path="/waxing-gurgaon" element={<WaxingServicePage />} />
           <Route path="/waxing-near/:localitySlug" element={<WaxingServicePage />} />
+          <Route path="/mundan-ceremony-gurgaon" element={<MundanCeremonyPage />} />
+          <Route path="/mundan-near/:localitySlug" element={<MundanCeremonyPage />} />
           <Route path="/kids-salon-sector-67-gurugram" element={<KidsSalonSector67 />} />
           <Route path="/kids-salon-near-sohna-road-gurugram" element={<KidsSalonSohnaRoad />} />
           <Route path="/kids-salon-near-dlf-gurugram" element={<KidsSalonDLF />} />
