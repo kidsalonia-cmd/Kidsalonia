@@ -36,6 +36,7 @@ import Franchise from "./pages/Franchise";
 import FranchiseCities from "./pages/FranchiseCities";
 import FranchiseCityPage from "./pages/FranchiseCityPage";
 import FranchiseMediaKit from "./pages/FranchiseMediaKit";
+import GurgaonLocalSalon from "./pages/GurgaonLocalSalon";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ConversionActions from "./components/ConversionActions";
@@ -68,6 +69,7 @@ const App = () => (
           <Route path="/admin/seo" element={<AdminSeo />} />
           <Route path="/hyperrevamp-reporting" element={<Navigate to="/admin/seo" replace />} />
           <Route path="/best-kids-salon-gurugram" element={<BestKidsSalon />} />
+          <Route path="/gurgaon-salon-near-me" element={<GurgaonLocalSalon />} />
           <Route path="/kids-salon-sector-67-gurugram" element={<KidsSalonSector67 />} />
           <Route path="/kids-salon-near-sohna-road-gurugram" element={<KidsSalonSohnaRoad />} />
           <Route path="/kids-salon-near-dlf-gurugram" element={<KidsSalonDLF />} />
