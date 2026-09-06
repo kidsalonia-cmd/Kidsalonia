@@ -19,6 +19,7 @@ import Offers from "./pages/Offers";
 import PriceList from "./pages/PriceList";
 import SocialMedia from "./pages/SocialMedia";
 import FindUs from "./pages/FindUs";
+import BusinessLogin from "./pages/BusinessLogin";
 import AdminSeo from "./pages/AdminSeo";
 import BestKidsSalon from "./pages/BestKidsSalon";
 import KidsSalonSector67 from "./pages/KidsSalonSector67";
@@ -60,6 +61,7 @@ const App = () => (
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/price-list" element={<PriceList />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/business-login" element={<BusinessLogin />} />
           <Route path="/gallery" element={<Navigate to="/social-media" replace />} />
           <Route path="/social-media" element={<SocialMedia />} />
           <Route path="/find-us" element={<FindUs />} />
