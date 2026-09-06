@@ -5,6 +5,7 @@ import {
   Facebook,
   Gift,
   Instagram,
+  LogIn,
   Menu,
   MessageCircle,
   Phone,
@@ -69,7 +70,7 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 py-3 sm:px-6 lg:px-12">
         <Link to="/" onClick={closeMobileMenu}><img src={logo} alt="KidSalonia" className="h-14 w-auto sm:h-16 lg:h-16" /></Link>
         <Link to="/" className="text-2xl font-extrabold leading-none tracking-tight sm:text-3xl lg:text-[42px]" onClick={closeMobileMenu}><span className="text-primary">Kid</span><span className="text-[hsl(30,100%,50%)]">S</span><span className="text-[hsl(200,100%,50%)]">a</span><span className="text-[hsl(120,70%,45%)]">l</span><span className="text-[hsl(30,100%,50%)]">o</span><span className="text-[hsl(270,70%,55%)]">n</span><span className="text-[hsl(200,100%,50%)]">i</span><span className="text-[hsl(120,70%,45%)]">a</span></Link>
-        <div className="hidden items-center gap-3 lg:flex"><a href="https://www.instagram.com/kidsalonia" target="_blank" rel="noopener noreferrer" className="ks-raised-icon text-foreground/60 hover:text-primary" aria-label="Instagram"><Instagram size={20} /></a><a href="https://www.facebook.com/766831683190165" target="_blank" rel="noopener noreferrer" className="ks-raised-icon text-foreground/60 hover:text-primary" aria-label="Facebook"><Facebook size={20} /></a><Link to="/franchise" className="rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary">Franchise</Link><Link to="/book" className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground">Book Now</Link></div>
+        <div className="hidden items-center gap-3 lg:flex"><a href="https://www.instagram.com/kidsalonia" target="_blank" rel="noopener noreferrer" className="ks-raised-icon text-foreground/60 hover:text-primary" aria-label="Instagram"><Instagram size={20} /></a><a href="https://www.facebook.com/766831683190165" target="_blank" rel="noopener noreferrer" className="ks-raised-icon text-foreground/60 hover:text-primary" aria-label="Facebook"><Facebook size={20} /></a><Link to="/franchise" className="rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary">Franchise</Link><Link to="/business-login" className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-primary hover:text-primary"><LogIn size={16} /> Business Login</Link><Link to="/book" className="rounded-full bg-primary px-6 py-2.5 text-sm font-bold text-primary-foreground">Book Now</Link></div>
         <button type="button" className="p-2 lg:hidden" onClick={() => setMobileMenuOpen((v) => !v)} aria-label="Menu">{mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}</button>
       </div>
 
@@ -94,6 +95,7 @@ const Header = () => {
           <div><p className="mb-2 text-xs font-black uppercase tracking-[0.15em] text-primary">Services</p><div className="grid grid-cols-2 gap-2">{serviceItems.map((item) => <Link key={item.label} to={item.href} onClick={closeMobileMenu} className="rounded-xl bg-pink-50 px-3 py-2.5 font-bold text-slate-700">{item.label}</Link>)}</div></div>
           {primaryItems.slice(1).map((item) => <Link key={item.label} to={item.href} className={navClass(item.href, true)} onClick={closeMobileMenu}>{item.label}</Link>)}
           <Link to="/franchise" className="block w-full rounded-full border border-primary px-6 py-3 text-center font-semibold text-primary" onClick={closeMobileMenu}>Get Franchise</Link>
+          <Link to="/business-login" className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 px-6 py-3 text-center font-semibold text-slate-700" onClick={closeMobileMenu}><LogIn size={18} /> Business Login</Link>
           <Link to="/book" className="block w-full rounded-full bg-primary px-6 py-3 text-center font-semibold text-primary-foreground" onClick={closeMobileMenu}>Book Now</Link>
         </nav>
       )}
