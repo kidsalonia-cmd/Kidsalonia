@@ -7,46 +7,40 @@ export type BookingService = {
 export const BOOKING_SERVICES: BookingService[] = [
   { slug: "kids-haircut", name: "Kids Haircut", duration: 45 },
   { slug: "baby-first-haircut", name: "Baby First Haircut", duration: 45 },
-  { slug: "toddler-haircut", name: "Toddler Haircut", duration: 45 },
-  { slug: "boys-haircut", name: "Boys Haircut", duration: 45 },
-  { slug: "girls-haircut", name: "Girls Haircut", duration: 60 },
-  { slug: "kids-hair-styling", name: "Kids Hair Styling", duration: 60 },
-  { slug: "mundan", name: "Mundan / Head Shave", duration: 60 },
-  { slug: "nail-art", name: "Kids Nail Art", duration: 45 },
-  { slug: "manicure", name: "Kids Manicure", duration: 45 },
-  { slug: "pedicure", name: "Kids Pedicure", duration: 45 },
-  { slug: "party-makeup", name: "Kids Party Makeup", duration: 60 },
+  { slug: "boy-haircut", name: "Boy Haircut", duration: 45 },
+  { slug: "girl-haircut", name: "Girl Haircut", duration: 60 },
+  { slug: "adult-haircut", name: "Adult Haircut", duration: 45 },
+  { slug: "mundan", name: "Mundan", duration: 60 },
+  { slug: "hair-wash", name: "Hair Wash", duration: 30 },
+  { slug: "hair-styling", name: "Hair Styling", duration: 60 },
+  { slug: "hair-spa", name: "Hair Spa", duration: 60 },
+  { slug: "lice-treatment", name: "Lice Treatment", duration: 90 },
+  { slug: "kids-nail-art", name: "Kids Nail Art", duration: 45 },
+  { slug: "adult-nail-art", name: "Adult Nail Art", duration: 60 },
+  { slug: "kids-manicure", name: "Kids Manicure", duration: 45 },
+  { slug: "adult-manicure", name: "Adult Manicure", duration: 60 },
+  { slug: "kids-pedicure", name: "Kids Pedicure", duration: 45 },
+  { slug: "adult-pedicure", name: "Adult Pedicure", duration: 60 },
+  { slug: "gel-polish", name: "Gel Polish", duration: 45 },
+  { slug: "beauty-service", name: "Beauty Service", duration: 60 },
+  { slug: "facial", name: "Facial", duration: 60 },
+  { slug: "cleanup", name: "Cleanup", duration: 45 },
+  { slug: "other-service", name: "Other Service", duration: 30 },
 ];
 
 const SERVICE_ALIASES: Record<string, string> = {
-  "kids haircut": "kids-haircut",
-  "kids haircut gurgaon": "kids-haircut",
-  haircut: "kids-haircut",
-  hairdresser: "kids-haircut",
-  "baby first haircut": "baby-first-haircut",
-  "toddler haircut": "toddler-haircut",
-  "boys haircut": "boys-haircut",
-  "girls haircut": "girls-haircut",
-  "kids hair styling": "kids-hair-styling",
-  "hair styling": "kids-hair-styling",
-  "party hair styling": "kids-hair-styling",
-  mundan: "mundan",
-  "mundan ceremony": "mundan",
-  "baby mundan": "mundan",
-  "traditional mundan": "mundan",
-  "hygienic mundan": "mundan",
-  "head shave": "mundan",
-  "nail art": "nail-art",
-  "kids nail art": "nail-art",
-  manicure: "manicure",
-  "kids manicure": "manicure",
-  "spa manicure": "manicure",
-  pedicure: "pedicure",
-  "kids pedicure": "pedicure",
-  "spa pedicure": "pedicure",
-  "crystal jelly pedicure": "pedicure",
-  "party makeup": "party-makeup",
-  "kids party makeup": "party-makeup",
+  "kids haircut": "kids-haircut", haircut: "kids-haircut",
+  "baby first haircut": "baby-first-haircut", "toddler haircut": "kids-haircut",
+  "boys haircut": "boy-haircut", "boy haircut": "boy-haircut",
+  "girls haircut": "girl-haircut", "girl haircut": "girl-haircut",
+  "adult haircut": "adult-haircut", mundan: "mundan", "head shave": "mundan",
+  "hair wash": "hair-wash", "hair styling": "hair-styling", "kids hair styling": "hair-styling",
+  "hair spa": "hair-spa", "lice treatment": "lice-treatment",
+  "nail art": "kids-nail-art", "kids nail art": "kids-nail-art", "adult nail art": "adult-nail-art",
+  manicure: "kids-manicure", "kids manicure": "kids-manicure", "adult manicure": "adult-manicure",
+  pedicure: "kids-pedicure", "kids pedicure": "kids-pedicure", "adult pedicure": "adult-pedicure",
+  "gel polish": "gel-polish", "beauty service": "beauty-service", facial: "facial", cleanup: "cleanup",
+  "other service": "other-service",
 };
 
 const normalizeService = (value: string) =>
@@ -73,38 +67,16 @@ export const isTuesday = (date: string) => Boolean(date) && getLocalDay(date) ==
 export const isWeekend = (date: string) => Boolean(date) && [0, 6].includes(getLocalDay(date));
 
 export const BOOKING_SLOTS = [
-  ["10:30", "10:30 AM", "weekend"],
-  ["11:30", "11:30 AM", "all"],
-  ["12:30", "12:30 PM", "all"],
-  ["13:30", "1:30 PM", "all"],
-  ["14:30", "2:30 PM", "all"],
-  ["15:30", "3:30 PM", "all"],
-  ["16:30", "4:30 PM", "all"],
-  ["17:30", "5:30 PM", "all"],
-  ["18:30", "6:30 PM", "all"],
-  ["19:30", "7:30 PM", "all"],
+  ["10:30", "10:30 AM", "weekend"], ["11:30", "11:30 AM", "all"],
+  ["12:30", "12:30 PM", "all"], ["13:30", "1:30 PM", "all"],
+  ["14:30", "2:30 PM", "all"], ["15:30", "3:30 PM", "all"],
+  ["16:30", "4:30 PM", "all"], ["17:30", "5:30 PM", "all"],
+  ["18:30", "6:30 PM", "all"], ["19:30", "7:30 PM", "all"],
   ["20:00", "8:00 PM", "weekend"],
 ] as const;
 
-export const getSlotsForDate = (date: string) =>
-  BOOKING_SLOTS.filter(([, , schedule]) => schedule === "all" || isWeekend(date));
-
-export const getIndiaDate = (date = new Date()) =>
-  new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Kolkata",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(date);
-
-export const isPastSlot = (date: string, time: string, now = new Date()) =>
-  new Date(`${date}T${time}:00+05:30`).getTime() <= now.getTime();
-
-export const isValidPhone = (phone: string) => {
-  const digits = phone.replace(/\D/g, "");
-  const local = digits.startsWith("91") && digits.length === 12 ? digits.slice(2) : digits;
-  return /^[6-9]\d{9}$/.test(local);
-};
-
-export const isValidEmail = (email: string) =>
-  !email.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+export const getSlotsForDate = (date: string) => BOOKING_SLOTS.filter(([, , schedule]) => schedule === "all" || isWeekend(date));
+export const getIndiaDate = (date = new Date()) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+export const isPastSlot = (date: string, time: string, now = new Date()) => new Date(`${date}T${time}:00+05:30`).getTime() <= now.getTime();
+export const isValidPhone = (phone: string) => { const digits = phone.replace(/\D/g, ""); const local = digits.startsWith("91") && digits.length === 12 ? digits.slice(2) : digits; return /^[6-9]\d{9}$/.test(local); };
+export const isValidEmail = (email: string) => !email.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
