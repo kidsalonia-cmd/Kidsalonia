@@ -8,68 +8,139 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-
+    --background: 350 100% 98%;
+    --foreground: 252 38% 18%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
-
+    --card-foreground: 252 38% 18%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
-
+    --popover-foreground: 252 38% 18%;
     --primary: 346 85% 54%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 338 100% 93%;
-    --secondary-foreground: 0 0% 0%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 340 100% 40%;
+    --secondary: 338 100% 94%;
+    --secondary-foreground: 270 55% 28%;
+    --muted: 210 70% 96%;
+    --muted-foreground: 245 18% 42%;
+    --accent: 270 72% 58%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 330 42% 89%;
+    --input: 330 42% 89%;
     --ring: 346 85% 54%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 1.25rem;
+    --sidebar-background: 340 100% 98%;
+    --sidebar-foreground: 252 38% 22%;
+    --sidebar-primary: 346 85% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 80% 94%;
+    --sidebar-accent-foreground: 252 38% 22%;
+    --sidebar-border: 330 42% 89%;
+    --sidebar-ring: 270 72% 58%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
+    background:
+      radial-gradient(circle at 7% 12%, rgba(255,211,226,.55) 0 5rem, transparent 5.2rem),
+      radial-gradient(circle at 94% 20%, rgba(205,238,255,.62) 0 7rem, transparent 7.2rem),
+      radial-gradient(circle at 12% 72%, rgba(220,255,230,.48) 0 8rem, transparent 8.2rem),
+      linear-gradient(135deg,#fff8fb 0%,#f7f2ff 28%,#effaff 52%,#fff8e8 76%,#f3fff5 100%);
+    background-attachment: fixed;
+  }
+  h1,h2,h3 { letter-spacing: -.025em; }
+}
+
+@layer components {
+  /* Pastel surfaces automatically upgrade the existing white page sections without changing content. */
+  main > section:nth-of-type(4n+1), main > div > section:nth-of-type(4n+1) { background-color: rgba(255,241,247,.88); }
+  main > section:nth-of-type(4n+2), main > div > section:nth-of-type(4n+2) { background-color: rgba(240,248,255,.88); }
+  main > section:nth-of-type(4n+3), main > div > section:nth-of-type(4n+3) { background-color: rgba(244,255,246,.88); }
+  main > section:nth-of-type(4n), main > div > section:nth-of-type(4n) { background-color: rgba(255,249,229,.88); }
+
+  .bg-white, .bg-background {
+    background-color: rgba(255,255,255,.82) !important;
+  }
+  .bg-card {
+    background: linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,246,251,.94)) !important;
+  }
+  .bg-secondary {
+    background: linear-gradient(135deg,#ffe5f0,#eee5ff,#e1f5ff) !important;
+  }
+  .bg-muted\/40, .bg-muted\/50 {
+    background-color: rgba(238,245,255,.72) !important;
+  }
+
+  /* Existing cards become soft, playful tiles. */
+  main .rounded-lg, main .rounded-xl, main .rounded-2xl, main .rounded-3xl,
+  main [class*="rounded-[2rem]"] {
+    box-shadow: 0 12px 32px rgba(99,72,140,.08);
+  }
+  main .border {
+    border-color: rgba(236,180,211,.55);
+  }
+
+  /* Lightweight decorative art made with CSS, so pages stay fast and responsive. */
+  main { position: relative; overflow: hidden; }
+  main::before {
+    content: "★  ☁  ♡  ✦  🌈  ✨";
+    position: absolute;
+    top: 1.25rem;
+    right: 2.5%;
+    z-index: 0;
+    max-width: 12rem;
+    color: rgba(237,79,139,.22);
+    font-size: 1.55rem;
+    letter-spacing: .55rem;
+    line-height: 2.2;
+    transform: rotate(5deg);
+    pointer-events: none;
+  }
+  main::after {
+    content: "♡  ✦  ☀  ★  ☁";
+    position: absolute;
+    left: 2%;
+    top: 42%;
+    z-index: 0;
+    color: rgba(79,168,232,.18);
+    font-size: 1.35rem;
+    letter-spacing: .55rem;
+    writing-mode: vertical-rl;
+    pointer-events: none;
+  }
+  main > * { position: relative; z-index: 1; }
+
+  /* Friendly headings and buttons across all tabs. */
+  main h1 { color: #3f216f; }
+  main h2 { color: #55248b; }
+  main h3 { color: #65329b; }
+  main h1::after {
+    content: " ✨";
+    font-size: .55em;
+    vertical-align: top;
+  }
+  main a[class*="bg-primary"], main button[class*="bg-primary"] {
+    box-shadow: 0 8px 18px rgba(238,38,91,.2);
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  }
+  main a[class*="bg-primary"]:hover, main button[class*="bg-primary"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 22px rgba(238,38,91,.25);
+  }
+
+  /* Images feel like playful salon/photo cards. */
+  main img:not([class*="logo"]) {
+    border-radius: 1.5rem;
   }
 }
 
-/* Marquee animation */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 20s linear infinite; }
 
-.animate-marquee {
-  animation: marquee 20s linear infinite;
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+@media (max-width: 640px) {
+  main::before { right: -2rem; opacity: .7; font-size: 1.1rem; }
+  main::after { display: none; }
 }
