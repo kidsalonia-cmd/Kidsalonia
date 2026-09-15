@@ -4,66 +4,10 @@ import Footer from "@/components/Footer";
 import SocialSidebar from "@/components/SocialSidebar";
 import { blogs } from "@/data/blogs";
 import SEO from "@/components/SEO";
-import blogBgImg from "@/assets/blogbg.jpg";
 
-const Insights = () => {
-  return (
-    <div className="flex flex-col min-h-screen bg-background">
-      <SEO
-        title="Kids Care Blog & Insights | KidSalonia"
-        description="Read expert tips on kids haircuts, nail art, skin care, and grooming. Practical advice for parents from Gurugram's premium kids salon."
-        canonical="https://www.kidsalonia.com/insights"
-      />
-      <Header />
-      <SocialSidebar />
-
-      {/* Hero Section */}
-      <section className="relative w-full h-[340px] md:h-[420px] overflow-hidden">
-        <img
-          src={blogBgImg}
-          alt="Kids care insights and blog"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
-          <p className="text-primary-foreground text-lg font-semibold mb-2">KidSalonia</p>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">INSIGHTS</h1>
-          <h2 className="text-xl md:text-2xl font-bold text-white mb-2">Kids Care Blog</h2>
-          <p className="text-white/80 text-base">Practical advice for parents and children</p>
-        </div>
-      </section>
-
-      {/* Blog Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[...blogs].filter((blog) => new Date(blog.date) <= new Date()).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((blog) => (
-            <Link
-              key={blog.slug}
-              to={`/insights/${blog.slug}`}
-              className="group block"
-            >
-              <div className="overflow-hidden rounded-lg mb-4">
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mb-2">{blog.date}</p>
-              <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition text-lg">
-                {blog.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-3">{blog.excerpt}</p>
-              <p className="text-xs text-muted-foreground">
-                By {blog.author} · {blog.category} · {blog.readTime}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-};
-
+const tones=["bg-pink-100","bg-sky-100","bg-amber-100","bg-emerald-100","bg-violet-100","bg-rose-100"];
+const Insights=()=>{const visible=[...blogs].filter(b=>new Date(b.date)<=new Date()).sort((a,b)=>new Date(b.date).getTime()-new Date(a.date).getTime());return <div className="flex flex-col min-h-screen bg-[#fff9fc]"><SEO title="Kids Care Blog & Insights | KidSalonia" description="Read expert tips on kids haircuts, nail art, skin care, and grooming. Practical advice for parents from Gurugram's premium kids salon." canonical="https://www.kidsalonia.com/insights"/><Header/><SocialSidebar/>
+<section className="relative overflow-hidden bg-gradient-to-br from-[#ffddea] via-[#eee4ff] to-[#dff5ff] py-16 md:py-20"><span className="absolute left-[7%] top-8 text-5xl">🌈</span><span className="absolute right-[8%] top-10 text-5xl">☁️</span><span className="absolute left-[18%] bottom-8 text-3xl">⭐</span><span className="absolute right-[20%] bottom-8 text-3xl">✨</span><div className="relative max-w-4xl mx-auto px-6 text-center"><div className="inline-block bg-white/80 rounded-full px-5 py-2 font-bold text-primary shadow-sm">📚 KidSalonia Parent Corner</div><h1 className="text-4xl md:text-6xl font-black text-[#4b2677] mt-5">Tips, ideas & happy little moments</h1><p className="text-lg text-[#665678] mt-4 max-w-2xl mx-auto">Easy-to-read guides for haircuts, nail fun, grooming, first visits and everyday kids care.</p><div className="flex flex-wrap justify-center gap-3 mt-7"><span className="bg-white rounded-full px-4 py-2">✂️ Hair</span><span className="bg-white rounded-full px-4 py-2">💅 Nails</span><span className="bg-white rounded-full px-4 py-2">🧴 Care</span><span className="bg-white rounded-full px-4 py-2">🎉 Fun</span></div></div></section>
+<section className="bg-gradient-to-b from-[#fff9fc] to-[#f2fbff] py-14"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">{visible.map((blog,i)=><Link key={blog.slug} to={`/insights/${blog.slug}`} className={`${tones[i%tones.length]} group rounded-[2rem] p-3 border-4 border-white shadow-md hover:-translate-y-1 hover:shadow-xl transition`}><div className="overflow-hidden rounded-[1.5rem]"><img src={blog.image} alt={blog.title} className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"/></div><div className="p-4"><div className="flex justify-between items-center gap-2 mb-3"><span className="bg-white/90 rounded-full px-3 py-1 text-xs font-bold">{blog.category}</span><span className="text-xs text-muted-foreground">{blog.readTime}</span></div><p className="text-xs font-semibold text-muted-foreground mb-2">📅 {blog.date}</p><h2 className="font-black text-[#3f216f] text-xl leading-snug group-hover:text-primary transition">{blog.title}</h2><p className="text-sm text-muted-foreground mt-3 line-clamp-3">{blog.excerpt}</p><div className="mt-5 font-black text-primary">Read with your little star → ⭐</div></div></Link>)}</div></div></section>
+<section className="bg-gradient-to-r from-[#e5f7ff] via-[#fff2c9] to-[#ffe4ef] py-12 px-6 text-center"><div className="max-w-3xl mx-auto"><div className="text-4xl">💡 🌈 💖</div><h2 className="text-3xl font-black mt-3">Good ideas make salon days easier!</h2><p className="text-muted-foreground mt-3">Explore our parent guides, then book a fun KidSalonia visit when you're ready.</p><Link to="/book" className="inline-block mt-6 bg-primary text-white rounded-full px-8 py-3 font-black shadow-lg">Book a Visit ✨</Link></div></section><Footer/></div>};
 export default Insights;
