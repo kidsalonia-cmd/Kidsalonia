@@ -5,10 +5,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import Index from "./pages/Index";
 import ContactUs from "./pages/ContactUs";
-import Booking from "./pages/Booking";
+import Booking from "./pages/BookingV2";
 import Insights from "./pages/Insights";
 import BlogPost from "./pages/BlogPost";
 import Hair from "./pages/Hair";
@@ -44,75 +43,11 @@ import MundanCeremonyPage from "./pages/MundanCeremonyPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ConversionActions from "./components/ConversionActions";
-
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/book" element={<Booking />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/price-list" element={<PriceList />} />
-          <Route path="/offers" element={<Offers />} />
-          <Route path="/business-login" element={<BusinessLogin />} />
-          <Route path="/gallery" element={<Navigate to="/social-media" replace />} />
-          <Route path="/social-media" element={<SocialMedia />} />
-          <Route path="/find-us" element={<FindUs />} />
-          <Route path="/hair" element={<Hair />} />
-          <Route path="/skin" element={<Skin />} />
-          <Route path="/nails" element={<Nails />} />
-          <Route path="/kids-haircut-gurgaon" element={<GurgaonServiceLanding service="kids-haircut" />} />
-          <Route path="/nail-art-gurgaon" element={<GurgaonServiceLanding service="nail-art" />} />
-          <Route path="/manicure-gurgaon" element={<GurgaonServiceLanding service="manicure" />} />
-          <Route path="/pedicure-gurgaon" element={<GurgaonServiceLanding service="pedicure" />} />
-          <Route path="/insights" element={<Insights />} />
-          <Route path="/insights/:slug" element={<BlogPost />} />
-          <Route path="/guides/:hubSlug" element={<AuthorityHubPage />} />
-          <Route path="/admin/seo" element={<AdminSeo />} />
-          <Route path="/hyperrevamp-reporting" element={<Navigate to="/admin/seo" replace />} />
-          <Route path="/best-kids-salon-gurugram" element={<BestKidsSalon />} />
-          <Route path="/gurgaon-salon-near-me" element={<GurgaonLocalSalon />} />
-          <Route path="/waxing-gurgaon" element={<WaxingServicePage />} />
-          <Route path="/waxing-near/:localitySlug" element={<WaxingServicePage />} />
-          <Route path="/mundan-ceremony-gurgaon" element={<MundanCeremonyPage />} />
-          <Route path="/mundan-near/:localitySlug" element={<MundanCeremonyPage />} />
-          <Route path="/kids-salon-sector-67-gurugram" element={<KidsSalonSector67 />} />
-          <Route path="/kids-salon-near-sohna-road-gurugram" element={<KidsSalonSohnaRoad />} />
-          <Route path="/kids-salon-near-dlf-gurugram" element={<KidsSalonDLF />} />
-          <Route path="/locations/kids-salon-faridabad" element={<KidsSalonFaridabad />} />
-          <Route path="/locations/kids-salon-faridabad/" element={<KidsSalonFaridabad />} />
-          <Route path="/locations/kids-salon-south-delhi" element={<KidsSalonSouthDelhi />} />
-          <Route path="/locations/kids-salon-south-delhi/" element={<KidsSalonSouthDelhi />} />
-          <Route path="/locations/kids-salon-new-gurgaon" element={<KidsSalonNewGurgaon />} />
-          <Route path="/locations/kids-salon-new-gurgaon/" element={<KidsSalonNewGurgaon />} />
-          <Route path="/locations/kids-salon-dwarka" element={<KidsSalonDwarka />} />
-          <Route path="/locations/kids-salon-dwarka/" element={<KidsSalonDwarka />} />
-          <Route path="/locations/kids-salon-greater-noida-west" element={<KidsSalonGreaterNoidaWest />} />
-          <Route path="/locations/kids-salon-greater-noida-west/" element={<KidsSalonGreaterNoidaWest />} />
-          <Route path="/locations/kids-salon-noida" element={<KidsSalonNoida />} />
-          <Route path="/locations/kids-salon-noida/" element={<KidsSalonNoida />} />
-          <Route path="/locations/kids-salon-ghaziabad" element={<KidsSalonGhaziabad />} />
-          <Route path="/locations/kids-salon-ghaziabad/" element={<KidsSalonGhaziabad />} />
-          <Route path="/locations/kids-salon-delhi-ncr" element={<KidsSalonDelhiNCR />} />
-          <Route path="/locations/kids-salon-delhi-ncr/" element={<KidsSalonDelhiNCR />} />
-          <Route path="/franchise" element={<Franchise />} />
-          <Route path="/franchise/cities" element={<FranchiseCities />} />
-          <Route path="/franchise/media-kit" element={<FranchiseMediaKit />} />
-          <Route path="/franchise/:citySlug" element={<FranchiseCityPage />} />
-          <Route path="/:slug" element={<LocationServicePage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <ConversionActions />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
+const queryClient=new QueryClient();
+const App=()=><QueryClientProvider client={queryClient}><TooltipProvider><Toaster/><Sonner/><BrowserRouter><ScrollToTop/><Routes>
+<Route path="/" element={<Index/>}/><Route path="/book" element={<Booking/>}/><Route path="/contact-us" element={<ContactUs/>}/><Route path="/about-us" element={<AboutUs/>}/><Route path="/price-list" element={<PriceList/>}/><Route path="/offers" element={<Offers/>}/><Route path="/business-login" element={<BusinessLogin/>}/><Route path="/gallery" element={<Navigate to="/social-media" replace/>}/><Route path="/social-media" element={<SocialMedia/>}/><Route path="/find-us" element={<FindUs/>}/><Route path="/hair" element={<Hair/>}/><Route path="/skin" element={<Skin/>}/><Route path="/nails" element={<Nails/>}/>
+<Route path="/kids-haircut-gurgaon" element={<GurgaonServiceLanding service="kids-haircut"/>}/><Route path="/nail-art-gurgaon" element={<GurgaonServiceLanding service="nail-art"/>}/><Route path="/manicure-gurgaon" element={<GurgaonServiceLanding service="manicure"/>}/><Route path="/pedicure-gurgaon" element={<GurgaonServiceLanding service="pedicure"/>}/>
+<Route path="/insights" element={<Insights/>}/><Route path="/insights/:slug" element={<BlogPost/>}/><Route path="/guides/:hubSlug" element={<AuthorityHubPage/>}/><Route path="/admin/seo" element={<AdminSeo/>}/><Route path="/hyperrevamp-reporting" element={<Navigate to="/admin/seo" replace/>}/><Route path="/best-kids-salon-gurugram" element={<BestKidsSalon/>}/><Route path="/gurgaon-salon-near-me" element={<GurgaonLocalSalon/>}/><Route path="/waxing-gurgaon" element={<WaxingServicePage/>}/><Route path="/waxing-near/:localitySlug" element={<WaxingServicePage/>}/><Route path="/mundan-ceremony-gurgaon" element={<MundanCeremonyPage/>}/><Route path="/mundan-near/:localitySlug" element={<MundanCeremonyPage/>}/><Route path="/kids-salon-sector-67-gurugram" element={<KidsSalonSector67/>}/><Route path="/kids-salon-near-sohna-road-gurugram" element={<KidsSalonSohnaRoad/>}/><Route path="/kids-salon-near-dlf-gurugram" element={<KidsSalonDLF/>}/>
+<Route path="/locations/kids-salon-faridabad" element={<KidsSalonFaridabad/>}/><Route path="/locations/kids-salon-faridabad/" element={<KidsSalonFaridabad/>}/><Route path="/locations/kids-salon-south-delhi" element={<KidsSalonSouthDelhi/>}/><Route path="/locations/kids-salon-south-delhi/" element={<KidsSalonSouthDelhi/>}/><Route path="/locations/kids-salon-new-gurgaon" element={<KidsSalonNewGurgaon/>}/><Route path="/locations/kids-salon-new-gurgaon/" element={<KidsSalonNewGurgaon/>}/><Route path="/locations/kids-salon-dwarka" element={<KidsSalonDwarka/>}/><Route path="/locations/kids-salon-dwarka/" element={<KidsSalonDwarka/>}/><Route path="/locations/kids-salon-greater-noida-west" element={<KidsSalonGreaterNoidaWest/>}/><Route path="/locations/kids-salon-greater-noida-west/" element={<KidsSalonGreaterNoidaWest/>}/><Route path="/locations/kids-salon-noida" element={<KidsSalonNoida/>}/><Route path="/locations/kids-salon-noida/" element={<KidsSalonNoida/>}/><Route path="/locations/kids-salon-ghaziabad" element={<KidsSalonGhaziabad/>}/><Route path="/locations/kids-salon-ghaziabad/" element={<KidsSalonGhaziabad/>}/><Route path="/locations/kids-salon-delhi-ncr" element={<KidsSalonDelhiNCR/>}/><Route path="/locations/kids-salon-delhi-ncr/" element={<KidsSalonDelhiNCR/>}/>
+<Route path="/franchise" element={<Franchise/>}/><Route path="/franchise/cities" element={<FranchiseCities/>}/><Route path="/franchise/media-kit" element={<FranchiseMediaKit/>}/><Route path="/franchise/:citySlug" element={<FranchiseCityPage/>}/><Route path="/:slug" element={<LocationServicePage/>}/><Route path="*" element={<NotFound/>}/></Routes><ConversionActions/></BrowserRouter></TooltipProvider></QueryClientProvider>;
 export default App;
