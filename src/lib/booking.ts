@@ -66,13 +66,20 @@ export const getLocalDay = (date: string) => {
 export const isTuesday = (date: string) => Boolean(date) && getLocalDay(date) === 2;
 export const isWeekend = (date: string) => Boolean(date) && [0, 6].includes(getLocalDay(date));
 
+// Booking starts every 30 minutes so website availability lines up with the AI KidSalonia calendar.
+// Service duration is still sent to the availability API, so a 45/60/90 minute service blocks the full required period.
 export const BOOKING_SLOTS = [
-  ["10:30", "10:30 AM", "weekend"], ["11:30", "11:30 AM", "all"],
-  ["12:30", "12:30 PM", "all"], ["13:30", "1:30 PM", "all"],
-  ["14:30", "2:30 PM", "all"], ["15:30", "3:30 PM", "all"],
-  ["16:30", "4:30 PM", "all"], ["17:30", "5:30 PM", "all"],
-  ["18:30", "6:30 PM", "all"], ["19:30", "7:30 PM", "all"],
-  ["20:00", "8:00 PM", "weekend"],
+  ["10:30", "10:30 AM", "weekend"], ["11:00", "11:00 AM", "weekend"],
+  ["11:30", "11:30 AM", "all"], ["12:00", "12:00 PM", "all"],
+  ["12:30", "12:30 PM", "all"], ["13:00", "1:00 PM", "all"],
+  ["13:30", "1:30 PM", "all"], ["14:00", "2:00 PM", "all"],
+  ["14:30", "2:30 PM", "all"], ["15:00", "3:00 PM", "all"],
+  ["15:30", "3:30 PM", "all"], ["16:00", "4:00 PM", "all"],
+  ["16:30", "4:30 PM", "all"], ["17:00", "5:00 PM", "all"],
+  ["17:30", "5:30 PM", "all"], ["18:00", "6:00 PM", "all"],
+  ["18:30", "6:30 PM", "all"], ["19:00", "7:00 PM", "all"],
+  ["19:30", "7:30 PM", "all"], ["20:00", "8:00 PM", "weekend"],
+  ["20:30", "8:30 PM", "weekend"],
 ] as const;
 
 export const getSlotsForDate = (date: string) => BOOKING_SLOTS.filter(([, , schedule]) => schedule === "all" || isWeekend(date));
