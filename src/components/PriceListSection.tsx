@@ -7,7 +7,7 @@ const groups = [
   { title: "✂️ Haircuts & Hair Care", tone: "from-pink-100 to-rose-50", items: [
     ["Boys Haircut", "₹299"], ["Flake Fighter Treatment", "₹349"], ["Hair Straightening", "₹399"], ["Hair Curling / Crimping", "₹399"], ["Styling Blow Dry", "₹399"], ["Lice Buster Treatment", "₹449"], ["Boys Haircut + Shampoo + Conditioner", "₹449"], ["Kids Shampoo + Conditioner + Gel", "₹449"], ["Kids Party Hair Colour", "₹499"], ["Girls Haircut", "₹499"], ["Party Hair Styling", "₹599"], ["Hair Oiling (Almond / Walnut)", "₹699"], ["Girls Haircut + Shampoo + Conditioner", "₹749"],
   ]},
-  { title: "👶 First Haircut & Mundan", tone: "from-sky-100 to-cyan-50", items: [["Mundan Ceremony", "₹1,100"]] },
+  { title: "👶 First Haircut & Mundan", tone: "from-sky-100 to-cyan-50", items: [["Mundan at Salon", "₹1,100"], ["Mundan at Home (Onsite)", "₹2,100 + one-way conveyance"]] },
   { title: "🌈 Kids Nail Services", tone: "from-violet-100 to-fuchsia-50", items: [
     ["Nail Polish Feet", "₹99"], ["Nail Polish Hands", "₹99"], ["French Nail Polish Hands", "₹199"], ["French Nail Polish Feet", "₹199"], ["Kids Nail Art", "₹399"], ["Kids Crystal Jelly Manicure", "₹499"], ["Kids Crystal Jelly Pedicure", "₹599"],
   ]},
