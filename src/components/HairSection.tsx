@@ -15,7 +15,6 @@ const hairServices = [
   { name: "KIDS SHAMPOO + CONDITIONER + GEL", description: "Soft cleansing with kid-safe products.", price: "₹ 449" },
   { name: "KIDS PARTY HAIR COLOUR", description: "Temporary, safe colours perfect for parties.", price: "₹ 499" },
   { name: "GIRLS HAIRCUT", description: "Neat, stylish cuts tailored for little girls.", price: "₹ 499" },
-  { name: "FULL HEAD SHAVE", description: "Safe and hygienic full head shave for kids.", price: "₹ 699" },
   { name: "MUNDAN CEREMONY", description: "Complete traditional mundan ceremony with utmost care.", price: "₹ 1100" },
   { name: "PARTY HAIR STYLING", description: "Cute and trendy hairstyles for celebrations.", price: "₹ 599" },
   { name: "HAIR OILING (ALMOND / WALNUT)", description: "Nourishing oil massage for strong, healthy hair.", price: "₹ 699" },
