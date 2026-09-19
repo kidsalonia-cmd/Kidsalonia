@@ -37,7 +37,8 @@ const treatmentServices = [
 
 const specialServices = [
   { name: "Full Head Shave", price: "₹699", description: "Safe and hygienic full head shave for kids, performed with care and patience." },
-  { name: "Mundan Ceremony", price: "₹1100", description: "Complete traditional mundan ceremony performed with utmost care, hygiene, and patience in a child-friendly environment." },
+  { name: "Mundan at Salon", price: "₹1100", description: "Traditional Mundan service at KidSalonia salon with care, hygiene, and patience in a child-friendly environment." },
+  { name: "Mundan at Home (Onsite)", price: "₹2100 + one-way conveyance", description: "Mundan service at your home. One-way conveyance cost is additional." },
 ];
 
 const hairFAQs = [
