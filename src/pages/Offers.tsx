@@ -9,7 +9,7 @@ import SEO, { BASE_URL, createBreadcrumbSchema } from "@/components/SEO";
 import { getSelectedDailyOffer } from "@/lib/daily-offer";
 import { manualOffers } from "@/data/manual-offers";
 
-const septemberOffers = manualOffers.filter((entry) => entry.date.startsWith("2026-09-"));
+const octoberOffers = Array.from({ length: 31 }, (_, index) => getSelectedDailyOffer(`2026-10-${String(index + 1).padStart(2, "0")}`));
 
 const Offers = () => {
   const [copied, setCopied] = useState(false);
@@ -33,7 +33,7 @@ const Offers = () => {
     <>
       <SEO
         title="September Kids Salon Offers in Gurgaon | KidSalonia"
-        description={`KidSalonia September 2026 daily offer calendar plus today's family salon offer: ${offer.title}.`}
+        description={`KidSalonia October 2026 daily offer calendar plus today's family salon offer: ${offer.title}.`}
         canonical={`${BASE_URL}/offers`}
         schemas={[
           createBreadcrumbSchema([
@@ -57,13 +57,13 @@ const Offers = () => {
 
           <div className="relative mx-auto max-w-5xl text-center">
             <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm font-black uppercase tracking-widest backdrop-blur">
-              <Gift size={18} /> September 2026 Specials
+              <Gift size={18} /> October 2026 Specials
             </div>
             <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">
               A New KidSalonia Offer Every Day
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">
-              Explore the full September offer calendar and check back daily for the active salon deal.
+              Explore the full October festival offer calendar and check back daily for the active salon deal.
             </p>
           </div>
         </section>
@@ -142,13 +142,13 @@ const Offers = () => {
 
           <div className="mt-14">
             <div className="mb-8 text-center">
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-primary">1–30 September 2026</p>
-              <h2 className="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">September Daily Offer Calendar</h2>
-              <p className="mx-auto mt-3 max-w-2xl text-slate-600">Every date has a different service focus. All September calendar offers are valid only on the listed date and subject to availability.</p>
+              <p className="text-sm font-black uppercase tracking-[0.18em] text-primary">1–30 October 2026</p>
+              <h2 className="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">October Festival Offer Calendar</h2>
+              <p className="mx-auto mt-3 max-w-2xl text-slate-600">Every date has a different service focus. All October calendar offers are valid only on the listed date and subject to availability.</p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {septemberOffers.map((item) => {
+              {octoberOffers.map((item) => {
                 const date = new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", weekday: "short", timeZone: "Asia/Kolkata" })
                   .format(new Date(`${item.date}T12:00:00+05:30`));
                 const message = `Hi KidSalonia, I want to book the ${item.title} offer for ${item.date} using coupon ${item.couponCode}. Please share available timings.`;
@@ -158,7 +158,7 @@ const Offers = () => {
                   <article key={item.id} className="rounded-3xl border border-pink-100 bg-white p-5 shadow-lg transition hover:-translate-y-1 hover:shadow-xl">
                     <div className="flex items-start justify-between gap-3">
                       <span className="rounded-full bg-pink-50 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-primary">{date}</span>
-                      <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-700">15% OFF</span>
+                      <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-700">{item.discountPercent}% OFF</span>
                     </div>
                     <h3 className="mt-4 text-xl font-black text-slate-950">{item.title}</h3>
                     <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
