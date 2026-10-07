@@ -56,7 +56,7 @@ const ContactUs = () => (
           <h2 className="text-2xl font-bold">Opening hours</h2>
           <p className="mt-3 text-muted-foreground">Monday and Wednesday–Friday: 11:30 AM–8:30 PM</p>
           <p className="text-muted-foreground">Saturday–Sunday: 10:30 AM–9:00 PM</p>
-          <p className="font-semibold text-primary">Tuesday: Closed</p>
+          <p className="font-semibold text-primary">Tuesday: Closed</p>\n          <p className="mt-3 rounded-2xl bg-green-100 px-4 py-3 font-bold text-green-700">Special opening: Tuesday, 20 October 2026 — Salon Open 11:30 AM–8:30 PM</p>
         </div>
       </section>
 
