@@ -63,7 +63,9 @@ export const getLocalDay = (date: string) => {
   return new Date(year, month - 1, day).getDay();
 };
 
-// One-off opening override: Tuesday, 20 October 2026.\nexport const SPECIAL_OPEN_DATES = new Set(["2026-10-20"]);\nexport const isTuesday = (date: string) => Boolean(date) && !SPECIAL_OPEN_DATES.has(date) && getLocalDay(date) === 2;
+// One-off opening override: Tuesday, 20 October 2026.
+export const SPECIAL_OPEN_DATES = new Set(["2026-10-20"]);
+export const isTuesday = (date: string) => Boolean(date) && !SPECIAL_OPEN_DATES.has(date) && getLocalDay(date) === 2;
 export const isWeekend = (date: string) => Boolean(date) && [0, 6].includes(getLocalDay(date));
 
 // Booking starts every 30 minutes so website availability lines up with the AI KidSalonia calendar.
