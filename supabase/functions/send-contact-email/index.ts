@@ -60,7 +60,7 @@ const getLocalDay = (dateString: string) => {
   return new Date(year, month - 1, day).getDay();
 };
 
-const isTuesday = (dateString: string) => getLocalDay(dateString) === 2;
+const specialOpenDates = new Set(['2026-10-20']);\nconst isTuesday = (dateString: string) => !specialOpenDates.has(dateString) && getLocalDay(dateString) === 2;
 
 const isWeekend = (dateString: string) => {
   const day = getLocalDay(dateString);
