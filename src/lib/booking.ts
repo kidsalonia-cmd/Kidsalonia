@@ -64,7 +64,7 @@ export const getLocalDay = (date: string) => {
 };
 
 // One-off opening override: Tuesday, 20 October 2026.
-export const SPECIAL_OPEN_DATES = new Set(["2026-10-20"]);
+export const SPECIAL_OPEN_DATES = new Set(["2026-10-20"]);\nexport const CLOSED_BOOKING_DATES = new Set(["2026-10-20"]);\nexport const isBookingDateClosed = (date: string) => CLOSED_BOOKING_DATES.has(date);
 export const isTuesday = (date: string) => Boolean(date) && !SPECIAL_OPEN_DATES.has(date) && getLocalDay(date) === 2;
 export const isWeekend = (date: string) => Boolean(date) && [0, 6].includes(getLocalDay(date));
 
@@ -84,7 +84,7 @@ export const BOOKING_SLOTS = [
   ["20:30", "8:30 PM", "weekend"],
 ] as const;
 
-export const getSlotsForDate = (date: string) => BOOKING_SLOTS.filter(([, , schedule]) => schedule === "all" || isWeekend(date));
+export const getSlotsForDate = (date: string) => isBookingDateClosed(date) ? [] : BOOKING_SLOTS.filter(([, , schedule]) => schedule === "all" || isWeekend(date));
 export const getIndiaDate = (date = new Date()) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
 export const isPastSlot = (date: string, time: string, now = new Date()) => new Date(`${date}T${time}:00+05:30`).getTime() <= now.getTime();
 export const isValidPhone = (phone: string) => { const digits = phone.replace(/\D/g, ""); const local = digits.startsWith("91") && digits.length === 12 ? digits.slice(2) : digits; return /^[6-9]\d{9}$/.test(local); };
