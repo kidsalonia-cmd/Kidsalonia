@@ -60,7 +60,7 @@ const getLocalDay = (dateString: string) => {
   return new Date(year, month - 1, day).getDay();
 };
 
-const specialOpenDates = new Set(['2026-10-20']);
+const specialOpenDates = new Set(['2026-10-20']);\nconst closedBookingDates = new Set(['2026-10-20']);
 const isTuesday = (dateString: string) => !specialOpenDates.has(dateString) && getLocalDay(dateString) === 2;
 
 const isWeekend = (dateString: string) => {
@@ -130,7 +130,7 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: 'A valid email is required' }, 400);
     }
 
-    if (isTuesday(preferredDate)) {
+    if (closedBookingDates.has(preferredDate)) {\n      return jsonResponse({ error: 'Online bookings are fully booked for 20 October 2026' }, 400);\n    }\n\n    if (isTuesday(preferredDate)) {
       return jsonResponse({ error: 'KidSalonia is closed on Tuesday' }, 400);
     }
 
