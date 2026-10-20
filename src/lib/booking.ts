@@ -64,7 +64,9 @@ export const getLocalDay = (date: string) => {
 };
 
 // One-off opening override: Tuesday, 20 October 2026.
-export const SPECIAL_OPEN_DATES = new Set(["2026-10-20"]);\nexport const CLOSED_BOOKING_DATES = new Set(["2026-10-20"]);\nexport const isBookingDateClosed = (date: string) => CLOSED_BOOKING_DATES.has(date);
+export const SPECIAL_OPEN_DATES = new Set(["2026-10-20"]);
+export const CLOSED_BOOKING_DATES = new Set(["2026-10-20"]);
+export const isBookingDateClosed = (date: string) => CLOSED_BOOKING_DATES.has(date);
 export const isTuesday = (date: string) => Boolean(date) && !SPECIAL_OPEN_DATES.has(date) && getLocalDay(date) === 2;
 export const isWeekend = (date: string) => Boolean(date) && [0, 6].includes(getLocalDay(date));
 
