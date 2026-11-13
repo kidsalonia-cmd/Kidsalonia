@@ -25,7 +25,7 @@ function formatTime(value: string) {
 function hasValidDate(value: string) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || value < getIndiaDate() || isTuesday(value)) return false;
   const [year, month, day] = value.split("-").map(Number);
-  return new Date(year, month - 1, day).toISOString().startsWith(value);
+  return new Date(Date.UTC(year, month - 1, day)).toISOString().startsWith(value);
 }
 
 const inputClass = "w-full rounded-xl border border-pink-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-100";
