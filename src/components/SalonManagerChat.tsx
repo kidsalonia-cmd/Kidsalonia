@@ -62,6 +62,7 @@ export default function SalonManagerChat() {
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   const [bookingError, setBookingError] = useState("");
   const [reference, setReference] = useState("");
+  const [pendingApproval, setPendingApproval] = useState(false);
   const [form, setForm] = useState({
     service: "",
     date: "",
@@ -138,13 +139,18 @@ export default function SalonManagerChat() {
     }));
     setBookingError("");
     setReference("");
+    setPendingApproval(false);
     setView("booking");
   }
 
   function useQuickReply(value: string) {
-    if (/^check .*slots$/i.test(value) || /^book appointment$/i.test(value)) {
+    if (/^check .*slots$/i.test(value) || /^book appointment$/i.test(value) ||
+        /^continue booking$/i.test(value)) {
       openBooking();
     } else {
+      if (/^change date$/i.test(value)) {
+        setForm((current) => ({ ...current, date: "", time: "" }));
+      }
       void sendMessage(value);
     }
   }
@@ -162,7 +168,10 @@ export default function SalonManagerChat() {
       const response = await fetch(`${API}/api/customer-manager/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmed, history, contextService: suggestedService }),
+        body: JSON.stringify({
+          message: trimmed, history, contextService: suggestedService,
+          contextMundanLocation: form.mundanLocation,
+        }),
       });
       const data = await response.json();
       if (!response.ok || data?.success !== true) {
@@ -175,6 +184,25 @@ export default function SalonManagerChat() {
         BOOKING_SERVICES.some((item) => item.slug === data.suggestedService)
         ? data.suggestedService : "";
       if (resolvedSlug) setSuggestedService(resolvedSlug);
+      const resolvedDate = typeof data.preferredDate === "string" &&
+        hasValidDate(data.preferredDate) ? data.preferredDate : datePreference;
+      const location = data.mundanLocation === "Home" || data.mundanLocation === "Salon"
+        ? data.mundanLocation : "";
+      if (resolvedSlug || resolvedDate || location) {
+        setForm((current) => {
+          const nextService = resolvedSlug || current.service;
+          const nextDate = resolvedDate || current.date;
+          const nextLocation = nextService === "mundan" ? (location || current.mundanLocation) : "";
+          return {
+            ...current,
+            service: nextService,
+            date: nextDate,
+            mundanLocation: nextLocation,
+            time: nextService !== current.service || nextDate !== current.date ||
+              nextLocation !== current.mundanLocation ? "" : current.time,
+          };
+        });
+      }
       if (Array.isArray(data.quickReplies)) {
         setQuickReplies(
           data.quickReplies.filter((item: unknown): item is string => typeof item === "string")
@@ -241,9 +269,12 @@ export default function SalonManagerChat() {
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error(data.message || "Booking could not be saved.");
       setReference(String(data.appointmentId));
+      setPendingApproval(Boolean(data.pendingApproval));
       setMessages((current) => [...current, {
         role: "assistant",
-        text: `✅ Booking saved! Reference: ${data.appointmentId}. ${service.name} with ${stylist} on ${form.date} at ${formatTime(form.time)}. Payment is at the salon. ${data.whatsapp?.customerSent ? "A WhatsApp confirmation was sent." : "WhatsApp confirmation is pending."}`,
+        text: data.pendingApproval
+          ? `✅ Home Mundan request received! Reference: ${data.appointmentId}. Requested for ${form.date} at ${formatTime(form.time)}. Our team will confirm availability, travel charges and final arrangements. This is not yet a confirmed appointment.`
+          : `✅ Booking saved! Reference: ${data.appointmentId}. ${service.name} with ${stylist} on ${form.date} at ${formatTime(form.time)}. Payment is at the salon. ${data.whatsapp?.customerSent ? "A WhatsApp confirmation was sent." : "WhatsApp confirmation is pending."}`,
       }]);
     } catch (error) {
       setBookingError(error instanceof Error ? error.message : "Booking could not be saved.");
@@ -278,14 +309,18 @@ export default function SalonManagerChat() {
               <div className="border-t border-pink-100 bg-white p-3">
                 {form.date && (
                   <p className="mb-2 text-xs font-bold text-pink-700">
-                    Preferred appointment date saved: {form.date}. Choose an available time when booking.
+                    Selected: {suggestedLabel || "Appointment"}{form.mundanLocation === "Home" ? " · Home visit" : form.mundanLocation === "Salon" ? " · Salon visit" : ""} · {form.date}.
+                    {" "}Continue booking to see available times.
                   </p>
                 )}
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <button type="button" onClick={() => openBooking()}
                     className="rounded-full bg-pink-600 px-3 py-2 text-xs font-bold text-white">
                     <CalendarDays size={13} className="mr-1 inline" />
-                    {suggestedLabel ? `Book ${suggestedLabel}` : "Check Available Slots"}
+                    {form.date ? "Continue Booking · " +
+                      new Date(form.date + "T12:00:00Z").toLocaleDateString("en-IN", {
+                        day: "numeric", month: "short", timeZone: "UTC",
+                      }) : suggestedLabel ? `Book ${suggestedLabel}` : "Check Available Slots"}
                   </button>
                   <a href="https://wa.me/918130307036?text=Hi%20Kidsalonia%2C%20I%20would%20like%20to%20speak%20with%20the%20booking%20team."
                     target="_blank" rel="noopener noreferrer"
@@ -317,15 +352,25 @@ export default function SalonManagerChat() {
               {reference ? (
                 <div className="rounded-2xl bg-green-50 p-5 text-center">
                   <CheckCircle2 className="mx-auto h-12 w-12 text-green-600" />
-                  <h3 className="mt-3 text-xl font-black">Appointment booked!</h3>
+                  <h3 className="mt-3 text-xl font-black">
+                    {pendingApproval ? "Home visit request received!" : "Appointment booked!"}
+                  </h3>
                   <p className="mt-2 text-sm">Reference: <b>{reference}</b></p>
-                  <p className="mt-2 text-sm">Your booking is now visible in the salon dashboard.</p>
+                  <p className="mt-2 text-sm">
+                    {pendingApproval
+                      ? "Saved in the salon dashboard for the team to confirm availability and conveyance."
+                      : "Your booking is now visible in the salon dashboard."}
+                  </p>
                   <button type="button" onClick={() => setView("chat")} className="mt-5 rounded-xl bg-pink-600 px-4 py-3 font-bold text-white">Back to chat</button>
                 </div>
               ) : (
                 <form onSubmit={(event) => void submitBooking(event)} className="space-y-3">
                   <h3 className="text-xl font-extrabold text-slate-900">Book your visit ✨</h3>
-                  <p className="text-xs text-slate-500">Choose a real available slot. Pay at the salon.</p>
+                  <p className="text-xs text-slate-500">
+                    {isMundan && form.mundanLocation === "Home"
+                      ? "Request a home-visit slot. The salon must confirm travel and availability."
+                      : "Choose a real available slot. Pay at the salon."}
+                  </p>
                   <label className="block text-xs font-semibold text-slate-700">Service *
                     <select required className={inputClass} value={form.service} onChange={(event) => setField("service", event.target.value)}>
                       <option value="">Choose service</option>
@@ -367,7 +412,10 @@ export default function SalonManagerChat() {
                   )}
                   {bookingError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-xs text-red-700">{bookingError}</p>}
                   <button type="submit" disabled={bookingBusy || slotLoading || !availableSlots.includes(form.time)} className="w-full rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 px-4 py-3 font-extrabold text-white disabled:opacity-50">
-                    {bookingBusy ? "Checking and saving…" : "Confirm booking in Salon AI"}
+                    {bookingBusy ? "Checking and saving…" :
+                      isMundan && form.mundanLocation === "Home"
+                        ? "Send Home Mundan Request"
+                        : "Confirm booking in Salon AI"}
                   </button>
                   <p className="text-center text-xs text-slate-500">No payment collected online. Appointment confirmation follows after saving.</p>
                 </form>
@@ -380,9 +428,12 @@ export default function SalonManagerChat() {
           </footer>
         </section>
       )}
-      <button type="button" aria-label={open ? "Close Kidsalonia chat" : "Chat with Kidsalonia Manager"} onClick={() => setOpen((current) => !current)} className="flex items-center gap-3 rounded-full bg-gradient-to-r from-pink-600 to-purple-700 px-5 py-3.5 font-extrabold text-white shadow-[0_15px_40px_rgba(216,27,96,.3)] transition hover:scale-[1.03]">
-        {open ? <X size={22}/> : <MessageCircle size={23}/>} <span>{open ? "Close Chat" : "Chat with Manager"}</span>
-      </button>
+      {!open && (
+        <button type="button" aria-label="Chat with Kidsalonia Manager" onClick={() => setOpen(true)}
+          className="flex items-center gap-3 rounded-full bg-gradient-to-r from-pink-600 to-purple-700 px-5 py-3.5 font-extrabold text-white shadow-[0_15px_40px_rgba(216,27,96,.3)] transition hover:scale-[1.03]">
+          <MessageCircle size={23}/> <span>Chat with Manager</span>
+        </button>
+      )}
     </div>
   );
 }
