@@ -5,7 +5,7 @@ import { BOOKING_SERVICES, getIndiaDate, getSlotsForDate, isPastSlot, isTuesday,
 
 const API = "https://ai.kidsalonia.com";
 const SALON_PHONE = "8130307036";
-const WELCOME = "Hello! 👋 I'm Kidsalonia's virtual booking manager. Are you planning a kids haircut, baby's first haircut, mundan or nail service? I'll help with the details and your appointment.";
+const WELCOME = "Hi there! 👋 Welcome to Kidsalonia. How can I help you today?";
 type ChatMessage = { role: "user" | "assistant"; text: string };
 
 function assignedArtist(slug: string) {
@@ -53,9 +53,10 @@ export default function SalonManagerChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", text: WELCOME }]);
   const [input, setInput] = useState("");
   const [suggestedService, setSuggestedService] = useState("");
-  const [quickReplies, setQuickReplies] = useState([
-    "Baby's first haircut", "Mundan details", "Check available slots",
-  ]);
+  // Keep the customer conversation natural. Only reveal booking actions
+  // after the customer explicitly asks to book or agrees to proceed.
+  const [showBookingAction, setShowBookingAction] = useState(false);
+  const [showHandoffAction, setShowHandoffAction] = useState(false);
   const [busy, setBusy] = useState(false);
   const [bookingBusy, setBookingBusy] = useState(false);
   const [slotLoading, setSlotLoading] = useState(false);
@@ -143,18 +144,6 @@ export default function SalonManagerChat() {
     setView("booking");
   }
 
-  function useQuickReply(value: string) {
-    if (/^check .*slots$/i.test(value) || /^book appointment$/i.test(value) ||
-        /^continue booking$/i.test(value)) {
-      openBooking();
-    } else {
-      if (/^change date$/i.test(value)) {
-        setForm((current) => ({ ...current, date: "", time: "" }));
-      }
-      void sendMessage(value);
-    }
-  }
-
   async function sendMessage(text: string) {
     if (!text.trim() || busy) return;
     const trimmed = text.trim().slice(0, 500);
@@ -163,6 +152,8 @@ export default function SalonManagerChat() {
     const history = messages.slice(-12);
     setMessages((current) => [...current, { role: "user", text: trimmed }]);
     setInput("");
+    setShowBookingAction(false);
+    setShowHandoffAction(false);
     setBusy(true);
     try {
       const response = await fetch(`${API}/api/customer-manager/chat`, {
@@ -203,12 +194,9 @@ export default function SalonManagerChat() {
           };
         });
       }
-      if (Array.isArray(data.quickReplies)) {
-        setQuickReplies(
-          data.quickReplies.filter((item: unknown): item is string => typeof item === "string")
-            .slice(0, 3)
-        );
-      }
+      const intent = String(data.intent || "");
+      setShowBookingAction(["booking", "ready-to-book"].includes(intent));
+      setShowHandoffAction(["handoff", "home-service"].includes(intent));
       setMessages((current) => [...current, { role: "assistant", text: reply }]);
     } catch {
       setMessages((current) => [...current, {
@@ -290,7 +278,7 @@ export default function SalonManagerChat() {
           <header className="flex items-center justify-between bg-gradient-to-r from-pink-600 to-purple-700 px-4 py-4 text-white">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-2xl">✂️</span>
-              <div><h2 className="text-base font-extrabold text-white">Kidsalonia Booking Manager</h2><p className="text-xs text-white/85">AI assistant • Appointments & services</p></div>
+              <div><h2 className="text-base font-extrabold text-white">Kidsalonia Manager</h2><p className="text-xs text-white/85">AI assistant · Here to help</p></div>
             </div>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close chat" className="rounded-full bg-white/15 p-2 hover:bg-white/25"><X size={19}/></button>
           </header>
@@ -307,38 +295,24 @@ export default function SalonManagerChat() {
                 <div ref={bottomRef} />
               </div>
               <div className="border-t border-pink-100 bg-white p-3">
-                {form.date && (
-                  <p className="mb-2 text-xs font-bold text-pink-700">
-                    Selected: {suggestedLabel || "Appointment"}{form.mundanLocation === "Home" ? " · Home visit" : form.mundanLocation === "Salon" ? " · Salon visit" : ""} · {form.date}.
-                    {" "}Continue booking to see available times.
-                  </p>
+                {showBookingAction && !busy && (
+                  <div className="mb-3">
+                    <button type="button" onClick={() => openBooking()}
+                      className="inline-flex items-center gap-2 rounded-full bg-pink-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-pink-700">
+                      <CalendarDays size={15} />
+                      {form.date ? "Choose an available time" : "Check appointment availability"}
+                    </button>
+                  </div>
                 )}
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  <button type="button" onClick={() => openBooking()}
-                    className="rounded-full bg-pink-600 px-3 py-2 text-xs font-bold text-white">
-                    <CalendarDays size={13} className="mr-1 inline" />
-                    {form.date ? "Continue Booking · " +
-                      new Date(form.date + "T12:00:00Z").toLocaleDateString("en-IN", {
-                        day: "numeric", month: "short", timeZone: "UTC",
-                      }) : suggestedLabel ? `Book ${suggestedLabel}` : "Check Available Slots"}
-                  </button>
-                  <a href="https://wa.me/918130307036?text=Hi%20Kidsalonia%2C%20I%20would%20like%20to%20speak%20with%20the%20booking%20team."
-                    target="_blank" rel="noopener noreferrer"
-                    className="rounded-full bg-green-50 px-3 py-2 text-xs font-bold text-green-700">
-                    Speak to team
-                  </a>
-                </div>
-                <div className="mb-3 flex flex-wrap gap-2">
-                  {quickReplies.filter((item) => !/^check .*slots$/i.test(item) &&
-                    !/^speak (to |with )?(our )?team$/i.test(item))
-                    .map((item) => (
-                      <button key={item} type="button" onClick={() => useQuickReply(item)}
-                        disabled={busy}
-                        className="rounded-full bg-pink-50 px-3 py-2 text-xs font-bold text-pink-700 transition hover:bg-pink-100 disabled:opacity-50">
-                        {item}
-                      </button>
-                    ))}
-                </div>
+                {showHandoffAction && !busy && (
+                  <div className="mb-3">
+                    <a href="https://wa.me/918130307036?text=Hi%20Kidsalonia%2C%20I%20would%20like%20to%20speak%20with%20the%20booking%20team."
+                      target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2.5 text-sm font-semibold text-green-800">
+                      Talk with our team on WhatsApp
+                    </a>
+                  </div>
+                )
                 <form onSubmit={(event) => { event.preventDefault(); void sendMessage(input); }} className="flex gap-2">
                   <input aria-label="Message the Kidsalonia virtual manager" value={input} onChange={(event) => setInput(event.target.value)} maxLength={500} placeholder="Ask me anything…" className={inputClass} />
                   <button type="submit" disabled={!input.trim() || busy} aria-label="Send message" className="rounded-xl bg-pink-600 px-3 text-white disabled:opacity-50"><Send size={18}/></button>
@@ -422,10 +396,12 @@ export default function SalonManagerChat() {
               )}
             </div>
           )}
-          <footer className="flex items-center justify-between border-t border-slate-100 bg-white px-4 py-2 text-[11px] text-slate-500">
-            <a href={`tel:+91${SALON_PHONE}`} className="flex items-center gap-1 text-pink-700"><Phone size={12}/> Call salon</a>
-            <Link to="/book" onClick={() => setOpen(false)} className="font-semibold text-pink-700">Full booking page</Link>
-          </footer>
+          {view === "booking" && (
+            <footer className="flex items-center justify-between border-t border-slate-100 bg-white px-4 py-2 text-[11px] text-slate-500">
+              <a href={`tel:+91${SALON_PHONE}`} className="flex items-center gap-1 text-pink-700"><Phone size={12}/> Call salon</a>
+              <Link to="/book" onClick={() => setOpen(false)} className="font-semibold text-pink-700">Full booking page</Link>
+            </footer>
+          )}
         </section>
       )}
       {!open && (
