@@ -129,8 +129,6 @@ export default function SalonManagerChat() {
     setBookingError("");
   };
 
-  const suggestedLabel = BOOKING_SERVICES.find((item) => item.slug === suggestedService)?.name;
-
   function openBooking(serviceSlug = suggestedService) {
     const validSlug = BOOKING_SERVICES.some((item) => item.slug === serviceSlug) ? serviceSlug : "";
     setForm((current) => ({
@@ -199,9 +197,10 @@ export default function SalonManagerChat() {
       setShowHandoffAction(["handoff", "home-service"].includes(intent));
       setMessages((current) => [...current, { role: "assistant", text: reply }]);
     } catch {
+      setShowBookingAction(true);
       setMessages((current) => [...current, {
         role: "assistant",
-        text: "I couldn't reach the booking assistant right now. You can still check available appointment times here, or call our team at +91 81303 07036.",
+        text: "I'm having trouble connecting just now. You can still check our available appointment times below, or call our team at +91 81303 07036.",
       }]);
     } finally {
       setBusy(false);
