@@ -311,7 +311,7 @@ export default function SalonManagerChat() {
                       Talk with our team on WhatsApp
                     </a>
                   </div>
-                )
+                )}
                 <form onSubmit={(event) => { event.preventDefault(); void sendMessage(input); }} className="flex gap-2">
                   <input aria-label="Message the Kidsalonia virtual manager" value={input} onChange={(event) => setInput(event.target.value)} maxLength={500} placeholder="Ask me anything…" className={inputClass} />
                   <button type="submit" disabled={!input.trim() || busy} aria-label="Send message" className="rounded-xl bg-pink-600 px-3 text-white disabled:opacity-50"><Send size={18}/></button>
