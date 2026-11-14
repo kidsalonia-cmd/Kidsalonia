@@ -53,6 +53,7 @@ export default function SalonManagerChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", text: WELCOME }]);
   const [input, setInput] = useState("");
   const [suggestedService, setSuggestedService] = useState("");
+  const [childGender, setChildGender] = useState<"boy" | "girl" | "">("");
   // Keep the customer conversation natural. Only reveal booking actions
   // after the customer explicitly asks to book or agrees to proceed.
   const [showBookingAction, setShowBookingAction] = useState(false);
@@ -158,7 +159,10 @@ export default function SalonManagerChat() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: trimmed, history, contextService: suggestedService,
+          message: trimmed, history, contextService: suggestedService || form.service,
+          contextDate: form.date,
+          contextChildAge: form.childAge,
+          contextChildGender: childGender,
           contextMundanLocation: form.mundanLocation,
         }),
       });
@@ -172,12 +176,25 @@ export default function SalonManagerChat() {
       const resolvedSlug = typeof data.suggestedService === "string" &&
         BOOKING_SERVICES.some((item) => item.slug === data.suggestedService)
         ? data.suggestedService : "";
+      const intent = String(data.intent || "");
       if (resolvedSlug) setSuggestedService(resolvedSlug);
+      if (intent === "nail-enquiry") {
+        // General nail enquiry is not yet a chosen treatment. Never leave an
+        // older haircut service selected when the customer changes topic.
+        setSuggestedService("");
+        setForm((current) => ({ ...current, service: "", time: "" }));
+      }
+      const resolvedAge = typeof data.childAge === "string" &&
+        /^\d{1,2} (years|months)$/.test(data.childAge)
+        ? data.childAge : "";
+      const resolvedGender = data.childGender === "boy" || data.childGender === "girl"
+        ? data.childGender : "";
+      if (resolvedGender) setChildGender(resolvedGender);
       const resolvedDate = typeof data.preferredDate === "string" &&
         hasValidDate(data.preferredDate) ? data.preferredDate : datePreference;
       const location = data.mundanLocation === "Home" || data.mundanLocation === "Salon"
         ? data.mundanLocation : "";
-      if (resolvedSlug || resolvedDate || location) {
+      if (resolvedSlug || resolvedDate || location || resolvedAge) {
         setForm((current) => {
           const nextService = resolvedSlug || current.service;
           const nextDate = resolvedDate || current.date;
@@ -186,13 +203,13 @@ export default function SalonManagerChat() {
             ...current,
             service: nextService,
             date: nextDate,
+            childAge: resolvedAge || current.childAge,
             mundanLocation: nextLocation,
             time: nextService !== current.service || nextDate !== current.date ||
               nextLocation !== current.mundanLocation ? "" : current.time,
           };
         });
       }
-      const intent = String(data.intent || "");
       setShowBookingAction(["booking", "ready-to-book"].includes(intent));
       setShowHandoffAction(["handoff", "home-service"].includes(intent));
       setMessages((current) => [...current, { role: "assistant", text: reply }]);
