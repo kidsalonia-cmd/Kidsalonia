@@ -28,6 +28,23 @@ function hasValidDate(value: string) {
   return new Date(Date.UTC(year, month - 1, day)).toISOString().startsWith(value);
 }
 
+function preferredDateFromMessage(value: string): string | null {
+  const normalized = value.toLowerCase().trim();
+  let date = "";
+  if (/\b(tomorrow|kal)\b|कल/.test(normalized)) {
+    date = getIndiaDate(new Date(Date.now() + 86_400_000));
+  } else if (/\b(today|aaj)\b|आज/.test(normalized)) {
+    date = getIndiaDate();
+  } else {
+    const iso = normalized.match(/\b(20\d{2}-\d{2}-\d{2})\b/);
+    const indian = normalized.match(/\b(\d{1,2})[/-](\d{1,2})[/-](20\d{2})\b/);
+    date = iso?.[1] || (indian
+      ? `${indian[3]}-${indian[2].padStart(2, "0")}-${indian[1].padStart(2, "0")}`
+      : "");
+  }
+  return date && hasValidDate(date) ? date : null;
+}
+
 const inputClass = "w-full rounded-xl border border-pink-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-100";
 
 export default function SalonManagerChat() {
@@ -117,7 +134,7 @@ export default function SalonManagerChat() {
     setForm((current) => ({
       ...current,
       service: validSlug || current.service,
-      ...(validSlug && validSlug !== current.service ? { date: "", time: "" } : {}),
+      ...(validSlug && validSlug !== current.service ? { time: "" } : {}),
     }));
     setBookingError("");
     setReference("");
@@ -135,6 +152,8 @@ export default function SalonManagerChat() {
   async function sendMessage(text: string) {
     if (!text.trim() || busy) return;
     const trimmed = text.trim().slice(0, 500);
+    const datePreference = preferredDateFromMessage(trimmed);
+    if (datePreference) setForm((current) => ({ ...current, date: datePreference, time: "" }));
     const history = messages.slice(-12);
     setMessages((current) => [...current, { role: "user", text: trimmed }]);
     setInput("");
@@ -257,6 +276,11 @@ export default function SalonManagerChat() {
                 <div ref={bottomRef} />
               </div>
               <div className="border-t border-pink-100 bg-white p-3">
+                {form.date && (
+                  <p className="mb-2 text-xs font-bold text-pink-700">
+                    Preferred appointment date saved: {form.date}. Choose an available time when booking.
+                  </p>
+                )}
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <button type="button" onClick={() => openBooking()}
                     className="rounded-full bg-pink-600 px-3 py-2 text-xs font-bold text-white">
