@@ -5,7 +5,7 @@ import { BOOKING_SERVICES, getIndiaDate, getSlotsForDate, isPastSlot, isTuesday,
 
 const API = "https://ai.kidsalonia.com";
 const SALON_PHONE = "8130307036";
-const WELCOME = "Hello! 👋 I'm Kidsalonia's virtual manager. Ask about haircuts, mundan, nail services, salon timings or prices. I can also book your appointment directly.";
+const WELCOME = "Hello! 👋 I'm Kidsalonia's virtual booking manager. Are you planning a kids haircut, baby's first haircut, mundan or nail service? I'll help with the details and your appointment.";
 type ChatMessage = { role: "user" | "assistant"; text: string };
 
 function assignedArtist(slug: string) {
@@ -35,6 +35,10 @@ export default function SalonManagerChat() {
   const [view, setView] = useState<"chat" | "booking">("chat");
   const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", text: WELCOME }]);
   const [input, setInput] = useState("");
+  const [suggestedService, setSuggestedService] = useState("");
+  const [quickReplies, setQuickReplies] = useState([
+    "Baby's first haircut", "Mundan details", "Check available slots",
+  ]);
   const [busy, setBusy] = useState(false);
   const [bookingBusy, setBookingBusy] = useState(false);
   const [slotLoading, setSlotLoading] = useState(false);
@@ -106,10 +110,32 @@ export default function SalonManagerChat() {
     setBookingError("");
   };
 
+  const suggestedLabel = BOOKING_SERVICES.find((item) => item.slug === suggestedService)?.name;
+
+  function openBooking(serviceSlug = suggestedService) {
+    const validSlug = BOOKING_SERVICES.some((item) => item.slug === serviceSlug) ? serviceSlug : "";
+    setForm((current) => ({
+      ...current,
+      service: validSlug || current.service,
+      ...(validSlug && validSlug !== current.service ? { date: "", time: "" } : {}),
+    }));
+    setBookingError("");
+    setReference("");
+    setView("booking");
+  }
+
+  function useQuickReply(value: string) {
+    if (/^check .*slots$/i.test(value) || /^book appointment$/i.test(value)) {
+      openBooking();
+    } else {
+      void sendMessage(value);
+    }
+  }
+
   async function sendMessage(text: string) {
     if (!text.trim() || busy) return;
     const trimmed = text.trim().slice(0, 500);
-    const history = messages.slice(-6);
+    const history = messages.slice(-12);
     setMessages((current) => [...current, { role: "user", text: trimmed }]);
     setInput("");
     setBusy(true);
@@ -117,15 +143,30 @@ export default function SalonManagerChat() {
       const response = await fetch(`${API}/api/customer-manager/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: trimmed, history }),
+        body: JSON.stringify({ message: trimmed, history, contextService: suggestedService }),
       });
       const data = await response.json();
-      const reply = data?.reply || "I can help with appointments, services and directions. Please try again.";
+      if (!response.ok || data?.success !== true) {
+        throw new Error(data?.message || "Unable to reach Kidsalonia Manager.");
+      }
+      const reply = typeof data.reply === "string" && data.reply.trim()
+        ? data.reply.trim()
+        : "Of course. Which service would you like to book, and for what date?";
+      const resolvedSlug = typeof data.suggestedService === "string" &&
+        BOOKING_SERVICES.some((item) => item.slug === data.suggestedService)
+        ? data.suggestedService : "";
+      if (resolvedSlug) setSuggestedService(resolvedSlug);
+      if (Array.isArray(data.quickReplies)) {
+        setQuickReplies(
+          data.quickReplies.filter((item: unknown): item is string => typeof item === "string")
+            .slice(0, 3)
+        );
+      }
       setMessages((current) => [...current, { role: "assistant", text: reply }]);
     } catch {
       setMessages((current) => [...current, {
         role: "assistant",
-        text: "I'm having trouble connecting. You can still book here, or call us at +91 81303 07036.",
+        text: "I couldn't reach the booking assistant right now. You can still check available appointment times here, or call our team at +91 81303 07036.",
       }]);
     } finally {
       setBusy(false);
@@ -199,7 +240,7 @@ export default function SalonManagerChat() {
           <header className="flex items-center justify-between bg-gradient-to-r from-pink-600 to-purple-700 px-4 py-4 text-white">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-2xl">✂️</span>
-              <div><h2 className="text-base font-extrabold text-white">Kidsalonia Manager</h2><p className="text-xs text-white/85">AI virtual assistant • Online</p></div>
+              <div><h2 className="text-base font-extrabold text-white">Kidsalonia Booking Manager</h2><p className="text-xs text-white/85">AI assistant • Appointments & services</p></div>
             </div>
             <button type="button" onClick={() => setOpen(false)} aria-label="Close chat" className="rounded-full bg-white/15 p-2 hover:bg-white/25"><X size={19}/></button>
           </header>
@@ -216,10 +257,28 @@ export default function SalonManagerChat() {
                 <div ref={bottomRef} />
               </div>
               <div className="border-t border-pink-100 bg-white p-3">
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <button type="button" onClick={() => openBooking()}
+                    className="rounded-full bg-pink-600 px-3 py-2 text-xs font-bold text-white">
+                    <CalendarDays size={13} className="mr-1 inline" />
+                    {suggestedLabel ? `Book ${suggestedLabel}` : "Check Available Slots"}
+                  </button>
+                  <a href="https://wa.me/918130307036?text=Hi%20Kidsalonia%2C%20I%20would%20like%20to%20speak%20with%20the%20booking%20team."
+                    target="_blank" rel="noopener noreferrer"
+                    className="rounded-full bg-green-50 px-3 py-2 text-xs font-bold text-green-700">
+                    Speak to team
+                  </a>
+                </div>
                 <div className="mb-3 flex flex-wrap gap-2">
-                  <button type="button" onClick={() => { setView("booking"); setReference(""); }} className="rounded-full bg-pink-600 px-3 py-2 text-xs font-bold text-white"><CalendarDays size={13} className="mr-1 inline"/>Book Appointment</button>
-                  <button type="button" onClick={() => void sendMessage("What services and prices do you offer?")} className="rounded-full bg-pink-50 px-3 py-2 text-xs font-bold text-pink-700">Services & Prices</button>
-                  <button type="button" onClick={() => void sendMessage("Where is the salon located?")} className="rounded-full bg-pink-50 px-3 py-2 text-xs font-bold text-pink-700">Location</button>
+                  {quickReplies.filter((item) => !/^check .*slots$/i.test(item) &&
+                    !/^speak (to |with )?(our )?team$/i.test(item))
+                    .map((item) => (
+                      <button key={item} type="button" onClick={() => useQuickReply(item)}
+                        disabled={busy}
+                        className="rounded-full bg-pink-50 px-3 py-2 text-xs font-bold text-pink-700 transition hover:bg-pink-100 disabled:opacity-50">
+                        {item}
+                      </button>
+                    ))}
                 </div>
                 <form onSubmit={(event) => { event.preventDefault(); void sendMessage(input); }} className="flex gap-2">
                   <input aria-label="Message the Kidsalonia virtual manager" value={input} onChange={(event) => setInput(event.target.value)} maxLength={500} placeholder="Ask me anything…" className={inputClass} />
